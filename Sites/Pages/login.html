@@ -4,16 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
-    <meta
-      name="author"
-      content="Dylan Apardian, Dorensky Herard and Khalil Alhelou"
-    />
     <meta name="generator" content="Hugo 0.80.0" />
-    <title>Se Connecter</title>
+    <title>Se connecter</title>
 
+    <!-- Police Cairo de Google -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      rel="canonical"
-      href="https://getbootstrap.com/docs/5.0/examples/sign-in/"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap"
+      rel="stylesheet"
     />
 
     <!-- Bootstrap core CSS -->
@@ -36,19 +34,13 @@
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="/Pages/styles/login.css" rel="stylesheet" />
+    <link href="../Pages/styles/login.css" rel="stylesheet" />
   </head>
   <body class="text-center">
     <main class="form-signin">
       <form>
-        <img
-          class="mb-4"
-          src="../Pages/Assets/logo.png"
-          alt=""
-          width="200"
-          height="80"
-        />
-        <h1 class="h3 mb-3 fw-normal">Ouverture de Session</h1>
+        <img class="mb-4" src="../Pages/Assets/logo.png" alt="" />
+        <h1 class="h3 mb-3 fw-normal">Veuillez vous connectez</h1>
         <label for="inputEmail" class="visually-hidden">Courriel</label>
         <input
           type="email"
@@ -66,11 +58,11 @@
           placeholder="Mot de passe"
           required
         />
-        <h6>Vous n'avez de compte?</h6>
-        <a href="" id="creezCompte">Creez un compte</a>
         <button class="w-100 btn btn-lg btn-primary" type="submit">
           Se connecter
         </button>
+        <p class="mt-5 mb-3 text-muted">Vous n'avez pas de compte?</p>
+        <a href="signup.html" id="creezCompte">Creez un compte</a>
         <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
       </form>
     </main>
