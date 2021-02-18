@@ -1,0 +1,86 @@
+* {
+  font-family: "Cairo", sans-serif;
+}
+body {
+  background-color: #f2f3f7;
+}
+/* Style the sidebar - fixed full height */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 16px;
+  background-color: #e2e2e2;
+}
+
+.logo {
+  align-self: center;
+}
+
+/* Style sidebar links */
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+}
+
+.btnpage {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.bubbleUtilisateur {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: center;
+  background-color: white;
+  position: absolute;
+  bottom: 35px;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.rangeeBulle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Style links on mouse-over */
+.sidebar a:hover {
+  color: #357aff;
+}
+
+/* Style the main content */
+.contenu {
+  margin-left: 250px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.sectionMap {
+  background-color: white;
+  height: 90%;
+}
+
+/* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
+@media screen and (max-height: 450px) {
+  .sidebar {
+    padding-top: 15px;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
+}
