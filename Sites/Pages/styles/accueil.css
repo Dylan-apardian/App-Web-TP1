@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "Crete Round", sans-serif;
+  font-family: "Cairo", sans-serif;
   font-size: 15px;
   background-color: gainsboro;
 }
@@ -112,10 +112,12 @@ header nav ul li a:hover {
 /* MAIN-IMAGE */
 
 #main-image {
-  background: url(Images/main-image.jpg) no-repeat center;
+  background: url(../Assets/images/imagesAccueil/main-image.jpg) no-repeat
+    center;
   background-size: cover;
   height: 550px;
 }
+
 #main-image h2 {
   font-weight: bolder;
   text-align: center;
