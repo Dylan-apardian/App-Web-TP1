@@ -1,31 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topnav with sidebar</title>
     <link rel="stylesheet" href="../Pages/styles/apropos.css" />
-    <!-- Police Cairo de Google -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <!-- Load an icon library -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <title>Document</title>
   </head>
+
   <body>
-    <!-- Side navigation -->
-    <div class="sidenav">
+    <!-- The sidebar -->
+    <div class="sidebar">
+      <img
+        class="logo"
+        src="../Pages/Assets/images/logo.png"
+        height="80"
+        width="200"
+      />
+
       <div class="btnPage">
-        <img src="../Pages/Assets/images/icons/geo-alt.svg" />
-        <a href="#">Accueil</a>
+        <img src="../Pages/Assets/icons/house.svg" width="22" height="auto" />
+        <a href="">Accueil</a>
+      </div>
+      <div class="btnPage">
+        <img src="../Pages/Assets/icons/wallet2.svg" width="22" height="auto" />
+        <a href="">Transactions</a>
+      </div>
+      <div class="btnPage">
+        <img
+          src="../Pages/Assets/icons/info-square.svg"
+          width="22"
+          height="auto"
+        />
+        <a href="apropos.html">A propos</a>
       </div>
 
-      <a href="#">Transaction</a>
-      <a href="#">A propos</a>
+      <!-- Bulle Utilisateur -->
+      <div class="bubbleUtilisateur">
+        <div class="rangeeBulle">
+          <img
+            class="imageUtilsateur"
+            src="../Pages/Assets/icons/person-circle.svg"
+            width="18"
+            height="auto"
+          />
+          <h6>Usager</h6>
+          <img
+            class="imageUtilsateur"
+            src="../Pages/Assets/icons/arrow-right.svg"
+            width="18"
+            height="auto"
+          />
+        </div>
+      </div>
     </div>
 
-    <!-- Page content -->
-    <div class="main">...</div>
+    <div class="contenu">
+      <div class="sectionTitre">
+        <h1>A propos</h1>
+      </div>
+      <div class="sectionDescription">
+        <p>Lorem Ipsum</p>
+      </div>
+      <div class="sectionMap">test</div>
+    </div>
   </body>
 </html>
