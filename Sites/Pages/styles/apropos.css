@@ -1,5 +1,6 @@
 * {
   font-family: "Cairo", sans-serif;
+  overflow: hidden;
 }
 body {
   background-color: #f2f3f7;
@@ -23,15 +24,20 @@ body {
   align-self: center;
 }
 
-/* Style sidebar links */
+.colonneNav {
+  padding-top: 25px;
+  align-self: center;
+}
+
 .sidebar a {
-  padding: 6px 8px 6px 16px;
+  padding: 10px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
   color: black;
 }
 
 .btnpage {
+  padding-left: 25px;
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -62,17 +68,59 @@ body {
   color: #357aff;
 }
 
-/* Style the main content */
 .contenu {
-  margin-left: 250px; /* Same as the width of the sidenav */
-  padding: 0px 10px;
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.informations {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+}
+
+.sectionDescription {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
 }
 
 .sectionMap {
   background-color: white;
-  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-self: center;
+  background-color: white;
+  width: 400px;
+  border-radius: 10px;
+}
+
+.titreCarte {
+  align-self: center;
+}
+.localisation {
+  padding-left: 45px;
+  align-self: flex-start;
+}
+
+.rangeeBtnJoindre {
+  padding-left: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.btnJoindre {
+  height: 40px;
+  width: auto;
+}
+
+.imageMap {
+  padding-top: 35px;
+  padding-bottom: 35px;
+  align-self: center;
 }
 
 /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
