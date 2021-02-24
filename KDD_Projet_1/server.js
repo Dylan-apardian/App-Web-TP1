@@ -41,6 +41,7 @@ var now = new Date();
 
 
 app.use(express.static(__dirname + "/views"));
+
 /*
 * view engine template parsing (ejs types)
 */
@@ -78,19 +79,7 @@ const baseURL = "http://localhost:4000/"
 * Envoyer le contenu au client
 * get the client list
 */
-app.get('/', function (req, res) {
-
-
-
-    con.query("SELECT * FROM bd_kdd ORDER BY DATE_DE_CREATION DESC", function (err, result) {
-        res.render('Pages/signup', {
-            siteTitle: siteTitle,
-            pageTitle: "Client list",
-            items: result
-        });
-    });
-
-}); /* fin de app.get(....)*/
+ /* fin de app.get(....)*/
 /*
 app.get('/', function (req, res) {
     con.query("SELECT * FROM client ORDER BY DATE_DE_CREATION DESC", function (err, result) {
@@ -103,7 +92,29 @@ app.get('/', function (req, res) {
 
 });
 */
+app.get('/', function (req, res) {
 
+    con.query("SELECT * FROM bd_kdd ORDER BY DATE_DE_CREATION DESC", function (err, result) {
+        res.render('Pages/signup', {
+            siteTitle: siteTitle,
+            pageTitle: "Client list",
+            items: result
+        });
+    });
+
+});
+
+app.get('/login.ejs', function (req, res) {
+
+    con.query("SELECT * FROM bd_kdd ORDER BY DATE_DE_CREATION DESC", function (err, result) {
+        res.render('Pages/login', {
+            siteTitle: siteTitle,
+            pageTitle: "Client list",
+            items: result
+        });
+    });
+
+});
 app.post('/', function (req, res) {
 
     /* get the record base on ID
