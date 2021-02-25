@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,12 +34,14 @@
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="../Pages/styles/login.css" rel="stylesheet" >
+    <link href="../Pages/styles/login.css" rel="stylesheet" />
   </head>
   <body class="text-center">
     <main class="form-signin">
       <form action="http://localhost:4000/login">
-        <img class="mb-4" src="../Pages/Assets/images/logo.png" alt="" />
+        <a href="/">
+          <img class="mb-4" src="../Pages/Assets/images/logo.png" alt="" />
+        </a>
         <h1 class="h3 mb-3 fw-normal">Veuillez vous connectez</h1>
         <label for="inputEmail" class="visually-hidden">Courriel</label>
         <input
@@ -63,9 +64,9 @@
           Se connecter
         </button>
         <p class="mt-5 mb-3 text-muted">Vous n'avez pas de compte?</p>
-  
-          <a href="signup.ejs" id="creezCompte" >Creez un compte</a>
- 
+
+        <a href="signup.ejs" id="creezCompte">Creez un compte</a>
+
         <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
       </form>
     </main>
