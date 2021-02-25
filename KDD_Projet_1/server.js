@@ -92,7 +92,17 @@ app.get('/', function (req, res) {
 
 });
 */
-app.get('/', function (req, res) {
+app.get('/',function (req,res) { 
+    con.query("SELECT * FROM client ORDER BY DATE_DE_CREATION DESC", function (err, result) {
+        res.render('pages/pageAccueil',{
+            siteTitle : siteTitle,
+            pageTitle : "Page d'accueil",
+            items : result
+        });
+    });
+});
+
+app.get('/signup.ejs', function (req, res) {
 
     con.query("SELECT * FROM bd_kdd ORDER BY DATE_DE_CREATION DESC", function (err, result) {
         res.render('Pages/signup', {
@@ -113,9 +123,8 @@ app.get('/login.ejs', function (req, res) {
             items: result
         });
     });
-
 });
-app.post('/', function (req, res) {
+app.post('/signup.ejs', function (req, res) {
 
     /* get the record base on ID
     */
