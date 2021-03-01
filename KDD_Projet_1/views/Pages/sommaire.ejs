@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sommaire</title>
+    <link rel="stylesheet" href="../Pages/styles/sommaire.css" />
+    <!-- Load an icon library -->
+    <a href="https://icons8.com/icon/WV326xpsBMyb/phone"
+      >Phone icon by Icons8</a
+    >
+  </head>
+
+  <body>
+    <!-- The sidebar -->
+    <div class="sidebar">
+      <a href="/">
+      <img
+        class="logo"
+        src="../Pages/Assets/images/logo.png"
+        height="80"
+        width="200"
+      />
+      </a>    
+      <div class="colonneNav">
+        <div class="btnPage">
+          <img src="../Pages/Assets/icons/house.svg" width="22" height="auto" />
+          <a href="sommaire.ejs">Sommaire</a>
+        </div>
+        <div class="btnPage">
+          <img
+            src="../Pages/Assets/icons/info-square.svg"
+            width="22"
+            height="auto"
+          />
+          <a href="apropos.ejs">A propos</a>
+        </div>
+      </div>
+
+      <!-- Bulle Utilisateur -->
+      <div class="bubbleUtilisateur">
+        <div class="rangeeBulle">
+          <img
+            class="imageUtilsateur"
+            src="../Pages/Assets/icons/person-circle.svg"
+            width="18"
+            height="auto"
+          />
+          <h6>Usager</h6>
+          <img
+            class="imageUtilsateur"
+            src="../Pages/Assets/icons/arrow-right.svg"
+            width="18"
+            height="auto"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="contenu">
+      <div class="sectionTitre">
+        <h1>Sommaire</h1>
+      </div>
+      <div class="rangee1">
+        <div class="sectionFonds">
+          <div class="colonneFonds">
+            <p class="titreFonds">Fonds disponibles</p>
+            <p class="valeurFonds">$2600.49</p>
+            <div class="rangeeCompte">
+              <p class="typeCompte">Cheque:</p>
+              <p>xxxx xxxx xxxx 2456</p>
+              <select name="compte" id="compte">
+                <option value="cheque">Cheque</option>
+                <option value="epargne">Epargne</option>
+              </select>
+            </div>    
+        </div>
+        </div>
+        <div class="sectionConversion"></div>
+      </div>
+      <div class="rangee2">
+      <div class="sectionTransactions"></div>
+      <div class="sectionStats"></div>
+    </div>
+  </body>
+</html>
