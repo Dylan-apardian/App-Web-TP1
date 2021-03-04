@@ -38,7 +38,7 @@
   </head>
   <body class="text-center">
     <main class="form-signin">
-      <form action="http://localhost:4000/signup" method="POST">
+      <form action="http://localhost:4000/login" method="POST">
         <a href="/">
           <img class="mb-4" src="../Pages/Assets/images/logo.png" alt="" />
         </a>
@@ -111,7 +111,7 @@
             />
 
         <!-- Input Email -->
-        <label for="client_courriel" class="visually-hidden">Courriel</label>
+        <label for="client_courriel" class="visually-hidden" >Courriel</label>
         <input
               type="email"
               id="client_courriel"
@@ -130,9 +130,12 @@
               required
               autofocus
             />
-          <div>
-            <a href="/signup" class="w-100 btn btn-lg btn-primary">Creer mon compte </a>
-          </div>
+          
+          
+            <input type="submit" class="w-100 btn btn-lg btn-primary" value="Creer un compte" />
+          
+             
+          
           
         <p class="mt-5 mb-3 text-muted">Vous avez deja un compte?</p>
 

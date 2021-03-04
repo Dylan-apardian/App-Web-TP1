@@ -10,21 +10,7 @@ var mysql = require('mysql');
 var app = express();
 var bodyParser = require('body-parser');
 
-/*
-app.use((req, res, next) => { 
-    console.log('Requête reçue !'); 
-    next(); // passer au prochain middleware 
-}); 
-app.use((req, res, next) => { 
-    res.json({ message: 'Votre requête a bien été reçue !' }); 
-    next(); 
-}); 
-app.use((req, res, next) => { 
-    console.log('Réponse envoyée avec succès !'); 
-    next();
-}); 
-Module.exports=app;
-*/
+
 
 /*
 * parse all form data
@@ -125,8 +111,9 @@ app.get('/signup', function (req, res) {
 
 app.get('/login', function (req, res) {
     
-    con.query("SELECT * FROM client ORDER BY DATE_DE_CREATION DESC", function (err, result) {
-        res.render('Pages/login.ejs', {
+    con.query("SELECT * FROM compte ORDER BY DATE_DE_CREATION DESC", function (err, result) {
+       
+        res.render('Pages/login.ejs', {    
             siteTitle: siteTitle,
             pageTitle: "Page de login",
             items: result
@@ -143,7 +130,17 @@ app.get('/login', function (req, res) {
             });
         });
     });
-    
+ app.post('/login', function (req, res) {
+
+        /* get the record base on ID
+        */
+        var query = "select exits (select client_courriel from client)";
+        query = req.body.client_courriel;
+        con.query(query, function (err, result) {
+            if (err) throw err;
+            res.redirect(baseURL);
+        });
+});
  
 
 app.post('/signup', function (req, res) {
