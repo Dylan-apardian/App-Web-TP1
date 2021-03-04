@@ -150,7 +150,7 @@ app.post('/signup', function (req, res) {
 
     /* get the record base on ID
     */
-    var query = "INSERT INTO client ( client_nom,client_prenom,date_de_naissance,telephone,adresse,code_postale,client_courriel,mot_de_passe,date_de_creation) VALUES (";
+    var query = "INSERT INTO client ( client_nom,client_prenom,date_de_naissance,telephone,adresse,code_postale,client_courriel,mot_de_passe) VALUES (";
     query += " '" + req.body.client_nom + "',";
     query += " '" + req.body.client_prenom + "',";
     query += " '" + dateFormat(req.body.date_de_naissance, "yyyy-mm-dd") + "',";
@@ -158,8 +158,7 @@ app.post('/signup', function (req, res) {
     query += " '" + req.body.adresse + "',";
     query += " '" + req.body.code_postale + "',";
     query += " '" + req.body.client_courriel + "',";
-    query += " '" + req.body.mot_de_passe + "',";
-    query += " '" + dateFormat(req.body.date_de_creation, "yyyy-mm-dd") + "')";
+    query += " '" + req.body.mot_de_passe + "')";
 
     con.query(query, function (err, result) {
         if (err) throw err;

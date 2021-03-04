@@ -47,68 +47,93 @@
 
         <!-- Input nom -->
         <label for="client_nom" class="visually-hidden">Nom</label>
-        <textarea
-        name ="client_nom"
-			  id="client_nom"
-			  cols="30"
-			  rows="4" class="form-control"></textarea>
+        <input
+              
+              id="client_nom"
+              class="form-control"
+              placeholder="Nom"
+              required
+              autofocus
+            />
 
 
         <!-- Input prenom -->
         <label for="client_prenom" class="visually-hidden">Prenom</label>
-        <textarea
-        name ="client_prenom"
-			  id="client_prenom"
-			  cols="30"
-			  rows="4" class="form-control"></textarea>
+        <input
+
+              id="client_prenom"
+              class="form-control"
+              placeholder="Prenom"
+              required
+              autofocus
+            />
 
         <!-- Input Date naissance -->
         <label for="date_de_naissance" class="visually-hidden">Naissance</label>
-        <textarea
-        name ="date_de_naissance"
-			  id="date_de_naissance"
-			  cols="30"
-			  rows="4" class="form-control"></textarea>
+        <input
+              type="date"
+              id="date_de_naissance"
+              class="form-control"
+              placeholder="Naissance"
+              required
+              autofocus
+            />
 
         <!-- Input telephone -->
         <label for="telephone" class="visually-hidden">Telephone</label>
-        <textarea
-        name ="telephone"
-			  id="telephone"
-			  cols="30"
-			  rows="4" class="form-control"></textarea>
+        <input
+              type="tel"
+              id="telephone"
+              class="form-control"
+              placeholder="514-123-1111"
+              required
+              autofocus
+            />
         <!-- Input Adresse -->
         <label for="adresse" class="visually-hidden">Adresse</label>
-        <textarea
-        name ="adresse"
-			  id="adresse"
-			  cols="30"
-			  rows="4" class="form-control"></textarea>
+        <input
+              
+              id="adresse"
+              class="form-control"
+              placeholder="Adresse"
+              required
+              autofocus
+            />
         <!-- Input Postal -->
         <label for="code_postale" class="visually-hidden">Code postal</label>
-        <textarea
-        name ="code_postale"
-			  id="code_postale"
-			  cols="30"
-			  rows="4" class="form-control"></textarea>
+        <input
+              
+              id="code_postale"
+              class="form-control"
+              placeholder="Code postal"
+              required
+              autofocus
+            />
 
         <!-- Input Email -->
         <label for="client_courriel" class="visually-hidden">Courriel</label>
-        <textarea
-        name ="client_courriel"
-			  id="client_courriel"
-			  cols="30"
-			  rows="4" class="form-control"></textarea>
+        <input
+              type="email"
+              id="client_courriel"
+              class="form-control"
+              placeholder="Courriel"
+              required
+              autofocus
+            />
         <!-- Input Password -->
         <label for="mot_de_passe" class="visually-hidden">Mot de passe</label>
-        <textarea
-        name ="mot_de_passe"
-			  id="mot_de_passe"
-			  cols="30"
-			  rows="4" class="form-control"></textarea>
+        <input
+              type="password"
+              id="mot_de_passe"
+              class="form-control"
+              placeholder="Mot de passe"
+              required
+              autofocus
+            />
           <div>
-            <input type="submit" name="submit" value="Creer mon compte" class ="w-100 btn btn-lg btn-primary">
+            <a href="/signup" class="w-100 btn btn-lg btn-primary">Creer mon compte </a>
           </div>
+          
         <p class="mt-5 mb-3 text-muted">Vous avez deja un compte?</p>
 
         <a href="/login" id="creezCompte">Se connecter</a>
