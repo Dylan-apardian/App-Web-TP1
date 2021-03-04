@@ -10,20 +10,18 @@
   </head>
 
   <body>
-    <!-- The sidebar -->
     <div class="sidebar">
-      <a href="/">
       <img
         class="logo"
         src="../Pages/Assets/images/logo.png"
         height="80"
         width="200"
       />
-      </a>    
+
       <div class="colonneNav">
         <div class="btnPage">
           <img src="../Pages/Assets/icons/house.svg" width="22" height="auto" />
-          <a href="sommaire.ejs">Sommaire</a>
+          <a href="sommaire.html">Sommaire</a>
         </div>
         <div class="btnPage">
           <img
@@ -31,54 +29,100 @@
             width="22"
             height="auto"
           />
-          <a href="apropos.ejs">A propos</a>
+          <a href="apropos.html">A propos</a>
         </div>
       </div>
 
-      <!-- Bulle Utilisateur -->
-      <div class="bubbleUtilisateur">
-        <div class="rangeeBulle">
-          <img
-            class="imageUtilsateur"
-            src="../Pages/Assets/icons/person-circle.svg"
-            width="18"
-            height="auto"
-          />
-          <h6>Usager</h6>
-          <img
-            class="imageUtilsateur"
-            src="../Pages/Assets/icons/arrow-right.svg"
-            width="18"
-            height="auto"
-          />
+        <!--Deuxieme rectangle-->
+        <div class="sectionConversion">
+          <p class="titreConversion">Conversion</p>
+          <form name="conversion">
+            <table border="0">
+              <tr>
+                <td>Euro:</td>
+                <td>
+                  <input type="text" name="euro" onChange="conversionEuro()" />
+                </td>
+              </tr>
+              <tr>
+                <td>Dollar Americain (USD):</td>
+                <td>
+                  <input type="text" name="usd" onChange="conversionUSD()" />
+                </td>
+              </tr>
+              <tr>
+                <td>Livre Sterling:</td>
+                <td>
+                  <input
+                    type="text"
+                    name="livre"
+                    onChange="conversionLivre()"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Dollar Canadien (CAD):</td>
+                <td>
+                  <input type="text" name="cad" onChange="conversionCAD()" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" align="center">
+                  <input type="reset" value="Effacer" />
+                </td>
+                <td colspan="2" align="center">
+                  <input type="button" value="Convertir" />
+                </td>
+              </tr>
+            </table>
+          </form>
         </div>
       </div>
-    </div>
 
-    <div class="contenu">
-      <div class="sectionTitre">
-        <h1>Sommaire</h1>
-      </div>
-      <div class="rangee1">
-        <div class="sectionFonds">
-          <div class="colonneFonds">
-            <p class="titreFonds">Fonds disponibles</p>
-            <p class="valeurFonds">$2600.49</p>
-            <div class="rangeeCompte">
-              <p class="typeCompte">Cheque:</p>
-              <p>xxxx xxxx xxxx 2456</p>
-              <select name="compte" id="compte">
-                <option value="cheque">Cheque</option>
-                <option value="epargne">Epargne</option>
-              </select>
-            </div>    
-        </div>
-        </div>
-        <div class="sectionConversion"></div>
-      </div>
       <div class="rangee2">
-      <div class="sectionTransactions"></div>
-      <div class="sectionStats"></div>
+        <div class="sectionTransactions">
+          <h2 class="titreTransactions">Transactions</h2>
+          <div class="annonce">
+            <img
+              src="https://img.icons8.com/fluent/48/000000/hammer.png"
+              height="50"
+            />
+            <h3>Fonctionnalité à venir</h3>
+          </div>
+        </div>
+        <div class="sectionStats">
+          <h2 class="titreStats">Statistiques</h2>
+          <div class="annonce">
+            <img
+              src="https://img.icons8.com/fluent/48/000000/hammer.png"
+              height="50"
+            />
+            <h3>Fonctionnalité à venir</h3>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
+  <script language="JavaScript">
+    function conversionEuro() {
+      document.conversion.usd.value = document.conversion.euro.value * 1.21;
+      document.conversion.livre.value = document.conversion.euro.value * 0.86;
+      document.conversion.cad.value = document.conversion.euro.value * 1.53;
+    }
+    function conversionUSD() {
+      document.conversion.euro.value = document.conversion.usd.value * 0.83;
+      document.conversion.livre.value = document.conversion.usd.value * 0.72;
+      document.conversion.cad.value = document.conversion.usd.value * 1.27;
+    }
+    function conversionLivre() {
+      document.conversion.usd.value = document.conversion.livre.value * 1.4;
+      document.conversion.euro.value = document.conversion.livre.value * 1.16;
+      document.conversion.cad.value = document.conversion.livre.value * 1.77;
+    }
+    function conversionCAD() {
+      document.conversion.usd.value = document.conversion.cad.value * 0.79;
+      document.conversion.livre.value = document.conversion.cad.value * 0.57;
+      document.conversion.euro.value = document.conversion.cad.value * 0.66;
+    }
+  </script>
 </html>
