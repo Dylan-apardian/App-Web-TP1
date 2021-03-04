@@ -38,7 +38,7 @@
   </head>
   <body class="text-center">
     <main class="form-signin">
-      <form action="http://localhost:4000/signup">
+      <form action="http://localhost:4000/signup" method="POST">
         <a href="/">
           <img class="mb-4" src="../Pages/Assets/images/logo.png" alt="" />
         </a>
@@ -46,92 +46,72 @@
         <h1 class="h3 mb-3 fw-normal">Creez un compte</h1>
 
         <!-- Input nom -->
-        <label for="inputNom" class="visually-hidden">Nom</label>
-        <input
-          type="text"
-          id="inputNom"
-          class="form-control"
-          placeholder="Nom"
-          required
-          autofocus
-        />
+        <label for="client_nom" class="visually-hidden">Nom</label>
+        <textarea
+        name ="client_nom"
+			  id="client_nom"
+			  cols="30"
+			  rows="4" class="form-control"></textarea>
+
+
         <!-- Input prenom -->
-        <label for="inputPrenom" class="visually-hidden">Prenom</label>
-        <input
-          type="text"
-          id="inputPrenom"
-          class="form-control"
-          placeholder="Prenom"
-          required
-          autofocus
-        />
+        <label for="client_prenom" class="visually-hidden">Prenom</label>
+        <textarea
+        name ="client_prenom"
+			  id="client_prenom"
+			  cols="30"
+			  rows="4" class="form-control"></textarea>
+
         <!-- Input Date naissance -->
-        <label for="inputNaissance" class="visually-hidden">Naissance</label>
-        <input
-          type="date"
-          id="inputNaissance"
-          class="form-control"
-          placeholder="Date de naissance"
-          required
-          autofocus
-        />
+        <label for="date_de_naissance" class="visually-hidden">Naissance</label>
+        <textarea
+        name ="date_de_naissance"
+			  id="date_de_naissance"
+			  cols="30"
+			  rows="4" class="form-control"></textarea>
 
         <!-- Input telephone -->
-        <label for="inputTel" class="visually-hidden">Telephone</label>
-        <input
-          type="tel"
-          id="inputTel"
-          class="form-control"
-          placeholder="514-123-3456"
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          required
-          autofocus
-        />
+        <label for="telephone" class="visually-hidden">Telephone</label>
+        <textarea
+        name ="telephone"
+			  id="telephone"
+			  cols="30"
+			  rows="4" class="form-control"></textarea>
         <!-- Input Adresse -->
-        <label for="inputAdresse" class="visually-hidden">Adresse</label>
-        <input
-          type="text"
-          id="inputAdresse"
-          class="form-control"
-          placeholder="Adresse"
-          required
-        />
+        <label for="adresse" class="visually-hidden">Adresse</label>
+        <textarea
+        name ="adresse"
+			  id="adresse"
+			  cols="30"
+			  rows="4" class="form-control"></textarea>
         <!-- Input Postal -->
-        <label for="inputPostal" class="visually-hidden">Code postal</label>
-        <input
-          type="text"
-          id="inputPostal"
-          class="form-control"
-          placeholder="Code Postal"
-          required
-        />
+        <label for="code_postale" class="visually-hidden">Code postal</label>
+        <textarea
+        name ="code_postale"
+			  id="code_postale"
+			  cols="30"
+			  rows="4" class="form-control"></textarea>
 
         <!-- Input Email -->
-        <label for="inputEmail" class="visually-hidden">Courriel</label>
-        <input
-          type="email"
-          id="inputEmail"
-          class="form-control"
-          placeholder="Courriel"
-          required
-          autofocus
-        />
+        <label for="client_courriel" class="visually-hidden">Courriel</label>
+        <textarea
+        name ="client_courriel"
+			  id="client_courriel"
+			  cols="30"
+			  rows="4" class="form-control"></textarea>
         <!-- Input Password -->
-        <label for="inputPassword" class="visually-hidden">Mot de passe</label>
-        <input
-          type="password"
-          id="inputPassword"
-          class="form-control"
-          placeholder="Mot de passe"
-          required
-        />
-
-        <button class="w-100 btn btn-lg btn-primary" type="submit">
-          Creer mon compte
-        </button>
+        <label for="mot_de_passe" class="visually-hidden">Mot de passe</label>
+        <textarea
+        name ="mot_de_passe"
+			  id="mot_de_passe"
+			  cols="30"
+			  rows="4" class="form-control"></textarea>
+          <div>
+            <input type="submit" name="submit" value="Creer mon compte" class ="w-100 btn btn-lg btn-primary">
+          </div>
         <p class="mt-5 mb-3 text-muted">Vous avez deja un compte?</p>
 
-        <a href="login.ejs" id="creezCompte">Se connecter</a>
+        <a href="/login" id="creezCompte">Se connecter</a>
 
         <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
       </form>

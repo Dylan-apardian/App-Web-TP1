@@ -1,6 +1,11 @@
+
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
+    
     <title>Sommaire</title>
     <link rel="stylesheet" href="../Pages/styles/sommaire.css" />
     <!-- Load an icon library -->
@@ -11,6 +16,7 @@
 
   <body>
     <!-- The sidebar -->
+    <form action="http://localhost:4000/sommaire" method="GET">
     <div class="sidebar">
       <a href="/">
       <img
@@ -19,11 +25,11 @@
         height="80"
         width="200"
       />
-      </a>    
+      </a>
       <div class="colonneNav">
         <div class="btnPage">
           <img src="../Pages/Assets/icons/house.svg" width="22" height="auto" />
-          <a href="sommaire.ejs">Sommaire</a>
+          <a href="/sommaire">Sommaire</a>
         </div>
         <div class="btnPage">
           <img
@@ -31,26 +37,14 @@
             width="22"
             height="auto"
           />
-          <a href="apropos.ejs">A propos</a>
+          <a href="/apropos">A propos</a>
         </div>
       </div>
 
       <!-- Bulle Utilisateur -->
       <div class="bubbleUtilisateur">
         <div class="rangeeBulle">
-          <img
-            class="imageUtilsateur"
-            src="../Pages/Assets/icons/person-circle.svg"
-            width="18"
-            height="auto"
-          />
-          <h6>Usager</h6>
-          <img
-            class="imageUtilsateur"
-            src="../Pages/Assets/icons/arrow-right.svg"
-            width="18"
-            height="auto"
-          />
+          <h6 id="user">Usager</h6>
         </div>
       </div>
     </div>
@@ -60,25 +54,67 @@
         <h1>Sommaire</h1>
       </div>
       <div class="rangee1">
+        <!--Premier rectangle-->
         <div class="sectionFonds">
           <div class="colonneFonds">
             <p class="titreFonds">Fonds disponibles</p>
             <p class="valeurFonds">$2600.49</p>
-            <div class="rangeeCompte">
-              <p class="typeCompte">Cheque:</p>
-              <p>xxxx xxxx xxxx 2456</p>
-              <select name="compte" id="compte">
-                <option value="cheque">Cheque</option>
-                <option value="epargne">Epargne</option>
+          </div>
+        </div>
+
+        <!--Deuxieme rectangle-->
+        <div class="sectionConversion">
+          <p class="titreConversion">Conversion</p>
+          <div class="contenuConversion">
+            <div class="monnaieGauche">
+              <input type="number" />
+              <select name="monnaie1" id="monnaie1">
+                <option value="CAD">CAD</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
               </select>
-            </div>    
+            </div>
+            <img
+              class="imageConversion"
+              src="https://img.icons8.com/fluent/48/000000/currency-exchange.png"
+              height="35"
+            />
+            <div class="monnaieDroite">
+              <select name="monnaie2" id="monnai2">
+                <option value="CAD">CAD</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+              </select>
+            </div>
+          </div>
+          <button class="btnConvertir">Convertir</button>
+          <p class="resultatConversion">Resultat conversion</p>
         </div>
-        </div>
-        <div class="sectionConversion"></div>
       </div>
+
       <div class="rangee2">
-      <div class="sectionTransactions"></div>
-      <div class="sectionStats"></div>
+        <div class="sectionTransactions">
+          <h2 class="titreTransactions">Transactions</h2>
+          <div class="annonce">
+            <img
+              src="https://img.icons8.com/fluent/48/000000/hammer.png"
+              height="50"
+            />
+            <h3>Fonctionnalité à venir</h3>
+          </div>
+        </div>
+        <div class="sectionStats">
+          <h2 class="titreStats">Statistiques</h2>
+          <div class="annonce">
+            <img
+              src="https://img.icons8.com/fluent/48/000000/hammer.png"
+              height="50"
+            />
+            <h3>Fonctionnalité à venir</h3>
+          </div>
+        </div>
+      </div>
     </div>
+  </form>
   </body>
 </html>

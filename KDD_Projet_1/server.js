@@ -37,6 +37,10 @@ module.exports = app;
 *used for formatting dates
 */
 var dateFormat = require('dateformat');
+const { text } = require('body-parser');
+const { exit } = require('process');
+const { EEXIST } = require('constants');
+const { exists } = require('fs');
 var now = new Date();
 
 
@@ -65,7 +69,7 @@ var con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "mybd"
+    database: "bd_kdd"
 });
 
 /**
@@ -79,59 +83,77 @@ const baseURL = "http://localhost:4000/"
 * Envoyer le contenu au client
 * get the client list
 */
- /* fin de app.get(....)*/
-/*
+/* fin de app.get(....)*/
+
 app.get('/', function (req, res) {
+    
+    con.query("SELECT * FROM client ORDER BY DATE_DE_CREATION DESC", function (err, result) {
+        res.render('pages/pageAccueil', {
+            siteTitle: siteTitle,
+            pageTitle: "Page d'accueil",
+            items: result
+        });
+    });
+});
+
+
+
+app.get('/apropos', function (req, res) {
+
+    con.query("SELECT * FROM client ORDER BY DATE_DE_CREATION DESC", function (err, result) {
+        res.render('Pages/apropos.ejs', {
+            siteTitle: siteTitle,
+            pageTitle: "à propos",
+            items: result
+        });
+    });
+
+});
+
+app.get('/signup', function (req, res) {
+
     con.query("SELECT * FROM client ORDER BY DATE_DE_CREATION DESC", function (err, result) {
         res.render('Pages/signup.ejs', {
             siteTitle: siteTitle,
-            pageTitle: "Créer un compte",
+            pageTitle: "page de sign up",
             items: result
         });
     });
+    
 
 });
-*/
-app.get('/',function (req,res) { 
+
+app.get('/login', function (req, res) {
+    
     con.query("SELECT * FROM client ORDER BY DATE_DE_CREATION DESC", function (err, result) {
-        res.render('pages/pageAccueil',{
-            siteTitle : siteTitle,
-            pageTitle : "Page d'accueil",
-            items : result
-        });
-    });
-});
-
-app.get('/signup.ejs', function (req, res) {
-
-    con.query("SELECT * FROM bd_kdd ORDER BY DATE_DE_CREATION DESC", function (err, result) {
-        res.render('Pages/signup', {
+        res.render('Pages/login.ejs', {
             siteTitle: siteTitle,
-            pageTitle: "Client list",
-            items: result
-        });
-    });
-
-});
-
-app.get('/login.ejs', function (req, res) {
-
-    con.query("SELECT * FROM bd_kdd ORDER BY DATE_DE_CREATION DESC", function (err, result) {
-        res.render('Pages/login', {
-            siteTitle: siteTitle,
-            pageTitle: "Client list",
+            pageTitle: "Page de login",
             items: result
         });
     });
 });
-app.post('/signup.ejs', function (req, res) {
+
+    app.get('/sommaire', function (req, res) {
+        con.query("SELECT * FROM client ORDER BY DATE_DE_CREATION DESC", function (err, result) {
+            res.render('Pages/sommaire.ejs', {
+                siteTitle: siteTitle,
+                pageTitle: "Compte",
+                items: result
+            });
+        });
+    });
+    
+ 
+
+app.post('/signup', function (req, res) {
 
     /* get the record base on ID
     */
     var query = "INSERT INTO client ( client_nom,client_prenom,date_de_naissance,telephone,adresse,code_postale,client_courriel,mot_de_passe,date_de_creation) VALUES (";
     query += " '" + req.body.client_nom + "',";
     query += " '" + req.body.client_prenom + "',";
-    query += " '" + dateFormat(req.body.date_de_naissance,"yyyy-mm-dd") + "',";
+    query += " '" + dateFormat(req.body.date_de_naissance, "yyyy-mm-dd") + "',";
     query += " '" + req.body.telephone + "',";
     query += " '" + req.body.adresse + "',";
     query += " '" + req.body.code_postale + "',";
@@ -148,7 +170,7 @@ app.post('/signup.ejs', function (req, res) {
 
 var server = app.listen(4000, function () {
     console.log("serveur fonctionne sur 4000... ! ");
-    
+
 });
 
 

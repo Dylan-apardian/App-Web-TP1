@@ -38,36 +38,37 @@
   </head>
   <body class="text-center">
     <main class="form-signin">
-      <form action="http://localhost:4000/login">
+      <form action="http://localhost:4000/login" method="GET">
         <a href="/">
           <img class="mb-4" src="../Pages/Assets/images/logo.png" alt="" />
         </a>
         <h1 class="h3 mb-3 fw-normal">Veuillez vous connectez</h1>
-        <label for="inputEmail" class="visually-hidden">Courriel</label>
-        <input
-          type="email"
-          id="inputEmail"
-          class="form-control"
-          placeholder="Courriel"
-          required
-          autofocus
-        />
-        <label for="inputPassword" class="visually-hidden">Mot de passe</label>
-        <input
-          type="password"
-          id="inputPassword"
-          class="form-control"
-          placeholder="Mot de passe"
-          required
-        />
-        <button class="w-100 btn btn-lg btn-primary" type="submit">
-          <a href="sommaire.ejs" style="color:white;">
-            Se connecter</a>
-        </button>
-    
+        
+            <label id="inputEmail" class="visually-hidden">Courriel</label>
+            <input
+              type="email"
+              id="inputEmail"
+              class="form-control"
+              placeholder="Courriel"
+              required
+              autofocus
+            />
+            
+            <label id="inputPassword" class="visually-hidden">mot de passe</label>
+            <input
+              type="password"
+              id="inputPassword"
+              class="form-control"
+              placeholder="Mot de passe"
+              required
+            />
+        
+            <a href="/sommaire" class="w-100 btn btn-lg btn-primary" style="color:white;"> Se connecter</a>
+          
+        
         <p class="mt-5 mb-3 text-muted">Vous n'avez pas de compte?</p>
 
-        <a href="signup.ejs" id="creezCompte">Creez un compte</a>
+        <a href="/signup" id="creezCompte">Creez un compte</a>
 
         <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
       </form>
