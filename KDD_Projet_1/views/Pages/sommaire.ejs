@@ -12,123 +12,124 @@
   <body>
     <!-- The sidebar -->
     <form action="http://localhost:4000/sommaire" method="GET">
-    <div class="sidebar">
-      <a href="/">
-      <img
-        class="logo"
-        src="../Pages/Assets/images/logo.png"
-        height="80"
-        width="200"
-      />
-    </a>
-      <div class="colonneNav">
-        <div class="btnPage">
-          <img src="../Pages/Assets/icons/house.svg" width="22" height="auto" />
-          <a href="/sommaire">Sommaire</a>
-        </div>
-        <div class="btnPage">
+      <div class="sidebar">
+        <a href="/">
           <img
-            src="../Pages/Assets/icons/info-square.svg"
-            width="22"
-            height="auto"
+            class="logo"
+            src="../Pages/Assets/images/logo.png"
+            height="80"
+            width="200"
           />
-          <a href="/apropos">A propos</a>
-        </div>
-      </div>
-
-      <!-- Bulle Utilisateur -->
-      <div class="bubbleUtilisateur">
-        <div class="rangeeBulle">
-          <h6>Usager</h6>
-        </div>
-      </div>
-    </div>
-
-    <div class="contenu">
-      <div class="sectionTitre">
-        <h1>Sommaire</h1>
-      </div>
-      <div class="rangee1">
-        <!--Premier rectangle-->
-        <div class="sectionFonds">
-          <div class="colonneFonds">
-            <p class="titreFonds">Fonds disponibles</p>
-            <p class="valeurFonds">$2600.49</p>
-          </div>
-        </div>
-
-        <!--Deuxieme rectangle-->
-        <div class="sectionConversion">
-          <p class="titreConversion">Conversion</p>
-          <form name="conversion">
-            <table border="0">
-              <tr>
-                <td>Euro:</td>
-                <td>
-                  <input type="text" name="euro" onChange="conversionEuro()" />
-                </td>
-              </tr>
-              <tr>
-                <td>Dollar Americain (USD):</td>
-                <td>
-                  <input type="text" name="usd" onChange="conversionUSD()" />
-                </td>
-              </tr>
-              <tr>
-                <td>Livre Sterling:</td>
-                <td>
-                  <input
-                    type="text"
-                    name="livre"
-                    onChange="conversionLivre()"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>Dollar Canadien (CAD):</td>
-                <td>
-                  <input type="text" name="cad" onChange="conversionCAD()" />
-                </td>
-              </tr>
-              <tr>
-                <td colspan="1" align="center">
-                  <input type="reset" value="Effacer" />
-                </td>
-                <td colspan="2" align="center">
-                  <input type="button" value="Convertir" />
-                </td>
-              </tr>
-            </table>
-          </form>
-        </div>
-      </div>
-
-      <div class="rangee2">
-        <div class="sectionTransactions">
-          <h2 class="titreTransactions">Transactions</h2>
-          <div class="annonce">
+        </a>
+        <div class="colonneNav">
+          <div class="btnPage">
             <img
-              src="https://img.icons8.com/fluent/48/000000/hammer.png"
-              height="50"
+              src="../Pages/Assets/icons/house.svg"
+              width="22"
+              height="auto"
             />
-            <h3>Fonctionnalité à venir</h3>
+            <a href="/sommaire">Sommaire</a>
           </div>
-        </div>
-        <div class="sectionStats">
-          <h2 class="titreStats">Statistiques</h2>
-          <div class="annonce">
+          <div class="btnPage">
             <img
-              src="https://img.icons8.com/fluent/48/000000/hammer.png"
-              height="50"
+              src="../Pages/Assets/icons/info-square.svg"
+              width="22"
+              height="auto"
             />
-            <h3>Fonctionnalité à venir</h3>
+            <a href="/apropos">A propos</a>
           </div>
         </div>
       </div>
-    </div>
-  </form>
+
+      <div class="contenu">
+        <div class="sectionTitre">
+          <h1>Sommaire</h1>
+        </div>
+        <div class="rangee1">
+          <!--Premier rectangle-->
+          <div class="sectionFonds">
+            <div class="colonneFonds">
+              <p class="titreFonds">Fonds disponibles</p>
+              <p class="valeurFonds">$0</p>
+            </div>
+          </div>
+
+          <!--Deuxieme rectangle-->
+          <div class="sectionConversion">
+            <p class="titreConversion">Conversion</p>
+            <form name="conversion">
+              <table border="0">
+                <tr>
+                  <td>Euro:</td>
+                  <td>
+                    <input
+                      type="text"
+                      name="euro"
+                      onChange="conversionEuro()"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Dollar Americain (USD):</td>
+                  <td>
+                    <input type="text" name="usd" onChange="conversionUSD()" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Livre Sterling:</td>
+                  <td>
+                    <input
+                      type="text"
+                      name="livre"
+                      onChange="conversionLivre()"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>Dollar Canadien (CAD):</td>
+                  <td>
+                    <input type="text" name="cad" onChange="conversionCAD()" />
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" align="center">
+                    <input type="reset" value="Effacer" />
+                  </td>
+                  <td colspan="2" align="center">
+                    <input type="button" value="Convertir" />
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </div>
+        </div>
+
+        <div class="rangee2">
+          <div class="sectionTransactions">
+            <h2 class="titreTransactions">Transactions</h2>
+            <div class="annonce">
+              <img
+                src="https://img.icons8.com/fluent/48/000000/hammer.png"
+                height="50"
+              />
+              <h3>Fonctionnalité à venir</h3>
+            </div>
+          </div>
+          <div class="sectionStats">
+            <h2 class="titreStats">Statistiques</h2>
+            <div class="annonce">
+              <img
+                src="https://img.icons8.com/fluent/48/000000/hammer.png"
+                height="50"
+              />
+              <h3>Fonctionnalité à venir</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   </body>
-  <script language="JavaScript">
+  <script>
     function conversionEuro() {
       document.conversion.usd.value = document.conversion.euro.value * 1.21;
       document.conversion.livre.value = document.conversion.euro.value * 0.86;

@@ -47,7 +47,7 @@ body {
 .bubbleUtilisateur {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-self: center;
   background-color: white;
   position: absolute;
@@ -73,7 +73,9 @@ body {
   margin-left: 250px;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  align-content: space-around;
+  justify-content: space-around;
+  height: 85vh;
 }
 
 .rangee1,
@@ -83,34 +85,93 @@ body {
   justify-content: space-around;
 }
 
-.rangeeCompte {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-}
-
 .titreFonds {
   font-size: 28px;
   font-weight: bolder;
 }
 
 .valeurFonds {
+  justify-self: center;
   font-size: 48px;
   font-weight: bolder;
 }
 
-.sectionFonds,
-.sectionConversion {
-  background-color: white;
-  border-radius: 10px;
-  width: 655px;
-  height: 240px;
+.numCompte {
+  padding-left: 10px;
 }
 
 .colonneFonds {
+  margin-left: 15px;
+  align-items: flex-start;
+}
+
+.sectionFonds {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  background-color: white;
+  border-radius: 10px;
+  width: 655px;
+  height: min-content;
+}
+
+.sectionConversion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: white;
+  border-radius: 10px;
+  width: 655px;
+  height: 300px;
+}
+
+.contenuConversion {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.titreConversion {
+  font-size: 28px;
+  font-weight: bolder;
+  padding: 0%;
+}
+
+.imageConversion {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btnConvertir {
+  margin-top: 15px;
+}
+
+.resultatConversion {
+  margin-top: 15px;
+}
+
+.monnaieGauche,
+.monnaieDroite {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTransactions,
+.sectionStats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  width: 655px;
+  height: 300px;
+}
+
+.annonce {
+  display: flex;
+  flex-direction: row;
 }
 
 /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
