@@ -5,11 +5,19 @@ var User = require('../models/user');
 
 // GET route for reading data
 router.get('/', function (req, res, next) {
+  res.sendFile('accueil.html', { root: './views/Pages' });
+});
+
+router.get('/login', function (req, res, next) {
   res.sendFile('login.html', { root: './views/Pages' });
 });
 
 router.get('/signup', function (req, res, next) {
   res.sendFile('signup.html', { root: './views/Pages' });
+});
+
+router.get('/sommaire', function (req, res, next) {
+  res.sendFile('sommaire.html', { root: './views/Pages' });
 });
 
 
@@ -48,7 +56,7 @@ router.post('/', function (req, res, next) {
         return next(error);
       } else {
         req.session.userId = user._id;
-        return res.redirect('/profile');
+        return res.redirect('/sommaire');
       }
     });
 
@@ -60,7 +68,7 @@ router.post('/', function (req, res, next) {
         return next(err);
       } else {
         req.session.userId = user._id;
-        return res.redirect('/profile');
+        return res.redirect('/sommaire');
       }
     });
   } else {
@@ -71,7 +79,7 @@ router.post('/', function (req, res, next) {
 })
 
 // GET route after registering
-router.get('/profile', function (req, res, next) {
+router.get('/sommaire', function (req, res, next) {
   User.findById(req.session.userId)
     .exec(function (error, user) {
       if (error) {
