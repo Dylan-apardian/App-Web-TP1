@@ -45,10 +45,14 @@
 
       <h1 class="h3 mb-3 fw-normal">Creez un compte</h1>
 
-      <input type="text" name="email" placeholder="E-mail" required="">
-      <input type="text" name="username" placeholder="Username" required="">
-      <input type="password" name="password" placeholder="Password" id="password" required="">
-      <input type="password" name="passwordConf" placeholder="Confirm Password" id="password_conf" required="">
+      <input type="text" name="nom" placeholder="Nom" required="">
+      <input type="text" name="prenom" placeholder="Prenom" required="">
+      <input type="text" name="telephone" placeholder="514-123-4567" required="">
+      <input type="text" name="adresse" placeholder="Adresse" required="">
+      <input type="date" name="date_naissance" placeholder="Date de naissance" required="">
+      <input type="text" name="email" placeholder="Courriel" required="">
+      <input type="password" name="mot_de_passe" placeholder="Mot_de_passe" id="mot_de_passe" required="">
+      <input type="password" name="passwordConf" placeholder="Confirm Mot de passe" id="passwordConf" required="">
       <input type="submit" class="w-100 btn btn-lg btn-primary" value="REGISTER">
 
       <p class="mt-5 mb-3 text-muted">Vous avez deja un compte?</p>
@@ -60,8 +64,8 @@
   </main>
 </body>
 <script type="text/javascript">
-  var passWordField = document.getElementById('password')
-  var passWordConfirmField = document.getElementById('password_conf')
+  var passWordField = document.getElementById('mot_de_passe')
+  var passWordConfirmField = document.getElementById('passwordConf')
   var form = document.getElementById('login')
   function validateMyForm() {
     if (passWordField.value != passWordConfirmField.value) {

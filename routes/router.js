@@ -16,22 +16,31 @@ router.get('/signup', function (req, res, next) {
 //POST route for updating data
 router.post('/', function (req, res, next) {
   // confirm that user typed same password twice
-  if (req.body.password !== req.body.passwordConf) {
+  if (req.body.mot_de_passe !== req.body.passwordConf) {
     var err = new Error('Passwords do not match.');
     err.status = 400;
     res.send("passwords dont match");
     return next(err);
   }
 
-  if (req.body.email &&
-    req.body.username &&
-    req.body.password &&
+  if (
+    req.body.nom &&
+    req.body.prenom &&
+    req.body.telephone &&
+    req.body.adresse &&
+    req.body.date_naissance&&
+    req.body.email &&
+    req.body.mot_de_passe &&
     req.body.passwordConf) {
 
     var userData = {
+      nom: req.body.nom,
+      prenom:req.body.prenom,
+      telephone:req.body.telephone,
+      adresse:req.body.adresse,
+      date_naissance:req.body.date_naissance,
       email: req.body.email,
-      username: req.body.username,
-      password: req.body.password,
+      mot_de_passe: req.body.mot_de_passe,
     }
 
     User.create(userData, function (error, user) {
@@ -73,7 +82,7 @@ router.get('/profile', function (req, res, next) {
           err.status = 400;
           return next(err);
         } else {
-          return res.send('<h1>Name: </h1>' + user.username + '<h2>Mail: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
+          return res.send('<h1>Nom: </h1>' + user.nom + '<h2>Courriel: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
         }
       }
     });
