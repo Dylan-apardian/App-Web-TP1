@@ -1,0 +1,46 @@
+/* HEADER */
+header {
+ height: 140px;
+ background-color: white;
+}
+
+header h1 {
+ float: left;
+}
+
+header nav {
+ float: right;
+ margin-top: 40px;
+}
+
+header nav ul li {
+ display: inline-block;
+}
+
+header nav ul li a {
+ text-transform: uppercase;
+ font-weight: bold;
+ margin-right: 100px;
+}
+
+header nav ul li a:hover {
+ color: blue;
+}
+
+#header-noir {
+ background-color: rgb(102, 101, 101);
+ height: 50px;
+}
+
+.button-header {
+ float: right;
+ margin-top: 8px;
+ color: white;
+ background-color: red;
+ padding: 7px 10px;
+ border-radius: 20px;
+}
+
+.button-header:hover {
+ background: blue;
+}
