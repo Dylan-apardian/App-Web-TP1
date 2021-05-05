@@ -1,0 +1,60 @@
+<%- include ('../Components/head') %>
+<%- include ('../Components/header') %>
+
+
+<!-- Police Cairo de Google -->
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet" />
+
+<!-- Bootstrap core CSS -->
+<link href="./Assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- Custom styles for this template -->
+<link href="./styles/login.css" rel="stylesheet" />
+<main class="form-signin">
+  <!-- <form action="http://localhost:4000/sommaire" method="GET">
+      <a href="/">
+        <img class="mb-4" src="./Assets/images/logo.png" alt="" />
+      </a>
+      <h1 class="h3 mb-3 fw-normal">Veuillez vous connectez</h1>
+
+      <label id="inputEmail" class="visually-hidden">Courriel</label>
+      <input type="email" id="client_courriel" class="form-control" placeholder="Courriel" required autofocus />
+
+      <label id="inputPassword" class="visually-hidden">mot de passe</label>
+      <input type="password" id="mot_de_passe" class="form-control" placeholder="Mot de passe" required />
+
+      <input type="submit" value="Se connecter" class="w-100 btn btn-lg btn-primary">
+
+      <p class="mt-5 mb-3 text-muted">Vous n'avez pas de compte?</p>
+
+      <a href="/signup" id="creezCompte">Creez un compte</a>
+
+      <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+    </form> -->
+  <form action="/" method="post">
+    <a href="/">
+      <img class="mb-4" src="./Assets/images/logo.png" alt="" />
+    </a>
+
+    <h1 class="h3 mb-3 fw-normal">Veuillez vous connectez</h1>
+
+    <!-- <label for="logemail" class="visually-hidden">Courriel</label> -->
+    <input type="text" name="logemail" placeholder="Courriel" required="">
+
+    <!-- <label for="logpassword" class="visually-hidden">mot de passe</label> -->
+    <input type="password" name="logpassword" placeholder="Mot de passe" required="">
+
+    <div class="tp">
+      <input type="submit" value="Se connecter">
+    </div>
+
+    <p class="mt-5 mb-3 text-muted">Vous n'avez pas de compte?</p>
+
+    <a href="/signup" id="creezCompte">Creez un compte</a>
+
+    <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+  </form>
+</main>
+
+<%- include ('../Components/footer') %>

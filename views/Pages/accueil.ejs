@@ -1,0 +1,86 @@
+<%- include ('../Components/head') %>
+<%- include ('../Components/header') %>
+
+<link href="./styles/accueil.css" rel="stylesheet">
+
+<section id="main-image">
+    <div class="wrapper">
+        <h2>Chez KDD Finance, on est là pour vous aider à effectuer vos opérations bancaires en ligne plus
+            facile que jamais</h2>
+        <a href="" class="button-1">En savoir plus</a>
+    </div>
+</section>
+
+<section id="choisirKDD">
+    <div class="wrapper">
+        <h3>Pourquoi choisir KDD?</h3>
+        <ul>
+            <li id="simplicité">
+                <h4>Simplicité</h4>
+                <p>Faites vos opérations bancaires en toute confiance, où que vous soyez. Suivez l’évolution de
+                    votre état de solde et
+                    de vos transactions à partir de votre compte KDD.</p>
+            </li>
+
+            <li id="sécurité">
+                <h4>Sécurité</h4>
+                <p>La protection de vos renseignements financiers et personnels est notre priorité. C’est
+                    pourquoi nous travaillons
+                    constamment pour vous permettre de toujours effectuer vos opérations bancaires en toute
+                    confiance et en toute sécurité.</p>
+            </li>
+
+            <li id="localisation">
+                <h4>Points de services</h4>
+                <p>Repérer les succursales ouvertes et les heures d’ouverture près de chez vous</p>
+            </li>
+
+            <div class="clear"></div>
+        </ul>
+    </div>
+</section>
+
+<section id="avantages">
+    <div class="wrapper">
+
+        <article
+            style="background-image: url(./Assets/Images/imagesAccueil/telephone.jpg); background-size: 500px; background-repeat: no-repeat; ">
+            <div class="overlay">
+                <h4>Gérez votre argent à distance</h4>
+                <p><small>Transformez votre ordinateur ou votre téléphone intelligent en une succursale
+                        personnelle, ouverte en tout temps</small></p>
+            </div>
+        </article>
+
+        <article
+            style="background-image: url(./Assets/Images/imagesAccueil/famille.jpg); background-size: 500px; background-repeat: no-repeat;">
+            <div class="overlay">
+                <h4>Envie de s'évader</h4>
+                <p><small>Nous pouvons vous aider à épargner ou à investir pour ce qui compte le plus pour
+                        vous.</small></p>
+            </div>
+        </article>
+
+        <div class="clear"></div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="wrapper">
+        <h3>Contactez-nous</h3>
+        <p>Si vous désirez nous joindre, veuillez mettre votre nom et votre adresse courriel pour recevoir plus
+            d'informations sur KDD.</p>
+
+        <form>
+            <label>Nom:</label>
+            <input type="text" id="name" placeholder="Votre nom">
+
+            <label>Email:</label>
+            <input type="text" id="email" placeholder="Votre email">
+
+            <input type="submit" value="Envoyer" class="button-3">
+        </form>
+    </div>
+</section>
+
+<%- include ('../Components/footer') %>
