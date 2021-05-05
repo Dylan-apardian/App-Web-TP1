@@ -6,7 +6,10 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 //connect to MongoDB
-mongoose.connect('mongodb+srv://tanoxil:bdeb@cluster0.b2jok.mongodb.net/tp2-web');
+mongoose.connect('mongodb+srv://tanoxil:bdeb@cluster0.b2jok.mongodb.net/tp2-web', {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+});
 var db = mongoose.connection;
 
 //handle mongo error
