@@ -4,10 +4,13 @@ footer {
  background-color: #444;
 }
 
+
 footer h1 {
+ font-size: 45px;
  color: white;
  text-align: center;
  padding-top: 80px;
+ font-family: 'Crete Round', sans-serif;
 }
 
 .copyright {
