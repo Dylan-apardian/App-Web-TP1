@@ -1,154 +1,119 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Sommaire</title>
-    <link rel="stylesheet" href="./styles/sommaire.css" />
-    <!-- Load an icon library -->
-    <a href="https://icons8.com/icon/WV326xpsBMyb/phone"
-      >Phone icon by Icons8</a
-    >
-  </head>
+<%- include ('../Components/head') %>
+<%- include ('../Components/header') %>
 
-  <body>
-    <!-- The sidebar -->
-    <form action="http://localhost:3000/sommaire" method="GET">
-      <div class="sidebar">
-        <a href="/">
-          <img
-            class="logo"
-            src="./Assets/images/logo.png"
-            height="80"
-            width="200"
-          />
-        </a>
-        <div class="colonneNav">
-          <div class="btnPage">
-            <img
-              src="./Assets/icons/house.svg"
-              width="22"
-              height="auto"
-            />
-            <a href="/sommaire">Sommaire</a>
-          </div>
-          <div class="btnPage">
-            <img
-              src="./Assets/icons/info-square.svg"
-              width="22"
-              height="auto"
-            />
-            <a href="/apropos">A propos</a>
-          </div>
+<link rel="stylesheet" href="./styles/sommaire.css" />
+<!-- The sidebar -->
+<form action="http://localhost:3000/sommaire" method="GET">
+  <div class="sidebar">
+    <a href="/">
+      <img class="logo" src="./Assets/images/logo.png" height="80" width="200" />
+    </a>
+    <div class="colonneNav">
+      <div class="btnPage">
+        <img src="./Assets/icons/house.svg" width="22" height="auto" />
+        <a href="/sommaire">Sommaire</a>
+      </div>
+      <div class="btnPage">
+        <img src="./Assets/icons/info-square.svg" width="22" height="auto" />
+        <a href="/apropos">A propos</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="contenu">
+    <div class="sectionTitre">
+      <h1>Sommaire</h1>
+    </div>
+    <div class="rangee1">
+      <!--Premier rectangle-->
+      <div class="sectionFonds">
+        <div class="colonneFonds">
+          <p class="titreFonds">Fonds disponibles</p>
+          <p class="valeurFonds">$0</p>
         </div>
       </div>
 
-      <div class="contenu">
-        <div class="sectionTitre">
-          <h1>Sommaire</h1>
-        </div>
-        <div class="rangee1">
-          <!--Premier rectangle-->
-          <div class="sectionFonds">
-            <div class="colonneFonds">
-              <p class="titreFonds">Fonds disponibles</p>
-              <p class="valeurFonds">$0</p>
-            </div>
-          </div>
+      <!--Deuxieme rectangle-->
+      <div class="sectionConversion">
+        <p class="titreConversion">Conversion</p>
+        <form name="conversion">
+          <table border="0">
+            <tr>
+              <td>Euro:</td>
+              <td>
+                <input type="text" name="euro" onChange="conversionEuro()" />
+              </td>
+            </tr>
+            <tr>
+              <td>Dollar Americain (USD):</td>
+              <td>
+                <input type="text" name="usd" onChange="conversionUSD()" />
+              </td>
+            </tr>
+            <tr>
+              <td>Livre Sterling:</td>
+              <td>
+                <input type="text" name="livre" onChange="conversionLivre()" />
+              </td>
+            </tr>
+            <tr>
+              <td>Dollar Canadien (CAD):</td>
+              <td>
+                <input type="text" name="cad" onChange="conversionCAD()" />
+              </td>
+            </tr>
+            <tr>
+              <td colspan="1" align="center">
+                <input type="reset" value="Effacer" />
+              </td>
+              <td colspan="2" align="center">
+                <input type="button" value="Convertir" />
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
 
-          <!--Deuxieme rectangle-->
-          <div class="sectionConversion">
-            <p class="titreConversion">Conversion</p>
-            <form name="conversion">
-              <table border="0">
-                <tr>
-                  <td>Euro:</td>
-                  <td>
-                    <input
-                      type="text"
-                      name="euro"
-                      onChange="conversionEuro()"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Dollar Americain (USD):</td>
-                  <td>
-                    <input type="text" name="usd" onChange="conversionUSD()" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Livre Sterling:</td>
-                  <td>
-                    <input
-                      type="text"
-                      name="livre"
-                      onChange="conversionLivre()"
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Dollar Canadien (CAD):</td>
-                  <td>
-                    <input type="text" name="cad" onChange="conversionCAD()" />
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="1" align="center">
-                    <input type="reset" value="Effacer" />
-                  </td>
-                  <td colspan="2" align="center">
-                    <input type="button" value="Convertir" />
-                  </td>
-                </tr>
-              </table>
-            </form>
-          </div>
-        </div>
-
-        <div class="rangee2">
-          <div class="sectionTransactions">
-            <h2 class="titreTransactions">Transactions</h2>
-            <div class="annonce">
-              <img
-                src="https://img.icons8.com/fluent/48/000000/hammer.png"
-                height="50"
-              />
-              <h3>Fonctionnalité à venir</h3>
-            </div>
-          </div>
-          <div class="sectionStats">
-            <h2 class="titreStats">Statistiques</h2>
-            <div class="annonce">
-              <img
-                src="https://img.icons8.com/fluent/48/000000/hammer.png"
-                height="50"
-              />
-              <h3>Fonctionnalité à venir</h3>
-            </div>
-          </div>
+    <div class="rangee2">
+      <div class="sectionTransactions">
+        <h2 class="titreTransactions">Transactions</h2>
+        <div class="annonce">
+          <img src="https://img.icons8.com/fluent/48/000000/hammer.png" height="50" />
+          <h3>Fonctionnalité à venir</h3>
         </div>
       </div>
-    </form>
-  </body>
-  <script>
-    function conversionEuro() {
-      document.conversion.usd.value = document.conversion.euro.value * 1.21;
-      document.conversion.livre.value = document.conversion.euro.value * 0.86;
-      document.conversion.cad.value = document.conversion.euro.value * 1.53;
-    }
-    function conversionUSD() {
-      document.conversion.euro.value = document.conversion.usd.value * 0.83;
-      document.conversion.livre.value = document.conversion.usd.value * 0.72;
-      document.conversion.cad.value = document.conversion.usd.value * 1.27;
-    }
-    function conversionLivre() {
-      document.conversion.usd.value = document.conversion.livre.value * 1.4;
-      document.conversion.euro.value = document.conversion.livre.value * 1.16;
-      document.conversion.cad.value = document.conversion.livre.value * 1.77;
-    }
-    function conversionCAD() {
-      document.conversion.usd.value = document.conversion.cad.value * 0.79;
-      document.conversion.livre.value = document.conversion.cad.value * 0.57;
-      document.conversion.euro.value = document.conversion.cad.value * 0.66;
-    }
-  </script>
-</html>
+      <div class="sectionStats">
+        <h2 class="titreStats">Statistiques</h2>
+        <div class="annonce">
+          <img src="https://img.icons8.com/fluent/48/000000/hammer.png" height="50" />
+          <h3>Fonctionnalité à venir</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<script>
+  function conversionEuro() {
+    document.conversion.usd.value = document.conversion.euro.value * 1.21;
+    document.conversion.livre.value = document.conversion.euro.value * 0.86;
+    document.conversion.cad.value = document.conversion.euro.value * 1.53;
+  }
+  function conversionUSD() {
+    document.conversion.euro.value = document.conversion.usd.value * 0.83;
+    document.conversion.livre.value = document.conversion.usd.value * 0.72;
+    document.conversion.cad.value = document.conversion.usd.value * 1.27;
+  }
+  function conversionLivre() {
+    document.conversion.usd.value = document.conversion.livre.value * 1.4;
+    document.conversion.euro.value = document.conversion.livre.value * 1.16;
+    document.conversion.cad.value = document.conversion.livre.value * 1.77;
+  }
+  function conversionCAD() {
+    document.conversion.usd.value = document.conversion.cad.value * 0.79;
+    document.conversion.livre.value = document.conversion.cad.value * 0.57;
+    document.conversion.euro.value = document.conversion.cad.value * 0.66;
+  }
+</script>
+
+<%- include ('../Components/footer') %>
