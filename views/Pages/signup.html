@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="generator" content="Hugo 0.80.0" />
+  <title>Creez un compte</title>
+
+  <!-- Police Cairo de Google -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap core CSS -->
+  <link href="./Assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  <!-- Custom styles for this template -->
+  <link href="./styles/signup.css" rel="stylesheet" />
+</head>
+
+<body class="text-center">
+  <main class="form-signin">
+
+    <form id="login" action="/" method="post" onsubmit="event.preventDefault(); validateMyForm();">
+      <a href="/">
+        <img class="mb-4" src="./Assets/images/logo.png" alt="" />
+      </a>
+
+      <h1 class="h3 mb-3 fw-normal">Creez un compte</h1>
+
+      <input type="text" name="nom" placeholder="Nom" required="">
+      <input type="text" name="prenom" placeholder="Prenom" required="">
+      <input type="text" name="telephone" placeholder="514-123-4567" required="">
+      <input type="text" name="adresse" placeholder="Adresse" required="">
+      <input type="date" name="date_naissance" placeholder="Date de naissance" required="">
+      <input type="text" name="email" placeholder="Courriel" required="">
+      <input type="password" name="mot_de_passe" placeholder="Mot_de_passe" id="mot_de_passe" required="">
+      <input type="password" name="passwordConf" placeholder="Confirm Mot de passe" id="passwordConf" required="">
+      <input type="submit" class="w-100 btn btn-lg btn-primary" value="REGISTER">
+
+      <p class="mt-5 mb-3 text-muted">Vous avez deja un compte?</p>
+
+      <a href="/login" id="creezCompte">Se connecter</a>
+
+      <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+    </form>
+  </main>
+</body>
+<script type="text/javascript">
+  var passWordField = document.getElementById('mot_de_passe')
+  var passWordConfirmField = document.getElementById('passwordConf')
+  var form = document.getElementById('login')
+  function validateMyForm() {
+    if (passWordField.value != passWordConfirmField.value) {
+      alert("Passwords do not match. Please try again.");
+    } else {
+      form.submit()
+    }
+  }
+</script>
+
+</html>

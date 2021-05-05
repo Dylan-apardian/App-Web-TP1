@@ -1,0 +1,185 @@
+* {
+  font-family: "Cairo", sans-serif;
+  overflow: hidden;
+}
+body {
+  background-color: #f2f3f7;
+}
+
+/* Style the sidebar - fixed full height */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 16px;
+  background-color: #e2e2e2;
+}
+
+.logo {
+  align-self: center;
+}
+
+.colonneNav {
+  padding-top: 25px;
+  align-self: center;
+}
+
+.sidebar a {
+  padding: 10px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+}
+
+.btnpage {
+  padding-left: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.bubbleUtilisateur {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-self: center;
+  background-color: white;
+  position: absolute;
+  bottom: 35px;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.rangeeBulle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* Style links on mouse-over */
+.sidebar a:hover {
+  color: #357aff;
+}
+
+.contenu {
+  margin-left: 250px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-around;
+  height: 85vh;
+}
+
+.rangee1,
+.rangee2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.titreFonds {
+  font-size: 28px;
+  font-weight: bolder;
+}
+
+.valeurFonds {
+  justify-self: center;
+  font-size: 48px;
+  font-weight: bolder;
+}
+
+.numCompte {
+  padding-left: 10px;
+}
+
+.colonneFonds {
+  margin-left: 15px;
+  align-items: flex-start;
+}
+
+.sectionFonds {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
+  border-radius: 10px;
+  width: 655px;
+  height: min-content;
+}
+
+.sectionConversion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: white;
+  border-radius: 10px;
+  width: 655px;
+  height: 300px;
+}
+
+.contenuConversion {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.titreConversion {
+  font-size: 28px;
+  font-weight: bolder;
+  padding: 0%;
+}
+
+.imageConversion {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btnConvertir {
+  margin-top: 15px;
+}
+
+.resultatConversion {
+  margin-top: 15px;
+}
+
+.monnaieGauche,
+.monnaieDroite {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTransactions,
+.sectionStats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  width: 655px;
+  height: 300px;
+}
+
+.annonce {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
+@media screen and (max-height: 450px) {
+  .sidebar {
+    padding-top: 15px;
+  }
+  .sidebar a {
+    font-size: 18px;
+  }
+}
