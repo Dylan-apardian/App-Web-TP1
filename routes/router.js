@@ -5,19 +5,35 @@ var User = require('../models/user');
 
 // GET route for reading data
 router.get('/', function (req, res, next) {
-  res.sendFile('accueil.html', { root: './views/Pages' });
+  res.render('./Pages/accueil.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "Accueil",
+    items: "ok"
+  });
 });
 
 router.get('/login', function (req, res, next) {
-  res.sendFile('login.html', { root: './views/Pages' });
+  res.render('./Pages/login.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "Se connecter",
+    items: "ok"
+  });
 });
 
 router.get('/signup', function (req, res, next) {
-  res.sendFile('signup.html', { root: './views/Pages' });
+  res.render('./Pages/signup.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "S'inscrire",
+    items: "ok"
+  });
 });
 
 router.get('/sommaire', function (req, res, next) {
-  res.sendFile('sommaire.html', { root: './views/Pages' });
+  res.render('./Pages/sommaire.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "Sommaire",
+    items: "ok"
+  });
 });
 
 
