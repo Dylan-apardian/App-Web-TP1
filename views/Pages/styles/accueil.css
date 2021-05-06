@@ -1,12 +1,11 @@
 /* GÉNÉRAL */
 * {
+  font-family: 'Crete Round', sans-serif;
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'Crete Round', sans-serif;
-  font-size: 15px;
   background-color: gainsboro;
 }
 
@@ -62,10 +61,11 @@ a {
   clear: both;
 }
 
+
 /* MAIN-IMAGE */
 
 #main-image {
-  background: url(Images/main-image.jpg) no-repeat center;
+  background: url("../Assets/images/imagesAccueil/main-image.jpg") no-repeat center;
   background-size: cover;
   height: 550px;
 }
@@ -121,15 +121,15 @@ a {
 }
 
 #simplicité {
-  background: url(Images/facture.png) no-repeat top center;
+  background: url("../Assets/images/imagesAccueil/ordinateur.png") no-repeat top center;
 }
 
 #sécurité {
-  background: url(Images/cadenas.png) no-repeat top center;
+  background: url("../Assets/images/imagesAccueil/cadenas.png") no-repeat top center;
 }
 
 #localisation {
-  background: url(Images/localisation.png) no-repeat top center;
+  background: url("../Assets/images/imagesAccueil/localisation.png") no-repeat top center;
 }
 
 /* AVANTAGES */
