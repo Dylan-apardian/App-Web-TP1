@@ -1,7 +1,14 @@
+/* GÉNÉRAL */
+* {
+    margin: 0;
+    padding: 0;
+}
+
 /* HEADER */
 header {
  height: 140px;
  background-color: white;
+ font-family: 'Crete Round', sans-serif;
 }
 
 header h1 {
@@ -21,15 +28,12 @@ header nav ul li a {
  text-transform: uppercase;
  font-weight: bold;
  margin-right: 100px;
+ text-decoration: none;
+ color: #444;
 }
 
 header nav ul li a:hover {
  color: blue;
-}
-
-#header-noir {
- background-color: rgb(102, 101, 101);
- height: 50px;
 }
 
 .button-header {
@@ -44,3 +48,10 @@ header nav ul li a:hover {
 .button-header:hover {
  background: blue;
 }
+
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+  

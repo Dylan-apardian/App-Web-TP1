@@ -150,8 +150,7 @@ address {
   font-style: normal;
   line-height: inherit;
 }
-ol,
-ul {
+ol{
   padding-left: 2rem;
 }
 dl,
@@ -258,7 +257,6 @@ kbd kbd {
 figure {
   margin: 0 0 1rem;
 }
-img,
 svg {
   vertical-align: middle;
 }

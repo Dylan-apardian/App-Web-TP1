@@ -1,5 +1,7 @@
 * {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Crete Round', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 /* Set the size of the div element that contains the map */
@@ -13,6 +15,7 @@
 body {
   margin: 0;
 }
+
 
 html {
   box-sizing: border-box;
@@ -53,6 +56,15 @@ html {
   text-align: center;
   background-color: #474e5d;
   color: white;
+  font-size: 20px;
+}
+
+.about-section h1 {
+  padding-bottom: 20px;
+}
+
+h2 {
+  padding: 20px;
 }
 
 .container {
