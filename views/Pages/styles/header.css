@@ -1,0 +1,57 @@
+/* GÉNÉRAL */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* HEADER */
+header {
+ height: 140px;
+ background-color: white;
+ font-family: 'Crete Round', sans-serif;
+}
+
+header h1 {
+ float: left;
+}
+
+header nav {
+ float: right;
+ margin-top: 40px;
+}
+
+header nav ul li {
+ display: inline-block;
+}
+
+header nav ul li a {
+ text-transform: uppercase;
+ font-weight: bold;
+ margin-right: 100px;
+ text-decoration: none;
+ color: #444;
+}
+
+header nav ul li a:hover {
+ color: blue;
+}
+
+.button-header {
+ float: right;
+ margin-top: 8px;
+ color: white;
+ background-color: red;
+ padding: 7px 10px;
+ border-radius: 20px;
+}
+
+.button-header:hover {
+ background: blue;
+}
+
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+  

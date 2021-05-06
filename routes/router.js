@@ -6,27 +6,44 @@ var User = require('../models/user');
 // GET route for reading data
 router.get('/', function (req, res, next) {
   res.render('./Pages/accueil.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "Accueil",
     items: "ok"
   });
 });
 
 router.get('/login', function (req, res, next) {
   res.render('./Pages/login.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "Se connecter",
     items: "ok"
   });
 });
 
 router.get('/signup', function (req, res, next) {
   res.render('./Pages/signup.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "S'inscrire",
     items: "ok"
   });
 });
 
 router.get('/sommaire', function (req, res, next) {
   res.render('./Pages/sommaire.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "Sommaire",
     items: "ok"
   });
 });
+
+router.get('/apropos', function (req, res, next) {
+  res.render('./Pages/apropos.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "À propos",
+    items: "ok"
+  });
+});
+
 
 
 //POST route for updating data
@@ -104,18 +121,23 @@ router.get('/sommaire', function (req, res, next) {
     });
 });
 
+
+
 // GET for logout logout
 router.get('/logout', function (req, res, next) {
-  if (req.session) {
-    // delete session object
-    req.session.destroy(function (err) {
-      if (err) {
-        return next(err);
-      } else {
-        return res.redirect('/');
-      }
-    });
-  }
+  req.logout();
+  res.redirect('/login');
+  // if (req.session) {
+  //   // delete session object
+  //   req.session.destroy(function (err) {
+  //     if (err) {
+  //       return next(err);
+  //     } else {
+  //       return res.redirect('/');
+  //     }
+  //   });
+  // }
 });
+
 
 module.exports = router;

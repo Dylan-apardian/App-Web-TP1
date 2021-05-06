@@ -1,12 +1,11 @@
 /* GÉNÉRAL */
 * {
+  font-family: 'Crete Round', sans-serif;
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'Crete Round', sans-serif;
-  font-size: 15px;
   background-color: gainsboro;
 }
 
@@ -62,57 +61,11 @@ a {
   clear: both;
 }
 
-/* HEADER */
-header {
-  height: 140px;
-  background-color: white;
-}
-
-header h1 {
-  float: left;
-}
-
-header nav {
-  float: right;
-  margin-top: 40px;
-}
-
-header nav ul li {
-  display: inline-block;
-}
-
-header nav ul li a {
-  text-transform: uppercase;
-  font-weight: bold;
-  margin-right: 100px;
-}
-
-header nav ul li a:hover {
-  color: blue;
-}
-
-#header-noir {
-  background-color: rgb(102, 101, 101);
-  height: 50px;
-}
-
-.button-header {
-  float: right;
-  margin-top: 8px;
-  color: white;
-  background-color: red;
-  padding: 7px 10px;
-  border-radius: 20px;
-}
-
-.button-header:hover {
-  background: blue;
-}
 
 /* MAIN-IMAGE */
 
 #main-image {
-  background: url(Images/main-image.jpg) no-repeat center;
+  background: url("../Assets/images/imagesAccueil/main-image.jpg") no-repeat center;
   background-size: cover;
   height: 550px;
 }
@@ -168,15 +121,15 @@ header nav ul li a:hover {
 }
 
 #simplicité {
-  background: url(Images/facture.png) no-repeat top center;
+  background: url("../Assets/images/imagesAccueil/ordinateur.png") no-repeat top center;
 }
 
 #sécurité {
-  background: url(Images/cadenas.png) no-repeat top center;
+  background: url("../Assets/images/imagesAccueil/cadenas.png") no-repeat top center;
 }
 
 #localisation {
-  background: url(Images/localisation.png) no-repeat top center;
+  background: url("../Assets/images/imagesAccueil/localisation.png") no-repeat top center;
 }
 
 /* AVANTAGES */
@@ -283,21 +236,4 @@ input[type='text'] {
   background-color: #444;
 }
 
-/* FOOTER */
-footer {
-  height: 260px;
-  background-color: #444;
-}
 
-footer h1 {
-  color: white;
-  text-align: center;
-  padding-top: 80px;
-}
-
-.copyright {
-  text-align: center;
-  font-weight: bold;
-  padding-top: 30px;
-  color: #777;
-}
