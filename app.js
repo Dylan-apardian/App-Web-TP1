@@ -1,49 +1,32 @@
 var express = require('express');
 var app = express();
-var session = require('express-session');
-var bcrypt = require('bcrypt')
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-//var MongoStore = require('connect-mongo')(session);
-var passport = require('passport');
-
-// Passport
-var initializePassport = require('./config/passport-config')
-initializePassport(
-  passport,
-  email => users.find(user => user.email === email),
-  id => users.find(user => user.id === id)
-)
-
-// DB Config
-var db = require('./config/database').mongoURI;
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 //connect to MongoDB
-mongoose.connect(db, 
-  { useUnifiedTopology: true, useNewUrlParser: true }
-  )
-.then(() => console.log('MongoDB Connecté'))
-.catch(err => console.log(err));
+mongoose.connect('mongodb+srv://tanoxil:bdeb@cluster0.b2jok.mongodb.net/tp2-web', {
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+});
+var db = mongoose.connection;
 
-// EJS
-app.set('view engine', 'ejs')
-
-
-// //handle mongo error
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function () {
-//   // we're connected!
-// });
+//handle mongo error
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  // we're connected!
+});
 
 //use sessions for tracking logins
- app.use(session({
+app.use(session({
   secret: 'work hard',
-   resave: true,
-   saveUninitialized: false,
-//   store: new MongoStore({
-//     mongooseConnection: db
-   })
- );
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}));
 
 // parse incoming requests
 app.use(bodyParser.json());
@@ -55,9 +38,7 @@ app.use(express.static(__dirname + '/views/Pages'));
 
 // include routes
 var routes = require('./routes/router');
-const User = require('./models/user');
 app.use('/', routes);
-app.use('/', require('./routes/index.js'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

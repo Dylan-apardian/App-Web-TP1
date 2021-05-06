@@ -28,14 +28,6 @@ router.get('/signup', function (req, res, next) {
   });
 });
 
-router.get('/sommaire', function (req, res, next) {
-  res.render('./Pages/sommaire.ejs', {
-    siteTitle: "KDD Finance",
-    pageTitle: "Sommaire",
-    items: "ok"
-  });
-});
-
 router.get('/apropos', function (req, res, next) {
   res.render('./Pages/apropos.ejs', {
     siteTitle: "KDD Finance",
@@ -115,7 +107,12 @@ router.get('/sommaire', function (req, res, next) {
           err.status = 400;
           return next(err);
         } else {
-          return res.send('<h1>Nom: </h1>' + user.nom + '<h2>Courriel: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
+          res.render('./Pages/sommaire.ejs', {
+            siteTitle: "KDD Finance",
+            pageTitle: "Sommaire",
+            items: user
+          });
+          //return res.send('<h1>Nom: </h1>' + user.nom + '<h2>Courriel: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
         }
       }
     });
@@ -125,18 +122,16 @@ router.get('/sommaire', function (req, res, next) {
 
 // GET for logout logout
 router.get('/logout', function (req, res, next) {
-  req.logout();
-  res.redirect('/login');
-  // if (req.session) {
-  //   // delete session object
-  //   req.session.destroy(function (err) {
-  //     if (err) {
-  //       return next(err);
-  //     } else {
-  //       return res.redirect('/');
-  //     }
-  //   });
-  // }
+  if (req.session) {
+    // delete session object
+    req.session.destroy(function (err) {
+      if (err) {
+        return next(err);
+      } else {
+        return res.redirect('/');
+      }
+    });
+  }
 });
 
 
