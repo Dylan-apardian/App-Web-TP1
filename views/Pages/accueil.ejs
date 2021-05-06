@@ -1,11 +1,13 @@
 <%- include ('../Components/head') %>
 <%- include ('../Components/header') %>
 
+<link href="./styles/accueil.css" rel="stylesheet">
+
 <section id="main-image">
     <div class="wrapper">
         <h2>Chez KDD Finance, on est là pour vous aider à effectuer vos opérations bancaires en ligne plus
             facile que jamais</h2>
-        <a href="" class="button-1">En savoir plus</a>
+        <a href="/apropos" class="button-1">En savoir plus</a>
     </div>
 </section>
 
@@ -42,7 +44,7 @@
     <div class="wrapper">
 
         <article
-            style="background-image: url(./Assets/Images/imagesAccueil/telephone.jpg); background-size: 500px; background-repeat: no-repeat; ">
+            style="background-image: url(./Assets/images/imagesAccueil/telephone.jpg); background-size: 500px; background-repeat: no-repeat; ">
             <div class="overlay">
                 <h4>Gérez votre argent à distance</h4>
                 <p><small>Transformez votre ordinateur ou votre téléphone intelligent en une succursale
@@ -51,7 +53,7 @@
         </article>
 
         <article
-            style="background-image: url(./Assets/Images/imagesAccueil/famille.jpg); background-size: 500px; background-repeat: no-repeat;">
+            style="background-image: url(./Assets/images/imagesAccueil/famille.jpg); background-size: 500px; background-repeat: no-repeat;">
             <div class="overlay">
                 <h4>Envie de s'évader</h4>
                 <p><small>Nous pouvons vous aider à épargner ou à investir pour ce qui compte le plus pour
@@ -65,20 +67,13 @@
 
 <section id="contact">
     <div class="wrapper">
-        <h3>Contactez-nous</h3>
-        <p>Si vous désirez nous joindre, veuillez mettre votre nom et votre adresse courriel pour recevoir plus
-            d'informations sur KDD.</p>
-
-        <form>
-            <label>Nom:</label>
-            <input type="text" id="name" placeholder="Votre nom">
-
-            <label>Email:</label>
-            <input type="text" id="email" placeholder="Votre email">
-
-            <input type="submit" value="Envoyer" class="button-3">
-        </form>
+      <h3>Contactez-nous</h3>
+      <h4>Avec KDD Finance, c'est en communiquant qu'on avance</h4>
+      <img src="../Assets/images/imagesAccueil/cellulaire.png" width="25" height="25"/> 514-332-3000<br>
+      <img src="../Assets/images/imagesAccueil/email.png" width="25" height="25"/> mailto:1947376@bdeb.qc.ca<br>
+      <img src="../Assets/images/imagesAccueil/localisation2.png" width="25" height="25" /> 
+      10555, avenue de Bois-de-Boulogne, Montréal, QC, H4N 1L4<br>
     </div>
-</section>
+  </section>
 
-<%- include ('../Components/head') %>
+<%- include ('../Components/footer') %>

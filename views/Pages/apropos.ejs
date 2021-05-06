@@ -1,115 +1,232 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>A propos</title>
-    <link rel="stylesheet" href="../Pages/styles/apropos.css" />
-    <!-- Load an icon library -->
-    <a href="https://icons8.com/icon/WV326xpsBMyb/phone"
-      >Phone icon by Icons8</a
-    >
-  </head>
+<%- include ('../Components/head') %>
+<%- include ('../Components/header') %>
 
-  <body>
-    <form action="http://localhost:4000/apropos" method="GET"></form>
-    <!-- The sidebar -->
-    <div class="sidebar">
-     <a href="/">
-      <img
-        class="logo"
-        src="../Pages/Assets/images/logo.png"
-        height="80"
-        width="200"
-      />
-    </a>
-      <div class="colonneNav">
-        <div class="btnPage">
-          <img src="../Pages/Assets/icons/house.svg" width="22" height="auto" />
-          <a href="/sommaire">Sommaire</a>
-        </div>
-        <div class="btnPage">
-          <img
-            src="../Pages/Assets/icons/info-square.svg"
-            width="22"
-            height="auto"
-          />
-          <a href="/apropos">A propos</a>
-        </div>
-      </div>
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+<link href="./styles/apropos.css" rel="stylesheet" />
 
-      <!-- Bulle Utilisateur -->
-      <div class="bubbleUtilisateur">
-        <div class="rangeeBulle">
-          <img
-            class="imageUtilsateur"
-            src="../Pages/Assets/icons/person-circle.svg"
-            width="18"
-            height="auto"
-          />
-          <h6>Usager</h6>
-          <img
-            class="imageUtilsateur"
-            src="../Pages/Assets/icons/arrow-right.svg"
-            width="18"
-            height="auto"
-          />
-        </div>
+<div class="about-section">
+  <img src="./Assets/images/logo_seulement.png" alt="logo" style="width: 10%" />
+  <h1>À propos de nous</h1>
+  <p>Qui sommes-nous et que faisons-nous</p>
+</div>
+
+<h2 style="text-align: center">Notre histoire et emplacement</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <br />
+        <br />
+        <br />
+        <br />
+        <p>
+          En 2020, KDD Bancaire prend une participation majoritaire dans le grand territoire de 
+          Montréal. Afin de soutenir ses efforts dans la transformation numérique et culturelle, 
+          un poste de chef de la transformation est créé. L’objectif de ce dernier est d’améliorer 
+          l’orchestration des déploiements et d’accélérer la livraison des bénéfices dans toute 
+          l’organisation.
+        </p>
+        <br />
+        <p>
+          En 2021, la progression des activités de KDD Finance ne cesse de grandir. La 
+          transformation un client, une banque bat son plein. La vision est d’être une banque 
+          simple, rapide et efficace. Pour y arriver, l’accent est mis sur deux leviers : la 
+          transformation numérique et l’évolution culturelle. Devant cette réalité, KDD Finance 
+          favorise des partenariats avec des acteurs d’ici de divers secteurs technologiques porteurs, 
+          dont Element AI dans le domaine de l’intelligence artificielle. De plus, d’autres initiatives 
+          sont déployées pour soutenir la collaboration, dont le déploiement d’outils de 
+          collaboration et des environnements de travail et plus modernes et dynamiques.
+        </p>
+        <br />
+        <p>
+          KDD Finance réalise des avancées technologiques importantes. Parmi celles-ci, le 
+          déploiement d’un nouveau site transactionnel, d’une nouvelle solution des historqiues 
+          de paiement d'un client, d’une nouvelle carte de débit sans contact et d’autres innovations 
+          attendues de nos clients particuliers. En matière d’intelligence artificielle et de chaîne de blocs, 
+          la Banque démontre notamment son leadership dans le cadre de deux initiatives réalisées avec la banque 
+          d’affaires J.P. Morgan. Près d’une quinzaine de partenariats ont été conclus avec des entreprises de 
+          technologies financières afin de poursuivre notre transformation numérique à un rythme soutenu. Aujourd'hui,
+          KDD Finance poursuit son évolution culturelle, entre autres dans le déploiement d’environnements de travail. 
+          leurs employés sont fiers et enthousiastes à la participation de l'activité de la banque.
+        </p>
       </div>
     </div>
+  </div>
 
-    <div class="contenu">
-      <div class="sectionTitre">
-        <h1>A propos</h1>
-      </div>
-      <div class="informations">
-        <div class="sectionDescription">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-            consequat ligula non nisi malesuada, mattis viverra dolor vulputate.
-            Nunc eu rhoncus justo. Donec dolor tortor, ultricies eu blandit eu,
-            ultricies in tellus. Vivamus mauris est, consequat ut mi sit amet,
-            pretium laoreet dui. Fusce sit amet pellentesque ipsum. Donec eu
-            sapien lectus. Maecenas suscipit ex in bibendum dignissim. Class
-            aptent taciti sociosqu ad litora torquent per conubia nostra, per
-            inceptos himenaeos. Sed et orci sit amet neque viverra interdum eu
-            sit amet nulla. Sed posuere nunc et dolor aliquet pretium. Nullam
-            fringilla ut nibh at vulputate. Maecenas imperdiet felis at lectus
-            semper accumsan. Integer felis odio, blandit sit amet sem in,
-            pulvinar sollicitudin metus. Nunc vestibulum in risus et pretium.
-            Suspendisse nec accumsan sem. Aenean vitae eros sagittis, tincidunt
-            diam ut, pellentesque tortor. Integer non efficitur metus. Nunc eget
-            risus posuere, pulvinar neque a, bibendum lectus. Suspendisse
-            posuere ultrices neque sed viverra. Aenean quis congue velit. Nulla
-            facilisi.
-          </p>
-        </div>
-        <div class="sectionMap">
-          <h2 class="titreCarte">Nous rejoindre</h2>
-          <h6 class="localisation">
-            10555 Ave de Bois-de-Boulogne,<br />
-            Montreal, Quebec H4N 1L4<br />10:00 am - 7:00 pm
-          </h6>
-          <div class="rangeeBtnJoindre">
-            <img
-              class="btnJoindre"
-              src="https://img.icons8.com/fluent/48/000000/phone.png"
-            />
-            <img
-              class="btnJoindre"
-              src="https://img.icons8.com/fluent/48/000000/atm.png"
-            />
-            <img
-              class="btnJoindre"
-              src="https://img.icons8.com/fluent/48/000000/composing-mail.png"
-            />
-          </div>
-          <img
-            class="imageMap"
-            src="../Pages/Assets/images/Map.png"
-            width="300px"
-            height="auto"
-          />
-        </div>
+  <div class="column">
+    <div class="card">
+      <div id="map"></div>
+      <div class="container">
+        <h2>KDD Finance</h2>
+        <p class="title">Banque</p>
+        <table style="width: 100%">
+          <tr>
+            <td>
+              <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" />
+            </td>
+            <td>
+              2828 De, Rue de Salaberry, Montréal, Québec H3M 1L3, Canada
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="https://img.icons8.com/material/24/000000/phone--v1.png" />
+            </td>
+            <td>+1 (514)-332-0151</td>
+          </tr>
+          <tr>
+            <td>
+              <img src="https://img.icons8.com/material/24/000000/property-time.png" />
+            </td>
+            <td>Heures d'ouvertures</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Lundi au vendredi: 9:00 – 18:00</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Samedi: 9:00 – 16:00</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Dimanche: Fermé</td>
+          </tr>
+        </table>
+        <p><a href="mailto:1947376@bdeb.qc.ca"><button class="button">Contactez-nous</button></a></p>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+</div>
+
+<h2 style="text-align: center">Notre équipe</h2>
+<div class="columnEquipe">
+  <div class="cardEquipe">
+    <img src="./Assets/Equipe/markAndre.jpg" alt="John" style="width: 100%" />
+    <div class="container">
+      <h2>Mark Andre Perrault</h2>
+      <p class="title">Directeur de banque</p>
+      <p>
+        Il gère toutes les fonctions de la succursale, telles que la
+        supervision des approbations de prêts et de marges de crédit (LoC),
+        le développement de la relation client, la construction d'une
+        réputation dans la communauté pour attirer plus de clients, le
+        marketing, en s'assurant que la succursale atteint ses objectifs et
+        ses buts dans les délais impartis et à l’embauche d’employés.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="columnEquipe">
+  <div class="cardEquipe">
+    <img src="./Assets/Equipe/Guillaume Therrien.jpg" alt="John" style="width: 100%" />
+    <div class="container">
+      <h2>Guillaume Therrien</h2>
+      <p class="title">Analyste budgétaire</p>
+      <p>
+        Planifie les dépenses futures des banques et détermine les besoins
+        financiers futurs. Ils établissent des budgets et continuent de les
+        mettre à jour de temps en temps pour intégrer les changements. Un
+        analyste budgétaire joue un rôle clé dans l’amélioration de
+        l’efficacité des dépenses d’une banque. Ils essaient de maintenir
+        les dépenses sur la bonne voie et de s'assurer qu'ils sont bien
+        comptabilisés.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="columnEquipe">
+  <div class="cardEquipe">
+    <img src="./Assets/Equipe/Jean_pierre.jpg" alt="John" style="width: 100%" />
+    <div class="container">
+      <h2>Jean Pierre Perault</h2>
+      <p class="title">Gestionnaire d'actifs</p>
+      <p>
+        Il gère toutes les fonctions de la succursale, telles que la
+        supervision des approbations de prêts et de marges de crédit (LoC),
+        le développement de la relation client, la construction d'une
+        réputation dans la communauté pour attirer plus de clients, le
+        marketing, en s'assurant que la succursale atteint ses objectifs et
+        ses buts dans les délais impartis et à l’embauche d’employés.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="columnEquipe">
+  <div class="cardEquipe">
+    <img src="./Assets/Equipe/Debbie_D._Gonzalez.jpg" alt="John" style="width: 100%" />
+    <div class="container">
+      <h2>Debbie D. Gonzalez</h2>
+      <p class="title">Caissière</p>
+      <p>
+        Représentant client de la banque, traitant les transactions
+        quotidiennes. Assiste les clients dans les transactions impliquant
+        des dépôts, des virements, des retraits, des vérifications
+        d'espèces, etc. Vous les verrez souvent compter l'argent, répondre
+        aux appels téléphoniques, résoudre les problèmes des clients,
+        collecter les paiements et remplir les bordereaux de dépôt.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="columnEquipe">
+  <div class="cardEquipe">
+    <img src="./Assets/Equipe/Bryan_D._Presley.jpg" alt="John" style="width: 100%" />
+    <div class="container">
+      <h2>Bryan D. Presley</h2>
+      <p class="title">Chef de sécurité</p>
+      <p>
+        Identifier les initiatives et les normes de sécurité. Superviser le
+        réseau de fournisseurs et d'administrateurs qui sécurisent les
+        actifs de l'entreprise. Superviser la sauvegarde de la propriété
+        intellectuelle et des systèmes informatiques. Développer des
+        procédures pour assurer la sécurité physique des employés et des
+        visiteurs.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="columnEquipe">
+  <div class="cardEquipe">
+    <img src="./Assets/Equipe/Jim_S._Gordon.jpg" alt="John" style="width: 100%" />
+    <div class="container">
+      <h2>Jim S. Gordon</h2>
+      <p class="title">Assistant Chef de sécurité</p>
+      <p>
+        Identifier les initiatives et les normes de sécurité. Superviser le
+        réseau de fournisseurs et d'administrateurs qui sécurisent les
+        actifs de l'entreprise. Superviser la sauvegarde de la propriété
+        intellectuelle et des systèmes informatiques. Développer des
+        procédures pour assurer la sécurité physique des employés et des
+        visiteurs.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL_YXWrClseMST6TKgETp5B2E8_Aq-AjY&callback=initMap&libraries=&v=weekly"
+  async></script>
+<script>
+  // Initialize and add the map
+  function initMap() {
+    // The location of Uluru
+    const uluru = { lat: 45.53642, lng: -73.69883 };
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: uluru,
+    });
+    // The marker, positioned at Uluru
+    const marker = new google.maps.Marker({
+      position: uluru,
+      map: map,
+    });
+  }
+</script>
+
+<%- include ('../Components/footer') %>

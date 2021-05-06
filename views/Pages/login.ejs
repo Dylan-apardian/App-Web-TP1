@@ -1,43 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include ('../Components/head') %>
+<%- include ('../Components/header') %>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="" />
-  <meta name="generator" content="Hugo 0.80.0" />
-  <title>Se connecter</title>
 
-  <!-- Police Cairo de Google -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet" />
+<!-- Police Cairo de Google -->
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet" />
 
-  <!-- Bootstrap core CSS -->
-  <link href="./Assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Bootstrap core CSS -->
+<link href="./Assets/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
-
-  <!-- Custom styles for this template -->
-  <link href="./styles/login.css" rel="stylesheet" />
-</head>
-
-<body class="text-center">
-  <main class="form-signin">
-    <!-- <form action="http://localhost:4000/sommaire" method="GET">
+<!-- Custom styles for this template -->
+<link href="./styles/login.css" rel="stylesheet" />
+<main class="form-signin">
+  <!-- <form action="http://localhost:4000/sommaire" method="GET">
       <a href="/">
         <img class="mb-4" src="./Assets/images/logo.png" alt="" />
       </a>
@@ -57,26 +32,29 @@
 
       <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
     </form> -->
-    <form action="/" method="post">
-      <a href="/">
-        <img class="mb-4" src="./Assets/images/logo.png" alt="" />
-      </a>
+  <form action="/" method="post">
+    <a href="/">
+      <img class="mb-4" src="./Assets/images/logo.png" alt="" />
+    </a>
 
-      <h1 class="h3 mb-3 fw-normal">Veuillez vous connectez</h1>
+    <h1 class="h3 mb-3 fw-normal">Veuillez vous connectez</h1>
 
-      <input type="text" name="logemail" placeholder="Courriel" required="">
-      <input type="password" name="logpassword" placeholder="Mot de passe" required="">
-      <div class="tp">
-        <input type="submit" value="LOGIN NOW">
-      </div>
+    <!-- <label for="logemail" class="visually-hidden">Courriel</label> -->
+    <input type="text" name="logemail" placeholder="Courriel" required="">
 
-      <p class="mt-5 mb-3 text-muted">Vous n'avez pas de compte?</p>
+    <!-- <label for="logpassword" class="visually-hidden">mot de passe</label> -->
+    <input type="password" name="logpassword" placeholder="Mot de passe" required="">
 
-      <a href="/signup" id="creezCompte">Creez un compte</a>
+    <div class="tp">
+      <input type="submit" value="Se connecter">
+    </div>
 
-      <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
-    </form>
-  </main>
-</body>
+    <p class="mt-5 mb-3 text-muted">Vous n'avez pas de compte?</p>
 
-</html>
+    <a href="/signup" id="creezCompte">Créer un compte</a>
+
+    <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+  </form>
+</main>
+
+<%- include ('../Components/footer') %>
