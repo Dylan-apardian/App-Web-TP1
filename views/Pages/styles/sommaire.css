@@ -1,6 +1,5 @@
 * {
   font-family: "Cairo", sans-serif;
-  overflow: hidden;
 }
 body {
   background-color: #f2f3f7;
@@ -16,7 +15,6 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  overflow-x: hidden;
   padding-top: 16px;
   background-color: #e2e2e2;
 }

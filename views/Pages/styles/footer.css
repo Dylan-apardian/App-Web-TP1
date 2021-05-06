@@ -1,21 +1,24 @@
 /* FOOTER */
 footer {
- height: 260px;
- background-color: #444;
+  height: 260px;
+  background-color: #444;
+  bottom: 0;
+  width: 100%;
+  clear: both;
+  position: relative;
 }
 
-
 footer h1 {
- font-size: 45px;
- color: white;
- text-align: center;
- padding-top: 80px;
- font-family: 'Crete Round', sans-serif;
+  font-size: 45px;
+  color: white;
+  text-align: center;
+  padding-top: 80px;
+  font-family: 'Crete Round', sans-serif;
 }
 
 .copyright {
- text-align: center;
- font-weight: bold;
- padding-top: 30px;
- color: #777;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 30px;
+  color: #777;
 }
