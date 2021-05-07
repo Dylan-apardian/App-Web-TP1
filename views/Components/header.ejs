@@ -7,12 +7,19 @@
    <ul>
     <li><a href="/"><img src="./Assets/Images/imagesAccueil/maison.png" width="25" height="25">
       Accueil</a></li>
-    <li><a href=""><img src="./Assets/Images/imagesAccueil/porte-feuille.png" width="25" height="25">
-      Transactions</a></li>
-    <li><a href="/apropos"><img src="./Assets/Images/imagesAccueil/information.png" width="25" height="25">
-      À propos</a></li>
-    <li><a href="/login"><img src="./Assets/images/imagesAccueil/cadenas.png" width="15" height="15">
-      Ouvrir une session</a></li>
+      <li><a href="/apropos"><img src="./Assets/Images/imagesAccueil/information.png" width="25" height="25">
+        À propos</a></li>
+    <% if (items !== false) {%>
+      <!-- Connecté -->
+      <li><a href="/sommaire"><img src="./Assets/Images/imagesAccueil/porte-feuille.png" width="25" height="25">
+        Somaire</a></li>
+      <li><a href="/logout"><img src="https://img.icons8.com/android/24/000000/logout-rounded-left.png" width="15" height="15">
+        Fermer votre session</a></li>
+    <% }else {%>
+      <!-- Déconnecté -->
+      <li><a href="/login"><img src="./Assets/images/imagesAccueil/cadenas.png" width="15" height="15">
+        Ouvrir une session</a></li>
+    <% } %>
    </ul>
   </nav>
  </div>

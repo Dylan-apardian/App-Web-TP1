@@ -1,30 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-
+var connected = false;
 
 // GET route for reading data
 router.get('/', function (req, res, next) {
   res.render('./Pages/accueil.ejs', {
     siteTitle: "KDD Finance",
     pageTitle: "Accueil",
-    items: "ok"
-  });
-});
-
-router.get('/login', function (req, res, next) {
-  res.render('./Pages/login.ejs', {
-    siteTitle: "KDD Finance",
-    pageTitle: "Se connecter",
-    items: "ok"
-  });
-});
-
-router.get('/signup', function (req, res, next) {
-  res.render('./Pages/signup.ejs', {
-    siteTitle: "KDD Finance",
-    pageTitle: "S'inscrire",
-    items: "ok"
+    items: connected
   });
 });
 
@@ -32,11 +16,41 @@ router.get('/apropos', function (req, res, next) {
   res.render('./Pages/apropos.ejs', {
     siteTitle: "KDD Finance",
     pageTitle: "À propos",
-    items: "ok"
+    items: connected
   });
 });
 
+router.get('/pageLogin', function (req, res, next) {
+  res.render('./Pages/login.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "Se connecter",
+    items: connected
+  });
+});
 
+router.get('/pageSignup', function (req, res, next) {
+  res.render('./Pages/signup.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "S'inscrire",
+    items: connected
+  });
+});
+
+router.get('/login', function (req, res, next) {
+  if (connected) {
+    return res.redirect('/sommaire');
+  } else {
+    return res.redirect('/pageLogin');
+  }
+});
+
+router.get('/signup', function (req, res, next) {
+  if (connected) {
+    return res.redirect('/sommaire');
+  } else {
+    return res.redirect('/pageSignup');
+  }
+});
 
 //POST route for updating data
 router.post('/', function (req, res, next) {
@@ -103,10 +117,9 @@ router.get('/sommaire', function (req, res, next) {
         return next(error);
       } else {
         if (user === null) {
-          var err = new Error('Not authorized! Go back!');
-          err.status = 400;
-          return next(err);
+          return res.redirect('/login');
         } else {
+          connected = true;
           res.render('./Pages/sommaire.ejs', {
             siteTitle: "KDD Finance",
             pageTitle: "Sommaire",
@@ -118,8 +131,6 @@ router.get('/sommaire', function (req, res, next) {
     });
 });
 
-
-
 // GET for logout logout
 router.get('/logout', function (req, res, next) {
   if (req.session) {
@@ -128,6 +139,7 @@ router.get('/logout', function (req, res, next) {
       if (err) {
         return next(err);
       } else {
+        connected = false;
         return res.redirect('/');
       }
     });
