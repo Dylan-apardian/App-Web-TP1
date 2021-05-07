@@ -16,8 +16,9 @@ header h1 {
 }
 
 header nav {
- float: right;
+ float: left;
  margin-top: 40px;
+ margin-left: 50px;
 }
 
 header nav ul li {
@@ -53,5 +54,4 @@ header nav ul li a:hover {
     width: 1200px;
     margin: 0 auto;
     padding: 0 10px;
-  }
-  
+}

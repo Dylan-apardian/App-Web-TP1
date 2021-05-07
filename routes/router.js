@@ -1,38 +1,14 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-
+var connected = false;
 
 // GET route for reading data
 router.get('/', function (req, res, next) {
   res.render('./Pages/accueil.ejs', {
     siteTitle: "KDD Finance",
     pageTitle: "Accueil",
-    items: "ok"
-  });
-});
-
-router.get('/login', function (req, res, next) {
-  res.render('./Pages/login.ejs', {
-    siteTitle: "KDD Finance",
-    pageTitle: "Se connecter",
-    items: "ok"
-  });
-});
-
-router.get('/signup', function (req, res, next) {
-  res.render('./Pages/signup.ejs', {
-    siteTitle: "KDD Finance",
-    pageTitle: "S'inscrire",
-    items: "ok"
-  });
-});
-
-router.get('/sommaire', function (req, res, next) {
-  res.render('./Pages/sommaire.ejs', {
-    siteTitle: "KDD Finance",
-    pageTitle: "Sommaire",
-    items: "ok"
+    items: connected
   });
 });
 
@@ -40,8 +16,40 @@ router.get('/apropos', function (req, res, next) {
   res.render('./Pages/apropos.ejs', {
     siteTitle: "KDD Finance",
     pageTitle: "À propos",
-    items: "ok"
+    items: connected
   });
+});
+
+router.get('/pageLogin', function (req, res, next) {
+  res.render('./Pages/login.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "Se connecter",
+    items: connected
+  });
+});
+
+router.get('/pageSignup', function (req, res, next) {
+  res.render('./Pages/signup.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "S'inscrire",
+    items: connected
+  });
+});
+
+router.get('/login', function (req, res, next) {
+  if (connected) {
+    return res.redirect('/sommaire');
+  } else {
+    return res.redirect('/pageLogin');
+  }
+});
+
+router.get('/signup', function (req, res, next) {
+  if (connected) {
+    return res.redirect('/sommaire');
+  } else {
+    return res.redirect('/pageSignup');
+  }
 });
 
 router.get('/transactions', function (req, res, next) {
@@ -119,32 +127,33 @@ router.get('/sommaire', function (req, res, next) {
         return next(error);
       } else {
         if (user === null) {
-          var err = new Error('Not authorized! Go back!');
-          err.status = 400;
-          return next(err);
+          return res.redirect('/login');
         } else {
-          return res.send('<h1>Nom: </h1>' + user.nom + '<h2>Courriel: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
+          connected = true;
+          res.render('./Pages/sommaire.ejs', {
+            siteTitle: "KDD Finance",
+            pageTitle: "Sommaire",
+            items: user
+          });
+          //return res.send('<h1>Nom: </h1>' + user.nom + '<h2>Courriel: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
         }
       }
     });
 });
 
-
-
 // GET for logout logout
 router.get('/logout', function (req, res, next) {
-  req.logout();
-  res.redirect('/login');
-  // if (req.session) {
-  //   // delete session object
-  //   req.session.destroy(function (err) {
-  //     if (err) {
-  //       return next(err);
-  //     } else {
-  //       return res.redirect('/');
-  //     }
-  //   });
-  // }
+  if (req.session) {
+    // delete session object
+    req.session.destroy(function (err) {
+      if (err) {
+        return next(err);
+      } else {
+        connected = false;
+        return res.redirect('/');
+      }
+    });
+  }
 });
 
 

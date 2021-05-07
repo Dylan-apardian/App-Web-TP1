@@ -66,7 +66,7 @@ body {
 }
 
 .contenu {
-  margin-left: 250px;
+  /* margin-left: 250px; */
   display: flex;
   flex-direction: column;
   align-content: space-around;
@@ -74,8 +74,7 @@ body {
   height: 85vh;
 }
 
-.rangee1,
-.rangee2 {
+.rangee {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -104,11 +103,12 @@ body {
 .sectionFonds {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
+  align-items: center;
   background-color: white;
   border-radius: 10px;
   width: 655px;
-  height: min-content;
+  height: 300px;
 }
 
 .sectionConversion {
