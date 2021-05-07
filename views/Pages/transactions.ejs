@@ -1,0 +1,136 @@
+<%- include ('../Components/head') %>
+<%- include ('../Components/header') %>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet" />
+<link href="./styles/transactions.css" rel="stylesheet" />
+
+<div class="about-section">
+  <img src="./Assets/images/logo_seulement.png" alt="logo" style="width: 10%" />
+  <h1>À propos de nous</h1>
+  <p>Qui sommes-nous et que faisons-nous</p>
+</div>
+
+<h2 style="text-align: center">Notre histoire et emplacement</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+        <div class="container">
+            <table style="width: 100%">
+                <caption>Historiques de transactions</caption>        
+                <tr>
+                  <th>Date</th>
+                  <th>Code</th>
+                  <th>Description</th>
+                  <th>Debit</th>
+                  <th>Credit</th>
+                </tr>
+                <tr>
+                  <td>05/06/2021</td>
+                  <td>ACH</td>
+                  <td>Achat en ligne AMAZON PRIME CA</td>
+                  <td></td>
+                  <td>$104.37</td>
+                </tr>
+                <tr>
+                  <td>05/05/2021</td>
+                  <td>REM</td>
+                  <td>Remboursement PAYPAL MSP/DIV</td>
+                  <td></td>
+                  <td>$37.54</td>
+                </tr>
+                <tr>
+                  <td>05/04/2021</td>
+                  <td>PAI</td>
+                  <td>Paiement HYDRO-QUEBEC</td>
+                  <td>$74.99</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>05/03/2021</td>
+                  <td>ACH</td>
+                  <td>Achat en ligne AMAZON PRIME CA</td>
+                  <td></td>
+                  <td>$104.37</td>
+                </tr>
+              </table>
+        </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <div class="container">
+      <table style="width:100%">
+        <caption>Transfer d'argent entre comptes</caption>
+        <tr>
+          <th>Compte d'origine</th>
+          <th>Compte Final</th>
+          <th>Montant</th>
+        </tr>
+        <tr>
+            <td>
+                <select name="compteOrigine" id="cars">
+                    <option value="Cheque">Cheque</option>
+                    <option value="Epargne">Epargne</option>
+                </select>
+            </td>
+            <td>            
+                <select name="compteOrigine" id="cars">
+                    <option value="Cheque">Cheque</option>
+                    <option value="Epargne">Epargne</option>
+                </select>
+            </td>
+          <td><input type="number" id="montantTransfer" name="montantTransfer"><input type="button" id="btnTransfer" name="btnTransfer" value="Transferer"></td>
+        </tr>
+      </table>
+      <table style="width:100%">
+        <caption>Envoyer de l'argent</caption>
+        <tr>
+          <th>Compte</th>
+          <th>Destinataire</th>
+          <th>Montant</th>
+        </tr>
+        <tr>
+            <td>
+                <select name="compteEnvoyer" id="compteEnvoyer">
+                    <option value="Cheque">Cheque</option>
+                    <option value="Epargne">Epargne</option>
+                </select>
+            </td>
+            <td>            
+                <input type="email" id="emailDestinataire" name="emailDestinataire"><input type="button" id="btnTransfer" name="btnTransfer" value="Envoyer">
+            </td>
+            <td>
+              <input type="number" id="montantEnvoyer" name="montantEnvoyer"><input type="button" id="btnEnvoyer" name="btnEnvoyer" value="Envoyer">
+            </td>
+        </tr>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCL_YXWrClseMST6TKgETp5B2E8_Aq-AjY&callback=initMap&libraries=&v=weekly"
+  async></script>
+<script>
+  // Initialize and add the map
+  function initMap() {
+    // The location of Uluru
+    const uluru = { lat: 45.53642, lng: -73.69883 };
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: uluru,
+    });
+    // The marker, positioned at Uluru
+    const marker = new google.maps.Marker({
+      position: uluru,
+      map: map,
+    });
+  }
+</script>
+
+<%- include ('../Components/footer') %>

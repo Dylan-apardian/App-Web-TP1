@@ -44,6 +44,14 @@ router.get('/apropos', function (req, res, next) {
   });
 });
 
+router.get('/transactions', function (req, res, next) {
+  res.render('./Pages/transactions.ejs', {
+    siteTitle: "KDD Finance",
+    pageTitle: "Transactions",
+    items: "ok"
+  });
+});
+
 
 
 //POST route for updating data
