@@ -23,6 +23,11 @@
     "nodemon": "^1.11.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+<<<<<<< HEAD
     "yahoo-finance": "^0.3.7"
+=======
+    "yahoo-finance": "^0.3.7",
+    "yahoo-stock-prices": "^1.1.0"
+>>>>>>> Daniil
   }
 }
