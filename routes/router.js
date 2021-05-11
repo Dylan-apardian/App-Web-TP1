@@ -2,7 +2,22 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var connected = false;
-var yahooFinance = require('yahoo-finance');
+var yahooStockPrices = require('yahoo-stock-prices');
+//var yahooFinance = require('yahoo-finance');
+
+// yahooFinance.
+// yahooFinance.historical({
+//   symbol: 'AAPL',
+//   from: today.toDateString,
+//   to: today.toDateString,
+// }, function (err, quotes) {
+//   console.log(quotes[0].close)
+// });
+
+(async() => {
+  const data = await yahooStockPrices.getCurrentData('AAPL');
+  console.log(data.price); // { currency: 'USD', price: 132.05 }
+})();
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -10,14 +25,6 @@ var mm = String(today.getMonth() + 1).padStart(2, '0');
 var yyyy = today.getFullYear();
 
 today = mm + '/' + dd + '/' + yyyy;
-
-yahooFinance.historical({
-  symbol: 'AAPL',
-  from: today.toDateString,
-  to: today.toDateString,
-}, function (err, quotes) {
-  console.log(quotes[0].close)
-});
 
 // GET route for reading data
 router.get('/', function (req, res, next) {
