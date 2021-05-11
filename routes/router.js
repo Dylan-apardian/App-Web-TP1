@@ -38,7 +38,7 @@ router.get('/pageSignup', function (req, res, next) {
 
 router.get('/login', function (req, res, next) {
   if (connected) {
-    return res.redirect('/sommaire');
+    return res.redirect('/sommaireNew');
   } else {
     return res.redirect('/pageLogin');
   }
@@ -46,7 +46,7 @@ router.get('/login', function (req, res, next) {
 
 router.get('/signup', function (req, res, next) {
   if (connected) {
-    return res.redirect('/sommaire');
+    return res.redirect('/sommaireNew');
   } else {
     return res.redirect('/pageSignup');
   }
@@ -97,7 +97,7 @@ router.post('/', function (req, res, next) {
         return next(error);
       } else {
         req.session.userId = user._id;
-        return res.redirect('/sommaire');
+        return res.redirect('/sommaireNew');
       }
     });
 
@@ -109,7 +109,7 @@ router.post('/', function (req, res, next) {
         return next(err);
       } else {
         req.session.userId = user._id;
-        return res.redirect('/sommaire');
+        return res.redirect('/sommaireNew');
       }
     });
   } else {
@@ -120,7 +120,7 @@ router.post('/', function (req, res, next) {
 })
 
 // GET route after registering
-router.get('/sommaire', function (req, res, next) {
+router.get('/sommaireNew', function (req, res, next) {
   User.findById(req.session.userId)
     .exec(function (error, user) {
       if (error) {
@@ -130,9 +130,9 @@ router.get('/sommaire', function (req, res, next) {
           return res.redirect('/login');
         } else {
           connected = true;
-          res.render('./Pages/sommaire.ejs', {
+          res.render('./Pages/sommaireNew.ejs', {
             siteTitle: "KDD Finance",
-            pageTitle: "Sommaire",
+            pageTitle: "sommaireNew",
             items: user
           });
           //return res.send('<h1>Nom: </h1>' + user.nom + '<h2>Courriel: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
