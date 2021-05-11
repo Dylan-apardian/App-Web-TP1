@@ -1,23 +1,29 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-var connected = false;
 var yahooStockPrices = require('yahoo-stock-prices');
-//var yahooFinance = require('yahoo-finance');
+var connected = false;
+var data;
 
-// yahooFinance.
-// yahooFinance.historical({
-//   symbol: 'AAPL',
-//   from: today.toDateString,
-//   to: today.toDateString,
-// }, function (err, quotes) {
-//   console.log(quotes[0].close)
-// });
+async function trouverPrix(symbole) {
+  const data = await yahooStockPrices.getCurrentData(symbole);
+  return data.price; //{ currency: 'USD', price: 132.05 }
+}
 
-(async() => {
-  const data = await yahooStockPrices.getCurrentData('AAPL');
-  console.log(data.price); // { currency: 'USD', price: 132.05 }
-})();
+async function trouverDevises() {
+  const [eurcad, eurusd, usdcad, usdeur] = await Promise.all([
+    trouverPrix('EURCAD=X').then(data => {return data;}),
+    trouverPrix('EURUSD=X').then(data => {return data;}),
+    trouverPrix('CAD=X').then(data => {return data;}),
+    trouverPrix('EUR=X').then(data => {return data;})]);
+  const devises = {
+    eurcad,
+    eurusd,
+    usdcad,
+    usdeur
+  }
+  return devises;
+}
 
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -61,7 +67,7 @@ router.get('/pageSignup', function (req, res, next) {
 
 router.get('/login', function (req, res, next) {
   if (connected) {
-    return res.redirect('/sommaireNew');
+    return res.redirect('/sommaire');
   } else {
     return res.redirect('/pageLogin');
   }
@@ -69,7 +75,7 @@ router.get('/login', function (req, res, next) {
 
 router.get('/signup', function (req, res, next) {
   if (connected) {
-    return res.redirect('/sommaireNew');
+    return res.redirect('/sommaire');
   } else {
     return res.redirect('/pageSignup');
   }
@@ -121,7 +127,7 @@ router.post('/', function (req, res, next) {
         return next(error);
       } else {
         req.session.userId = user._id;
-        return res.redirect('/sommaireNew');
+        return res.redirect('/sommaire');
       }
     });
 
@@ -133,7 +139,7 @@ router.post('/', function (req, res, next) {
         return next(err);
       } else {
         req.session.userId = user._id;
-        return res.redirect('/sommaireNew');
+        return res.redirect('/sommaire');
       }
     });
   } else {
@@ -144,7 +150,7 @@ router.post('/', function (req, res, next) {
 })
 
 // GET route after registering
-router.get('/sommaireNew', function (req, res, next) {
+router.get('/sommaire', function (req, res, next) {
   User.findById(req.session.userId)
     .exec(function (error, user) {
       if (error) {
@@ -153,13 +159,15 @@ router.get('/sommaireNew', function (req, res, next) {
         if (user === null) {
           return res.redirect('/login');
         } else {
-          connected = true;
-          res.render('./Pages/sommaireNew.ejs', {
-            siteTitle: "KDD Finance",
-            pageTitle: "sommaireNew",
-            items: user
+          trouverDevises().then(devises => {
+            data = { user, devises };
+            connected = true;
+            res.render('./Pages/sommaire.ejs', {
+              siteTitle: "KDD Finance",
+              pageTitle: "sommaire",
+              items: data
+            });
           });
-          //return res.send('<h1>Nom: </h1>' + user.nom + '<h2>Courriel: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')
         }
       }
     });
