@@ -2,6 +2,12 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
 var UserSchema = new mongoose.Schema({
+  id_client: {
+    type: Number,
+    unique: true,
+    required: true,
+    trim: true
+  },
   nom: {
     type: String,
     unique: true,

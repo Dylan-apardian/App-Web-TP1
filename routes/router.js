@@ -2,9 +2,22 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 var connected = false;
-const data = yahooStockPrices.getCurrentData('AAPL');
-console.log(data); // { currency: 'USD', price: 132.05 }
+var yahooFinance = require('yahoo-finance');
 
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0');
+var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
+
+yahooFinance.historical({
+  symbol: 'AAPL',
+  from: today.toDateString,
+  to: today.toDateString,
+}, function (err, quotes) {
+  console.log(quotes[0].close)
+});
 
 // GET route for reading data
 router.get('/', function (req, res, next) {
@@ -41,7 +54,7 @@ router.get('/pageSignup', function (req, res, next) {
 
 router.get('/login', function (req, res, next) {
   if (connected) {
-    return res.redirect('/sommaire');
+    return res.redirect('/sommaireNew');
   } else {
     return res.redirect('/pageLogin');
   }
@@ -49,7 +62,7 @@ router.get('/login', function (req, res, next) {
 
 router.get('/signup', function (req, res, next) {
   if (connected) {
-    return res.redirect('/sommaire');
+    return res.redirect('/sommaireNew');
   } else {
     return res.redirect('/pageSignup');
   }
@@ -93,6 +106,7 @@ router.post('/', function (req, res, next) {
       date_naissance:req.body.date_naissance,
       email: req.body.email,
       mot_de_passe: req.body.mot_de_passe,
+      id_client: 2
     }
 
     User.create(userData, function (error, user) {
@@ -100,7 +114,7 @@ router.post('/', function (req, res, next) {
         return next(error);
       } else {
         req.session.userId = user._id;
-        return res.redirect('/sommaire');
+        return res.redirect('/sommaireNew');
       }
     });
 
@@ -112,7 +126,7 @@ router.post('/', function (req, res, next) {
         return next(err);
       } else {
         req.session.userId = user._id;
-        return res.redirect('/sommaire');
+        return res.redirect('/sommaireNew');
       }
     });
   } else {
@@ -123,7 +137,7 @@ router.post('/', function (req, res, next) {
 })
 
 // GET route after registering
-router.get('/sommaire', function (req, res, next) {
+router.get('/sommaireNew', function (req, res, next) {
   User.findById(req.session.userId)
     .exec(function (error, user) {
       if (error) {
@@ -133,9 +147,9 @@ router.get('/sommaire', function (req, res, next) {
           return res.redirect('/login');
         } else {
           connected = true;
-          res.render('./Pages/sommaire.ejs', {
+          res.render('./Pages/sommaireNew.ejs', {
             siteTitle: "KDD Finance",
-            pageTitle: "Sommaire",
+            pageTitle: "sommaireNew",
             items: user
           });
           //return res.send('<h1>Nom: </h1>' + user.nom + '<h2>Courriel: </h2>' + user.email + '<br><a type="button" href="/logout">Logout</a>')

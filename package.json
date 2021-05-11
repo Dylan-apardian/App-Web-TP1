@@ -1,9 +1,8 @@
 {
-  "name": "authenticationIntro",
+  "name": "TP2",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/DDCSLearning/authenticationIntro.git",
-  "author": "DanielDeutsch <deudan1010@gmail.com>",
+  "author": "DaniilSirbu",
   "license": "none",
   "scripts": {
     "start": "node app",
@@ -24,6 +23,6 @@
     "nodemon": "^1.11.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "yahoo-stock-prices": "^1.1.0"
+    "yahoo-finance": "^0.3.7"
   }
 }
