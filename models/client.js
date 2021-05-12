@@ -38,6 +38,12 @@ var UserSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  date_creation: {
+    type: Date,
+    unique: false,
+    required: true,
+    trim: true
+  },
   
   mot_de_passe: {
     type: String,

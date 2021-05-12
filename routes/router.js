@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require("../models/client");
 var Compte = require("../models/compte");
 var Transaction = require("../models/transaction");
+var Action = require("../models/action");
 var yahooStockPrices = require("yahoo-stock-prices");
 var connected = false;
 var userGlobal = null;
@@ -128,6 +129,7 @@ router.post("/", function (req, res, next) {
       date_naissance: req.body.date_naissance,
       email: req.body.email,
       mot_de_passe: req.body.mot_de_passe,
+      date_creation: today
     };
 
     User.create(userData, function (error, user) {
@@ -143,6 +145,21 @@ router.post("/", function (req, res, next) {
             solde: 100000,
           };
           Compte.create(compteData, function (error, compte) {
+            if (error) {
+              return next(error);
+            } else {
+            }
+          });
+        });
+
+        var symboleActions = ["AAPL", "TSLA", "MFST", "GME", "AMZN", "FB", "AMD", "INTC", "NFLX"];
+        symboleActions.forEach((symboleAction) => {
+          var actionData = {
+            id_client: user._id,
+            symbole: symboleAction,
+            montant: 0,
+          };
+          Action.create(actionData, function (error, action) {
             if (error) {
               return next(error);
             } else {
@@ -221,7 +238,7 @@ router.get("/logout", function (req, res, next) {
   }
 });
 
-// GET for transfererClient
+// POST for transfererClient
 router.post("/transfererClient", function (req, res, next) {
   Compte.find({ id_client: req.session.userId, type: "Débit" }).exec(function (
     error,
@@ -272,6 +289,49 @@ router.post("/transfererClient", function (req, res, next) {
   // req.session.userId;
   // req.body.destinataire;
   // req.body.montant;
+});
+
+// POST for transfererCompte
+router.post("/transfererCompte", function (req, res, next) {
+  Compte.find({ id_client:req.session.userId, type:req.body.typeCompte1 }).exec(function (
+    error,
+    compte
+  ) {
+    if (error) {
+      return next(error);
+    } else {
+      if (compte[0].solde < req.body.montantTransfert) {
+        var err = new Error("Montant insuffisant.");
+        err.status = 406;
+        return next(err);
+      } else {
+        Compte.find({ id_client:req.session.userId, type:req.body.typeCompte2 }).exec(function (
+          error,
+          compte2
+        ) {
+          if (error) {
+            return next(error);
+          } else {
+            var myquery1 = {id_client:req.session.userId, type:req.body.typeCompte1}
+            var newvalues1 = { $set: {solde:(compte[0].solde - req.body.montantTransfert * 1)} };
+            var myquery2 = {id_client:req.session.userId, type:req.body.typeCompte2}
+            var newvalues2 = { $set: {solde:(compte2[0].solde + req.body.montantTransfert * 1)} };
+            Compte.findOneAndUpdate( myquery1, newvalues1 , function(err, res) {
+              if (err) throw err;
+            });
+            Compte.findOneAndUpdate( myquery2, newvalues2, function(err, res) {
+              if (err) throw err;
+            });
+            return res.redirect("/sommaire");
+          }
+        });
+      }
+    }
+  });
+  // req.session.userId;
+  // req.body.typeCompte1;
+  // req.body.typeCompte2;
+  // req.body.montantTransfert;
 });
 
 module.exports = router;
