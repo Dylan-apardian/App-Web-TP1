@@ -85,7 +85,7 @@
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col-auto">
                                                         <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                            $<%= items.comptes[2].solde %>
+                                                            $<%= items.comptes[3].solde %>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -110,7 +110,7 @@
 
                                                 <!-- Valeur compte actions -->
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                    $<%= items.comptes[3].solde %>
+                                                    $<%= items.comptes[2].solde %>
                                                 </div>
                                             </div>
                                             <div class="col-auto">
@@ -213,7 +213,7 @@
                                                         placeholder="Courriel du destinataire" />
                                                 </div>
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                    <input type="number" class="form-control form-control-user"
+                                                    <input type="number" min="0" class="form-control form-control-user"
                                                         id="montant" name="montant" placeholder="Montant" />
                                                 </div>
                                             </div>
@@ -236,7 +236,7 @@
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold text-primary">
-                                            Transferer entre comptes
+                                            Transférer entre comptes
                                         </h6>
                                     </div>
                                     <div class="card-body">
@@ -244,30 +244,30 @@
                                             <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 22rem;"
                                                 src="../Assets/img/undraw_online_transactions_02ka.svg" alt="..." />
                                         </div>
-                                        <form action="/transfererCompte" id="transferForm" action="POST">
+                                        <form action="/transfererCompte" id="transferForm" method="POST">
                                         <div class="row">
                                             <div class="col-sm-3 mb-3 mb-sm-0">
-                                                <select class="form-control" id="typeCompte1" form="transferForm" required>
-                                                    <option>Débit</option>
-                                                    <option>Épargnes</option>
-                                                    <option>Crédit</option>
-                                                    <option>Actions</option>
+                                                <select class="form-control" id="typeCompte1" name="typeCompte1" form="transferForm" required>
+                                                    <option value="Débit">Débit</option>
+                                                    <option value="Épargnes">Épargnes</option>
+                                                    <option value="Crédit">Crédit</option>
+                                                    <option value="Actions">Actions</option>
                                                 </select>
                                             </div>
                                             <a class="btn btn-warning btn-circle">
                                                 <i class="fas fa-arrow-right"></i>
                                             </a>
                                             <div class="col-sm-3 mb-3 mb-sm-0">
-                                                <select class="form-control" id="typeCompte2" form="transferForm" required>
-                                                    <option>Épargnes</option>
-                                                    <option>Débit</option>
-                                                    <option>Crédit</option>
-                                                    <option>Actions</option>
+                                                <select class="form-control" id="typeCompte2" name="typeCompte2" form="transferForm" required>
+                                                    <option value="Épargnes">Épargnes</option>
+                                                    <option value="Débit">Débit</option>
+                                                    <option value="Crédit">Crédit</option>
+                                                    <option value="Actions">Actions</option>
                                                 </select>
                                             </div>
                                             <div class="col-sm-5 mb-3 mb-sm-0">
-                                                <input type="number" class="form-control form-control-user"
-                                                    id="montantTransfert" placeholder="Montant" />
+                                                <input type="number" min="0" class="form-control form-control-user"
+                                                    id="montantTransfert" name="montantTransfert" placeholder="Montant" />
                                             </div>
                                         </div>
                                         <br>
