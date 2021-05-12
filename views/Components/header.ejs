@@ -1,26 +1,47 @@
-<link href="./styles/header.css" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+<link href="../Assets/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
 
 <header>
- <div class="wrapper">
-  <h1><img src="./Assets/Images/imagesAccueil/logo.png"></h1>
-  <nav>
-   <ul>
-    <li><a href="/"><img src="./Assets/Images/imagesAccueil/maison.png" width="25" height="25">
-      Accueil</a></li>
-      <li><a href="/apropos"><img src="./Assets/Images/imagesAccueil/information.png" width="25" height="25">
-        À propos</a></li>
-    <% if (items !== false) {%>
-      <!-- Connecté -->
-      <li><a href="/sommaire"><img src="./Assets/Images/imagesAccueil/porte-feuille.png" width="25" height="25">
-        Somaire</a></li>
-      <li><a href="/logout"><img src="https://img.icons8.com/android/24/000000/logout-rounded-left.png" width="15" height="15">
-        Fermer votre session</a></li>
-    <% }else {%>
-      <!-- Déconnecté -->
-      <li><a href="/login"><img src="./Assets/images/imagesAccueil/cadenas.png" width="15" height="15">
-        Ouvrir une session</a></li>
-    <% } %>
-   </ul>
-  </nav>
- </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">KDD Finance</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/apropos">À propos</a>
+        </li>
+        <% if (items != null) {%>
+          <!-- Connecté -->
+          <li class="nav-item">
+            <a class="nav-link" href="/sommaire">Sommaire</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Fermer votre session</a>
+          </li>
+          <% }else {%>
+            <!-- Déconnecté -->
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Se connecter</a>
+            </li>
+          <% } %>
+      </ul>
+      <% if (items != null) {%>
+        <form class="form-inline my-2 my-lg-0">
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+            <%= items.prenom %>
+              <%= items.nom %>
+          </span>
+          <i class="fas fa-user"></i>
+        </form>
+      <% } %>
+    </div>
 </header>
