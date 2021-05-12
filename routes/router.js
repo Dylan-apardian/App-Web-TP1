@@ -183,7 +183,10 @@ router.get("/sommaire", function (req, res, next) {
       if (user === null) {
         return res.redirect("/login");
       } else {
-        Compte.find({ id_client: req.session.userId }).exec(function (error, comptes) {
+        Compte.find({ id_client: req.session.userId }).exec(function (
+          error,
+          comptes
+        ) {
           if (error) {
             return next(error);
           } else {
@@ -219,9 +222,54 @@ router.get("/logout", function (req, res, next) {
 });
 
 // GET for transfererClient
-router.get("/transfererClient", function (req, res, next) {
-  
+router.post("/transfererClient", function (req, res, next) {
+  Compte.find({ id_client: req.session.userId, type: "Débit" }).exec(function (
+    error,
+    compte
+  ) {
+    if (error) {
+      console.log("error");
+      return next(error);
+    } else {
+      console.log(compte[0].solde);
+      console.log(req.body.montant)
+      if (compte[0].solde < req.body.montant) {
+        console.log("ici");
+        var err = new Error("Montant insuffisant.");
+        err.status = 406;
+        return next(err);
+      } else {
+        console.log("ici2");
+        User.find({ email: req.body.destinataire }).exec(function (
+          error,
+          client
+        ) {
+          if (error) {
+            var err = new Error("Courriel non existant.");
+            err.status = 407;
+            return next(err);
+          } else {
+            Compte.find({ id_client: client._id, type: "Débit" }).exec(function (
+              error,
+              compte2
+            ) {
+              if (error) {
+                return next(error);
+              } else {
+                console.log(compte.solde);
+                console.log(compte2.solde);
+                Compte.findOneAndUpdate({ id_client:client._id, type: "Débit" }, { solde:5 })
+                Compte.findOneAndUpdate({ _id:compte2._id, type: "Débit" }, { solde:5 })
+              }
+            });
+          }
+        });
+      }
+    }
+  });
+  // req.session.userId;
+  // req.body.destinataire;
+  // req.body.montant;
 });
-
 
 module.exports = router;
