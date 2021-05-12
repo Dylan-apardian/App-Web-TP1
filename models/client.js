@@ -2,21 +2,15 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 
 var UserSchema = new mongoose.Schema({
-  id_client: {
-    type: Number,
-    unique: true,
-    required: true,
-    trim: true
-  },
   nom: {
     type: String,
-    unique: true,
+    unique: false,
     required: true,
     trim: true
   },
   prenom: {
     type: String,
-    unique: true,
+    unique: false,
     required: true,
     trim: true
   },
@@ -28,13 +22,13 @@ var UserSchema = new mongoose.Schema({
   },
   adresse: {
     type: String,
-    unique: true,
+    unique: false,
     required: true,
     trim: true
   },
   date_naissance: {
     type: Date,
-    unique: true,
+    unique: false,
     required: true,
     trim: true
   },
