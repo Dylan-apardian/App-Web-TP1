@@ -48,7 +48,7 @@
                                 </div>
                             </div>
 
-                            <!-- Epargene card -->
+                            <!-- Epargne card -->
                             <div class="col-xl-3 col-md-6 mb-4">
                                 <div class="card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
@@ -208,16 +208,21 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                    <input type="email" class="form-control form-control-user" name="destinataire"
-                                                        id="destinataire" placeholder="Courriel du destinataire" />
+                                                    <input type="email" class="form-control form-control-user"
+                                                        name="destinataire" id="destinataire"
+                                                        placeholder="Courriel du destinataire" />
                                                 </div>
                                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                                    <input type="number" class="form-control form-control-user" id="montant" name="montant"
-                                                        placeholder="Montant" />
+                                                    <input type="number" class="form-control form-control-user"
+                                                        id="montant" name="montant" placeholder="Montant" />
                                                 </div>
                                             </div>
                                             <br />
-                                            <input type="submit" class="btn btn-primary btn-icon-split" style="width: 100%; height: 36px;" value="Envoyer">
+                                            <div class="text-center">
+                                                <input type="submit" class="btn btn-primary btn-icon-split"
+                                                    style="width: 60%; height: 36px;" value="Envoyer">
+                                            </div>
+
                                         </form>
                                     </div>
                                 </div>
@@ -226,39 +231,55 @@
 
                         <!-- Content Row -->
                         <div class="row">
-                            <!-- Payer credit -->
-                            <div class="col-xl-4 col-lg-5">
+                            <!-- Transferer entre compte -->
+                            <div class="col-lg-4 mb-4">
                                 <div class="card shadow mb-4">
-                                    <!-- Card Header - Dropdown -->
-                                    <div
-                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold text-primary">
-                                            Transférer entre les comptes
+                                            Transferer entre comptes
                                         </h6>
                                     </div>
-                                    <!-- Card Body -->
-                                    <!-- <div class="card-body">
+                                    <div class="card-body">
                                         <div class="text-center">
-                                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 17rem;"
-                                                src="../Assets/img/undraw_transfer_money_rywa.svg" alt="..." />
+                                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 22rem;"
+                                                src="../Assets/img/undraw_online_transactions_02ka.svg" alt="..." />
                                         </div>
+                                        <form action="/transfererCompte" id="transferForm" action="POST">
                                         <div class="row">
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="email" class="form-control form-control-user"
-                                                    id="destinataire" placeholder="Courriel du destinataire" />
+                                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <select class="form-control" id="typeCompte1" form="transferForm" required>
+                                                    <option>Débit</option>
+                                                    <option>Épargnes</option>
+                                                    <option>Crédit</option>
+                                                    <option>Actions</option>
+                                                </select>
                                             </div>
-                                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="number" class="form-control form-control-user" id="montant"
-                                                    placeholder="Montant" />
+                                            <a class="btn btn-warning btn-circle">
+                                                <i class="fas fa-arrow-right"></i>
+                                            </a>
+                                            <div class="col-sm-3 mb-3 mb-sm-0">
+                                                <select class="form-control" id="typeCompte2" form="transferForm" required>
+                                                    <option>Épargnes</option>
+                                                    <option>Débit</option>
+                                                    <option>Crédit</option>
+                                                    <option>Actions</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-5 mb-3 mb-sm-0">
+                                                <input type="number" class="form-control form-control-user"
+                                                    id="montantTransfert" placeholder="Montant" />
                                             </div>
                                         </div>
-                                        <br />
-                                        <a href="#" class="btn btn-primary btn-icon-split" style="width: 100%;">
-                                            <span class="text">Envoyer</span>
-                                        </a>
-                                    </div> -->
+                                        <br>
+                                        <div class="text-center">
+                                            <input type="submit" class="btn btn-primary btn-icon-split"
+                                                style="width: 60%; height: 36px;" value="Envoyer">
+                                        </div>
+                                    </form>
+                                    </div>
                                 </div>
                             </div>
+
                             <!-- Prix actions -->
                             <div class="col-xl-4 col-lg-6">
                                 <div class="card shadow mb-4">
@@ -292,7 +313,7 @@
                                         <br>
                                         <!-- TradingView Widget BEGIN -->
                                         <div class="tradingview-widget-container">
-                                            <div id="tradingview_d7b6a" style= "width:100%; height: 243px;"></div>
+                                            <div id="tradingview_d7b6a" style="width:100%; height: 243px;"></div>
                                             <div class="tradingview-widget-copyright"><a
                                                     href="https://www.tradingview.com/symbols/NASDAQ-AAPL/"
                                                     rel="noopener" target="_blank"></a></div>
@@ -366,10 +387,13 @@
                                                 </p>
                                             </div>
                                         </div>
-                                        <a href="#" class="btn btn-primary btn-icon-split calculate-btn"
-                                            style="width: 100%;">
-                                            <span class="text">Convertir</span>
-                                        </a>
+                                        <div class="text-center">
+                                            <a href="#" class="btn btn-primary btn-icon-split calculate-btn"
+                                                style="width: 60%;">
+                                                <span class="text">Convertir</span>
+                                            </a>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -428,33 +452,34 @@
             var toShowBase = document.querySelector('.base-currency');
             var toShowSecond = document.querySelector('.second-currency');
             var toShowResult = document.querySelector('.final-result');
-    
+
             function convertCurrency(event) {
                 event.preventDefault();
                 var amount = amountInput.value;
                 var from = baseCurrencyInput.value;
                 var to = secondCurrencyInput.value;
                 var result = 0;
-    
+
                 try {
                     if (from == to) {
                         result = amount;
-                    } else {                        
+                    } else {
                         result = amount * crrncy[from][to]
                     }
                 }
                 catch (err) {
                     result = amount * (1 / crrncy[to][from]);
                 }
-                result = (result*1).toFixed(2);
-    
+                result = (result * 1).toFixed(2);
+
                 toShowAmount.innerHTML = amount;
                 toShowBase.textContent = from + ' = ';
                 toShowSecond.textContent = to;
                 toShowResult.textContent = result;
             }
-    
+
             btn.addEventListener('click', convertCurrency);
         </script>
-    </body>
-</html>
+        </body>
+
+        </html>
