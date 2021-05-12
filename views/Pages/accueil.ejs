@@ -2,41 +2,94 @@
 <%- include ('../Components/header') %>
 
 <link href="./styles/accueil.css" rel="stylesheet">
+<link href="styles/sb-admin-2.min.css" rel="stylesheet" />
 
 <section id="main-image">
     <div class="wrapper">
         <h2>Chez KDD Finance, on est là pour vous aider à effectuer vos opérations bancaires en ligne plus
             facile que jamais</h2>
-        <a href="/apropos" class="button-1">En savoir plus</a>
+            <div class="text-center">
+                <a href="/apropos" class="btn btn-primary btn-icon-split" style="width: 25%;">
+                    <span class="text">En savoir plus</span>
+                </a>
+            </div>
     </div>
 </section>
 
 <section id="choisirKDD">
-    <div class="wrapper">
-        <h3>Pourquoi choisir KDD?</h3>
-        <ul>
-            <li id="simplicité">
-                <h4>Simplicité</h4>
-                <p>Faites vos opérations bancaires en toute confiance, où que vous soyez. Suivez l’évolution de
-                    votre état de solde et
-                    de vos transactions à partir de votre compte KDD.</p>
-            </li>
-
-            <li id="sécurité">
-                <h4>Sécurité</h4>
-                <p>La protection de vos renseignements financiers et personnels est notre priorité. C’est
-                    pourquoi nous travaillons
-                    constamment pour vous permettre de toujours effectuer vos opérations bancaires en toute
-                    confiance et en toute sécurité.</p>
-            </li>
-
-            <li id="localisation">
-                <h4>Points de services</h4>
-                <p>Repérer les succursales ouvertes et les heures d’ouverture près de chez vous</p>
-            </li>
-
-            <div class="clear"></div>
-        </ul>
+    <h3>Pourquoi choisir KDD?</h3>
+    <div class="row" style="margin-left: 20%;">
+        <!-- Simplicite -->
+        <div class="col-xl-3 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        Simplicité
+                    </h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <form action="/transfererClient">
+                        <div class="text-center">
+                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 17rem;"
+                                src="../Assets/img/undraw_random_thoughts_xejj.svg" alt="..." />
+                        </div>
+                        <p>Faites vos opérations bancaires en toute confiance, où que vous soyez. Suivez l’évolution de
+                            votre état de solde et
+                            de vos transactions à partir de votre compte KDD.</p>                    
+                    </form>
+                </div>
+            </div>
+        </div>
+            <!-- Simplicite -->
+            <div class="col-xl-3 col-lg-5">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div
+                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            Sécurité
+                        </h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <form action="/transfererClient">
+                            <div class="text-center">
+                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 17rem;"
+                                    src="../Assets/img/undraw_security_o890.svg" alt="..." />
+                            </div>
+                            <p>La protection de vos renseignements financiers et personnels est notre priorité. C’est
+                                pourquoi nous travaillons
+                                constamment pour vous permettre de toujours effectuer vos opérations bancaires en toute
+                                confiance et en toute sécurité.</p>                
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <!-- Point de service -->
+        <div class="col-xl-3 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div
+                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between" >
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        Points de services
+                    </h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <form action="/transfererClient">
+                        <div class="text-center">
+                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 17rem;"
+                                src="../Assets/img/undraw_my_current_location_om7g.svg" alt="..." />
+                        </div>
+                        <p>Repérer les succursales ouvertes et les heures d’ouverture près de chez vous</p>                       
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

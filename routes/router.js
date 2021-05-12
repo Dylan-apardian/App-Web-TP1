@@ -5,6 +5,7 @@ var Compte = require("../models/compte");
 var Transaction = require("../models/transaction");
 var yahooStockPrices = require("yahoo-stock-prices");
 var connected = false;
+var userGlobal = null;
 
 async function trouverPrix(symbole) {
   const data = await yahooStockPrices.getCurrentData(symbole);
@@ -43,39 +44,39 @@ var yyyy = today.getFullYear();
 today = mm + "/" + dd + "/" + yyyy;
 
 // GET route for reading data
-router.get("/", function (req, res, next) {
+router.get("/", function (req, res, next) { 
   res.render("./Pages/accueil.ejs", {
     siteTitle: "KDD Finance",
     pageTitle: "Accueil",
-    items: connected,
+    items: userGlobal,
   });
 });
 
-router.get("/apropos", function (req, res, next) {
+router.get("/apropos", function (req, res, next) {  
   res.render("./Pages/apropos.ejs", {
     siteTitle: "KDD Finance",
     pageTitle: "À propos",
-    items: connected,
+    items: userGlobal,
   });
 });
 
-router.get("/pageLogin", function (req, res, next) {
+router.get("/pageLogin", function (req, res, next) {  
   res.render("./Pages/login.ejs", {
     siteTitle: "KDD Finance",
     pageTitle: "Se connecter",
-    items: connected,
+    items: userGlobal,
   });
 });
 
-router.get("/pageSignup", function (req, res, next) {
+router.get("/pageSignup", function (req, res, next) {  
   res.render("./Pages/signup.ejs", {
     siteTitle: "KDD Finance",
     pageTitle: "S'inscrire",
-    items: connected,
+    items: userGlobal,
   });
 });
 
-router.get("/login", function (req, res, next) {
+router.get("/login", function (req, res, next) {  
   if (connected) {
     return res.redirect("/sommaire");
   } else {
@@ -95,7 +96,7 @@ router.get("/transactions", function (req, res, next) {
   res.render("./Pages/transactions.ejs", {
     siteTitle: "KDD Finance",
     pageTitle: "Transactions",
-    items: "ok",
+    items: userGlobal,
   });
 });
 
@@ -182,16 +183,14 @@ router.get("/sommaire", function (req, res, next) {
     } else {
       if (user === null) {
         return res.redirect("/login");
-      } else {
-        Compte.find({ id_client: req.session.userId }).exec(function (
-          error,
-          comptes
-        ) {
+      } else {        
+        userGlobal = user;
+        Compte.find({ id_client: req.session.userId }).exec(function (error, comptes) {
           if (error) {
             return next(error);
-          } else {
+          } else {            
             trouverDevises().then((devises) => {
-              data = { user, devises, comptes };
+              data = { devises, comptes, prenom:user.prenom, nom:user.nom};
               connected = true;
               res.render("./Pages/sommaire.ejs", {
                 siteTitle: "KDD Finance",
@@ -215,6 +214,7 @@ router.get("/logout", function (req, res, next) {
         return next(err);
       } else {
         connected = false;
+        userGlobal = null;
         return res.redirect("/");
       }
     });
