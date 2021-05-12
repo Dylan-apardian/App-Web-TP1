@@ -228,38 +228,40 @@ router.post("/transfererClient", function (req, res, next) {
     compte
   ) {
     if (error) {
-      console.log("error");
       return next(error);
     } else {
-      console.log(compte[0].solde);
-      console.log(req.body.montant)
       if (compte[0].solde < req.body.montant) {
-        console.log("ici");
         var err = new Error("Montant insuffisant.");
         err.status = 406;
         return next(err);
       } else {
-        console.log("ici2");
         User.find({ email: req.body.destinataire }).exec(function (
           error,
           client
         ) {
-          if (error) {
+          if (client == "") {
             var err = new Error("Courriel non existant.");
-            err.status = 407;
+            err.status = 406;
             return next(err);
           } else {
-            Compte.find({ id_client: client._id, type: "Débit" }).exec(function (
+            Compte.find({ id_client: client[0]._id, type: "Débit" }).exec(function (
               error,
               compte2
             ) {
               if (error) {
                 return next(error);
               } else {
-                console.log(compte.solde);
-                console.log(compte2.solde);
-                Compte.findOneAndUpdate({ id_client:client._id, type: "Débit" }, { solde:5 })
-                Compte.findOneAndUpdate({ _id:compte2._id, type: "Débit" }, { solde:5 })
+                var myquery1 = {_id:compte[0]._id, type: "Débit"}
+                var newvalues1 = { $set: {solde:(compte[0].solde - req.body.montant * 1)} };
+                var myquery2 = {_id:compte2[0]._id, type: "Débit"}
+                var newvalues2 = { $set: {solde:(compte2[0].solde + req.body.montant * 1)} };
+                Compte.findOneAndUpdate( myquery1, newvalues1 , function(err, res) {
+                  if (err) throw err;
+                });
+                Compte.findOneAndUpdate( myquery2, newvalues2, function(err, res) {
+                  if (err) throw err;
+                });
+                return res.redirect("/sommaire");
               }
             });
           }
