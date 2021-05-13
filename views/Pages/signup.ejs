@@ -1,52 +1,57 @@
 <%- include ('../Components/head') %>
-<%- include ('../Components/header') %>
+  <%- include ('../Components/header') %>
 
-<body>
-  <!-- Police Cairo de Google -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet" />
-  <!-- Bootstrap core CSS -->
-  <link href="./Assets/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- Custom styles for this template -->
-  <link href="./styles/signup.css" rel="stylesheet" />
-  <main class="form-signin">
+    <body>
+      <!-- Police Cairo de Google -->
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet" />
+      <!-- Bootstrap core CSS -->
+      <link href="./Assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+      <!-- Custom styles for this template -->
+      <link href="./styles/signup.css" rel="stylesheet" />
+      <main class="form-signin">
 
-    <form id="login" action="/" method="post" onsubmit="event.preventDefault(); validateMyForm();">
-      <a href="/">
-        <img class="mb-4" src="./Assets/images/logo.png" alt="" />
-      </a>
+        <div class="text-center">
+          <form id="login" action="/" method="post" onsubmit="event.preventDefault(); validateMyForm();">
+            <a href="/">
+              <img class="mb-4" src="./Assets/images/logo.png" alt="" />
+            </a>
 
-      <h1 class="h3 mb-3 fw-normal">Créer un compte KDD</h1>
+            <h1 class="h3 mb-3 fw-normal">Créer un compte KDD</h1>
 
-      <input type="text" name="nom" class="form-control" placeholder="Nom" required="">
-      <input type="text" name="prenom" class="form-control" placeholder="Prénom" required="">
-      <input type="text" name="telephone" class="form-control" placeholder="Téléphone" required="">
-      <input type="text" name="adresse" class="form-control" placeholder="Adresse" required="">
-      <input type="date" name="date_naissance" class="form-control" placeholder="Date de naissance" required="">
-      <input type="text" name="email" class="form-control" placeholder="Courriel" required="">
-      <input type="password" name="mot_de_passe" class="form-control" placeholder="Mot de passe" id="mot_de_passe" required="">
-      <input type="password" name="passwordConf" class="form-control" placeholder="Confirmer le mot de passe" id="passwordConf" required="">
-      <input type="submit" class="w-100 btn btn-lg btn-primary" value="S'inscrire">
+            <input type="text" name="nom" class="form-control" placeholder="Nom" required="">
+            <input type="text" name="prenom" class="form-control" placeholder="Prénom" required="">
+            <input type="text" name="telephone" class="form-control" placeholder="Téléphone" required="">
+            <input type="text" name="adresse" class="form-control" placeholder="Adresse" required="">
+            <input type="date" name="date_naissance" class="form-control" placeholder="Date de naissance" required="">
+            <input type="text" name="email" class="form-control" placeholder="Courriel" required="">
+            <input type="password" name="mot_de_passe" class="form-control" placeholder="Mot de passe" id="mot_de_passe"
+              required="">
+            <input type="password" name="passwordConf" class="form-control" placeholder="Confirmer le mot de passe"
+              id="passwordConf" required="">
+            <input type="submit" class="w-100 btn btn-lg btn-primary" value="S'inscrire">
 
-      <p class="mt-5 mb-3 text-muted">Vous avez déjà un compte?</p>
+            <p class="mt-5 mb-3 text-muted">Vous avez déjà un compte?</p>
 
-      <a href="/login" id="creezCompte">Se connecter</a>
+            <a href="/login" id="creezCompte">Se connecter</a>
 
-      <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
-    </form>
-  </main>
 
-  <script type="text/javascript">
-    var passWordField = document.getElementById('mot_de_passe')
-    var passWordConfirmField = document.getElementById('passwordConf')
-    var form = document.getElementById('login')
-    function validateMyForm() {
-      if (passWordField.value != passWordConfirmField.value) {
-        alert("Passwords do not match. Please try again.");
-      } else {
-        form.submit()
-      }
-    }
-  </script>
+          </form>
+        </div>
 
-<%- include ('../Components/footer') %>
+      </main>
+
+      <script type="text/javascript">
+        var passWordField = document.getElementById('mot_de_passe')
+        var passWordConfirmField = document.getElementById('passwordConf')
+        var form = document.getElementById('login')
+        function validateMyForm() {
+          if (passWordField.value != passWordConfirmField.value) {
+            alert("Passwords do not match. Please try again.");
+          } else {
+            form.submit()
+          }
+        }
+      </script>
+
+      <%- include ('../Components/footer') %>
