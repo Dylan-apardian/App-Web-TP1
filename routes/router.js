@@ -46,7 +46,7 @@ var yyyy = today.getFullYear();
 today = mm + "/" + dd + "/" + yyyy;
 
 // GET route for reading data
-router.get("/", function (req, res, next) { 
+router.get("/", function (req, res, next) {
   res.render("./Pages/accueil.ejs", {
     siteTitle: "KDD Finance",
     pageTitle: "Accueil",
@@ -54,7 +54,7 @@ router.get("/", function (req, res, next) {
   });
 });
 
-router.get("/apropos", function (req, res, next) {  
+router.get("/apropos", function (req, res, next) {
   res.render("./Pages/apropos.ejs", {
     siteTitle: "KDD Finance",
     pageTitle: "À propos",
@@ -62,15 +62,19 @@ router.get("/apropos", function (req, res, next) {
   });
 });
 
-router.get("/actions", function (req, res, next) {  
+router.get("/actions", function (req, res, next) {
   res.render("./Pages/actions.ejs", {
     siteTitle: "KDD Finance",
     pageTitle: "Actions",
-    items: {nom:userGlobal.nom, prenom:userGlobal.prenom, comptes:comptesGlobal},
+    items: {
+      nom: userGlobal.nom,
+      prenom: userGlobal.prenom,
+      comptes: comptesGlobal,
+    },
   });
 });
 
-router.get("/pageLogin", function (req, res, next) {  
+router.get("/pageLogin", function (req, res, next) {
   res.render("./Pages/login.ejs", {
     siteTitle: "KDD Finance",
     pageTitle: "Se connecter",
@@ -78,7 +82,7 @@ router.get("/pageLogin", function (req, res, next) {
   });
 });
 
-router.get("/pageSignup", function (req, res, next) {  
+router.get("/pageSignup", function (req, res, next) {
   res.render("./Pages/signup.ejs", {
     siteTitle: "KDD Finance",
     pageTitle: "S'inscrire",
@@ -86,7 +90,7 @@ router.get("/pageSignup", function (req, res, next) {
   });
 });
 
-router.get("/login", function (req, res, next) {  
+router.get("/login", function (req, res, next) {
   if (connected) {
     return res.redirect("/sommaire");
   } else {
@@ -138,7 +142,7 @@ router.post("/", function (req, res, next) {
       date_naissance: req.body.date_naissance,
       email: req.body.email,
       mot_de_passe: req.body.mot_de_passe,
-      date_creation: today
+      date_creation: today,
     };
 
     User.create(userData, function (error, user) {
@@ -161,7 +165,17 @@ router.post("/", function (req, res, next) {
           });
         });
 
-        var symboleActions = ["AAPL", "TSLA", "MFST", "GME", "AMZN", "FB", "AMD", "INTC", "NFLX"];
+        var symboleActions = [
+          "AAPL",
+          "TSLA",
+          "MFST",
+          "GME",
+          "AMZN",
+          "FB",
+          "AMD",
+          "INTC",
+          "NFLX",
+        ];
         symboleActions.forEach((symboleAction) => {
           var actionData = {
             id_client: user._id,
@@ -209,30 +223,38 @@ router.get("/sommaire", function (req, res, next) {
     } else {
       if (user === null) {
         return res.redirect("/login");
-      } else {        
+      } else {
         userGlobal = user;
-        Compte.find({ id_client: req.session.userId }).exec(function (error, comptes) {
+        Compte.find({ id_client: req.session.userId }).exec(function (
+          error,
+          comptes
+        ) {
           if (error) {
             return next(error);
           } else {
             var comptesSolde = [];
             for (let i = 0; i < comptes.length; i++) {
               if (comptes[i].type == "Débit") {
-                comptesSolde[0] = comptes[i].solde
+                comptesSolde[0] = comptes[i].solde;
               }
               if (comptes[i].type == "Épargnes") {
-                comptesSolde[1] = comptes[i].solde
+                comptesSolde[1] = comptes[i].solde;
               }
               if (comptes[i].type == "Crédit") {
-                comptesSolde[2] = comptes[i].solde
+                comptesSolde[2] = comptes[i].solde;
               }
               if (comptes[i].type == "Actions") {
-                comptesSolde[3] = comptes[i].solde
+                comptesSolde[3] = comptes[i].solde;
               }
             }
-            
+
             trouverDevises().then((devises) => {
-              data = { devises, comptes:comptesSolde, prenom:user.prenom, nom:user.nom};
+              data = {
+                devises,
+                comptes: comptesSolde,
+                prenom: user.prenom,
+                nom: user.nom,
+              };
               connected = true;
               comptesGlobal = comptesSolde;
               res.render("./Pages/sommaire.ejs", {
@@ -287,51 +309,68 @@ router.post("/transfererClient", function (req, res, next) {
             err.status = 406;
             return next(err);
           } else {
-            Compte.find({ id_client: client[0]._id, type: "Débit" }).exec(function (
-              error,
-              compte2
-            ) {
-              if (error) {
-                return next(error);
-              } else {
-                var myquery1 = {_id:compte[0]._id, type: "Débit"}
-                var newvalues1 = { $set: {solde:(compte[0].solde - req.body.montant * 1)} };
-                var myquery2 = {_id:compte2[0]._id, type: "Débit"}
-                var newvalues2 = { $set: {solde:(compte2[0].solde + req.body.montant * 1)} };
-                Compte.findOneAndUpdate( myquery1, newvalues1 , function(err, res) {
-                  if (err) throw err;
-                });
-                Compte.findOneAndUpdate( myquery2, newvalues2, function(err, res) {
-                  if (err) throw err;
-                });
+            Compte.find({ id_client: client[0]._id, type: "Débit" }).exec(
+              function (error, compte2) {
+                if (error) {
+                  return next(error);
+                } else {
+                  var myquery1 = { _id: compte[0]._id, type: "Débit" };
+                  var newvalues1 = {
+                    $set: { solde: compte[0].solde - req.body.montant * 1 },
+                  };
+                  var myquery2 = { _id: compte2[0]._id, type: "Débit" };
+                  var newvalues2 = {
+                    $set: { solde: compte2[0].solde + req.body.montant * 1 },
+                  };
+                  Compte.findOneAndUpdate(
+                    myquery1,
+                    newvalues1,
+                    function (err, res) {
+                      if (err) throw err;
+                    }
+                  );
+                  Compte.findOneAndUpdate(
+                    myquery2,
+                    newvalues2,
+                    function (err, res) {
+                      if (err) throw err;
+                    }
+                  );
 
-                var transactionData1 = {
-                  montant:(req.body.montant *-1),
-                  date_transaction:today,
-                  type_transaction:"TCLI",
-                  description:"Transfert au client " + req.body.destinataire,
-                  id_compte_envoyeur:compte[0]._id,
-                  id_compte_receveur:compte2[0]._id,
-                  solde:compte[0].solde
-                };
-                var transactionData2 = {
-                  montant:req.body.montant,
-                  date_transaction:today,
-                  type_transaction:"TCLI",
-                  description:"Transfert du client " + userGlobal.email,
-                  id_compte_envoyeur:compte[0]._id,
-                  id_compte_receveur:compte2[0]._id,
-                  solde:compte2[0].solde
-                };
-                Transaction.create(transactionData1, function (error, compte) {
-                  if (error) throw error;
-                });
-                Transaction.create(transactionData2, function (error, compte) {
-                  if (error) throw error;
-                });
-                return res.redirect("/sommaire");
+                  var transactionData1 = {
+                    montant: req.body.montant * -1,
+                    date_transaction: today,
+                    type_transaction: "TCLI",
+                    description: "Transfert au client " + req.body.destinataire,
+                    id_compte_envoyeur: compte[0]._id,
+                    id_compte_receveur: compte2[0]._id,
+                    solde: compte[0].solde,
+                  };
+                  var transactionData2 = {
+                    montant: req.body.montant,
+                    date_transaction: today,
+                    type_transaction: "TCLI",
+                    description: "Transfert du client " + userGlobal.email,
+                    id_compte_envoyeur: compte[0]._id,
+                    id_compte_receveur: compte2[0]._id,
+                    solde: compte2[0].solde,
+                  };
+                  Transaction.create(
+                    transactionData1,
+                    function (error, compte) {
+                      if (error) throw error;
+                    }
+                  );
+                  Transaction.create(
+                    transactionData2,
+                    function (error, compte) {
+                      if (error) throw error;
+                    }
+                  );
+                  return res.redirect("/sommaire");
+                }
               }
-            });
+            );
           }
         });
       }
@@ -344,10 +383,10 @@ router.post("/transfererClient", function (req, res, next) {
 
 // POST for transfererCompte
 router.post("/transfererCompte", function (req, res, next) {
-  Compte.find({ id_client:req.session.userId, type:req.body.typeCompte1 }).exec(function (
-    error,
-    compte
-  ) {
+  Compte.find({
+    id_client: req.session.userId,
+    type: req.body.typeCompte1,
+  }).exec(function (error, compte) {
     if (error) {
       return next(error);
     } else {
@@ -356,40 +395,50 @@ router.post("/transfererCompte", function (req, res, next) {
         err.status = 406;
         return next(err);
       } else {
-        Compte.find({ id_client:req.session.userId, type:req.body.typeCompte2 }).exec(function (
-          error,
-          compte2
-        ) {
+        Compte.find({
+          id_client: req.session.userId,
+          type: req.body.typeCompte2,
+        }).exec(function (error, compte2) {
           if (error) {
             return next(error);
           } else {
-            var myquery1 = {id_client:req.session.userId, type:req.body.typeCompte1}
-            var newvalues1 = { $set: {solde:(compte[0].solde - req.body.montantTransfert * 1)} };
-            var myquery2 = {id_client:req.session.userId, type:req.body.typeCompte2}
-            var newvalues2 = { $set: {solde:(compte2[0].solde + req.body.montantTransfert * 1)} };
-            Compte.findOneAndUpdate( myquery1, newvalues1 , function(err, res) {
+            var myquery1 = {
+              id_client: req.session.userId,
+              type: req.body.typeCompte1,
+            };
+            var newvalues1 = {
+              $set: { solde: compte[0].solde - req.body.montantTransfert * 1 },
+            };
+            var myquery2 = {
+              id_client: req.session.userId,
+              type: req.body.typeCompte2,
+            };
+            var newvalues2 = {
+              $set: { solde: compte2[0].solde + req.body.montantTransfert * 1 },
+            };
+            Compte.findOneAndUpdate(myquery1, newvalues1, function (err, res) {
               if (err) throw err;
             });
-            Compte.findOneAndUpdate( myquery2, newvalues2, function(err, res) {
+            Compte.findOneAndUpdate(myquery2, newvalues2, function (err, res) {
               if (err) throw err;
             });
             var transactionData1 = {
-              montant:(req.body.montantTransfert *-1),
-              date_transaction:today,
-              type_transaction:"TCMP",
-              description:"Transfert au compte " + compte2[0].type,
-              id_compte_envoyeur:compte[0]._id,
-              id_compte_receveur:compte2[0]._id,
-              solde:compte[0].solde
+              montant: req.body.montantTransfert * -1,
+              date_transaction: today,
+              type_transaction: "TCMP",
+              description: "Transfert au compte " + compte2[0].type,
+              id_compte_envoyeur: compte[0]._id,
+              id_compte_receveur: compte2[0]._id,
+              solde: compte[0].solde,
             };
             var transactionData2 = {
-              montant:req.body.montantTransfert,
-              date_transaction:today,
-              type_transaction:"TCMP",
-              description:"Transfert du compte " + compte[0].type,
-              id_compte_envoyeur:compte[0]._id,
-              id_compte_receveur:compte2[0]._id,
-              solde:compte2[0].solde
+              montant: req.body.montantTransfert,
+              date_transaction: today,
+              type_transaction: "TCMP",
+              description: "Transfert du compte " + compte[0].type,
+              id_compte_envoyeur: compte[0]._id,
+              id_compte_receveur: compte2[0]._id,
+              solde: compte2[0].solde,
             };
             Transaction.create(transactionData1, function (error, compte) {
               if (error) throw error;
@@ -412,74 +461,161 @@ router.post("/transfererCompte", function (req, res, next) {
 
 // POST for acheterAction
 router.post("/acheterAction", function (req, res, next) {
-  Compte.find({ id_client:req.session.userId, type:"Actions" }).exec(function (
-    error,
-    compte
-  ) {
-    if (error) {
-      return next(error);
-    } else {
-      if (compte[0].solde < req.body.montant) {
-        var err = new Error("Montant insuffisant.");
-        err.status = 406;
-        return next(err);
+  Compte.find({ id_client: req.session.userId, type: "Actions" }).exec(
+    function (error, compte) {
+      if (error) {
+        return next(error);
       } else {
-        Action.find({ id_client:req.session.userId, symbole:req.body.symboleAction }).exec(function (
-          error,
-          action
-        ) {
-          if (error) {
-            return next(error);
-          } else {
-            const prixAction = async () => {
-              await trouverPrix(req.body.symboleAction).then((data) => { return data; })
+        if (compte[0].solde < req.body.montant) {
+          var err = new Error("Montant insuffisant.");
+          err.status = 406;
+          return next(err);
+        } else {
+          Action.find({
+            id_client: req.session.userId,
+            symbole: req.body.symboleAction,
+          }).exec(function (error, action) {
+            if (error) {
+              return next(error);
+            } else {
+              trouverPrix(req.body.symboleAction).then((prix) => {
+                montantAction = req.body.montant / prix;
+                var myquery1 = {
+                  id_client: req.session.userId,
+                  type: "Actions",
+                };
+                var newvalues1 = {
+                  $set: { solde: compte[0].solde - req.body.montant * 1 },
+                };
+                var myquery2 = {
+                  id_client: req.session.userId,
+                  symbole: req.body.symboleAction,
+                };
+                var newvalues2 = {
+                  $set: { montant: action[0].montant + montantAction * 1 },
+                };
+                Compte.findOneAndUpdate(
+                  myquery1,
+                  newvalues1,
+                  function (err, res) {
+                    if (err) throw err;
+                  }
+                );
+                Action.findOneAndUpdate(
+                  myquery2,
+                  newvalues2,
+                  function (err, res) {
+                    if (err) throw err;
+                  }
+                );
+                var transactionData1 = {
+                  montant: req.body.montant * -1,
+                  date_transaction: today,
+                  type_transaction: "ACTI",
+                  description:
+                    "Achat de " +
+                    montantAction +
+                    " Actions " +
+                    req.body.symboleAction,
+                  id_compte_envoyeur: compte[0]._id,
+                  solde: compte[0].solde,
+                };
+                Transaction.create(transactionData1, function (error, compte) {
+                  if (error) throw error;
+                });
+
+                return res.redirect("/sommaire");
+              });
             }
-            const montantAction = (montant / prixAction).toFixed(2);
-
-            var myquery1 = {id_client:req.session.userId, type:"Actions"}
-            var newvalues1 = { $set: {solde:(compte[0].solde - req.body.montant * 1)} };
-            var myquery2 = {id_client:req.session.userId, symbole:req.body.symboleAction}
-            var newvalues2 = { $set: {montant:(compte2[0].solde + req.body.montantTransfert * 1)} };
-            Compte.findOneAndUpdate( myquery1, newvalues1 , function(err, res) {
-              if (err) throw err;
-            });
-            Compte.findOneAndUpdate( myquery2, newvalues2, function(err, res) {
-              if (err) throw err;
-            });
-            var transactionData1 = {
-              montant:(req.body.montantTransfert *-1),
-              date_transaction:today,
-              type_transaction:"TCMP",
-              description:"Transfert au compte " + compte2[0].type,
-              id_compte_envoyeur:compte[0]._id,
-              id_compte_receveur:compte2[0]._id,
-              solde:compte[0].solde
-            };
-            var transactionData2 = {
-              montant:req.body.montantTransfert,
-              date_transaction:today,
-              type_transaction:"TCMP",
-              description:"Transfert du compte " + compte[0].type,
-              id_compte_envoyeur:compte[0]._id,
-              id_compte_receveur:compte2[0]._id,
-              solde:compte2[0].solde
-            };
-            Transaction.create(transactionData1, function (error, compte) {
-              if (error) throw error;
-            });
-            Transaction.create(transactionData2, function (error, compte) {
-              if (error) throw error;
-            });
-
-            return res.redirect("/sommaire");
-          }
-        });
+          });
+        }
       }
     }
-  });
+  );
   // req.session.userId;
   // req.body.symboleAction;
   // req.body.montant;
+});
+
+// POST for vendreAction
+router.post("/vendreAction", function (req, res, next) {
+  Action.find({
+    id_client: req.session.userId,
+    symbole: req.body.symboleActionVendre,
+  }).exec(function (error, action) {
+    if (error) {
+      return next(error);
+    } else {
+      trouverPrix(req.body.symboleActionVendre).then((prix) => {
+        var montantEnDollars = action[0].montant * prix;
+        if (montantEnDollars < req.body.montantVendre) {
+          var err = new Error("Montant insuffisant.");
+          err.status = 406;
+          return next(err);
+        } else {
+          Compte.find({ id_client: req.session.userId, type: "Actions" }).exec(
+            function (error, compte) {
+              if (error) {
+                return next(error);
+              } else {
+                var montantActionAEnlever = req.body.montantVendre / prix;
+                var myquery1 = {
+                  id_client: req.session.userId,
+                  type: "Actions",
+                };
+                var newvalues1 = {
+                  $set: { solde: compte[0].solde + req.body.montantVendre * 1 },
+                };
+                var myquery2 = {
+                  id_client: req.session.userId,
+                  symbole: req.body.symboleActionVendre,
+                };
+                var newvalues2 = {
+                  $set: {
+                    montant: action[0].montant - montantActionAEnlever * 1,
+                  },
+                };
+                Compte.findOneAndUpdate(
+                  myquery1,
+                  newvalues1,
+                  function (err, res) {
+                    if (err) throw err;
+                  }
+                );
+                Action.findOneAndUpdate(
+                  myquery2,
+                  newvalues2,
+                  function (err, res) {
+                    if (err) throw err;
+                  }
+                );
+                var transactionData1 = {
+                  montant: req.body.montantVendre,
+                  date_transaction: today,
+                  type_transaction: "ACTI",
+                  description:
+                    "Vente de " +
+                    montantActionAEnlever +
+                    " Actions " +
+                    req.body.symboleActionVendre,
+                  id_compte_envoyeur: compte[0]._id,
+                  solde: compte[0].solde,
+                };
+                Transaction.create(transactionData1, function (error, compte) {
+                  if (error) throw error;
+                });
+
+                return res.redirect("/sommaire");
+              }
+            }
+          );
+        }
+      });
+    }
+  });
+  // req.session.userId;
+  // req.body.symboleActionVendre;
+  // req.body.montantVendre;
 });
 
 module.exports = router;
