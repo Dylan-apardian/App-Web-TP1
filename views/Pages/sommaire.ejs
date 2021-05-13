@@ -26,267 +26,284 @@
                         <!-- Content Row -->
                         <%- include ('../Components/comptes') %>
 
-                        <!-- Content Row -->
+                            <!-- Content Row -->
 
-                        <div class="row">
-                            <!-- Area Chart -->
-                            <div class="col-xl-8 col-lg-7">
-                                <div class="card shadow mb-4">
-                                    <!-- Card Header - Dropdown -->
-                                    <div
-                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary">
-                                            Transactions récentes
-                                        </h6>
+                            <div class="row">
+                                <!-- Area Chart -->
+                                <div class="col-xl-8 col-lg-7">
+                                    <div class="card shadow mb-4">
+                                        <!-- Card Header - Dropdown -->
+                                        <div
+                                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                Transactions récentes
+                                            </h6>
+                                        </div>
+                                        <!-- Card Body -->
+                                        <div class="card-body">
+                                            <form action="/afficherTransactions" id="transactionsForm" method="POST">
+                                                <div class="row">
+                                                    <select class="form-control col" id="valeurTransactions"
+                                                        name="valeurTransactions" form="transactionsForm" style="margin-left: 10px;" required>
+                                                        <option value="Débit">Débit</option>
+                                                        <option value="Épargnes">Épargnes</option>
+                                                        <option value="Crédit">Crédit</option>
+                                                        <option value="Actions">Actions</option>
+                                                    </select>
+                                                    <div class="col">
+                                                        <input type="submit" class="btn btn-primary btn-icon-split"
+                                                            style="width: 100%; height: 36px;" value="Afficher">
+                                                    </div>
+                                                </div>
+
+
+                                                <!-- Table de transacations recentes -->
+                                                <table class="table table-bordered" id="dataTable" width="100%"
+                                                    cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Code</th>
+                                                            <th>Description</th>
+                                                            <th>Montant</th>
+                                                            <th>Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>05/06/2021</td>
+                                                            <td>ACH</td>
+                                                            <td>Achat en ligne AMAZON PRIME CA</td>
+                                                            <td>$104.37</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>05/05/2021</td>
+                                                            <td>REM</td>
+                                                            <td>Remboursement PAYPAL MSP/DIV</td>
+                                                            <td>$37.54</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>05/04/2021</td>
+                                                            <td>PAI</td>
+                                                            <td>Paiement HYDRO-QUEBEC</td>
+                                                            <td>$74.99</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>05/03/2021</td>
+                                                            <td>ACH</td>
+                                                            <td>Achat en ligne AMAZON PRIME CA</td>
+                                                            <td>$104.37</td>
+                                                            <td></td>
+                                                        </tr>
+                                                </table>
+                                                </tbody>
+                                                </table>
+                                            </form>
+                                        </div>
                                     </div>
-                                    <!-- Card Body -->
-                                    <div class="card-body">
-                                        <!-- Table de transacations recentes -->
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Date</th>
-                                                    <th>Code</th>
-                                                    <th>Description</th>
-                                                    <th>Debit</th>
-                                                    <th>Credit</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>05/06/2021</td>
-                                                    <td>ACH</td>
-                                                    <td>Achat en ligne AMAZON PRIME CA</td>
-                                                    <td></td>
-                                                    <td>$104.37</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>05/05/2021</td>
-                                                    <td>REM</td>
-                                                    <td>Remboursement PAYPAL MSP/DIV</td>
-                                                    <td></td>
-                                                    <td>$37.54</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>05/04/2021</td>
-                                                    <td>PAI</td>
-                                                    <td>Paiement HYDRO-QUEBEC</td>
-                                                    <td>$74.99</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>05/03/2021</td>
-                                                    <td>ACH</td>
-                                                    <td>Achat en ligne AMAZON PRIME CA</td>
-                                                    <td></td>
-                                                    <td>$104.37</td>
-                                                </tr>
-                                        </table>
-                                        </tbody>
-                                        </table>
-                                        <div class="text-center">
-                                            <a href="#" class="btn btn-primary btn-icon-split" style="width: 25%;">
-                                                <span class="text">Voir plus</span>
-                                            </a>
+                                </div>
+
+                                <!-- Envoyer argent -->
+                                <div class="col-xl-4 col-lg-5">
+                                    <div class="card shadow mb-4">
+                                        <!-- Card Header - Dropdown -->
+                                        <div
+                                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                Transférer à un autre client
+                                            </h6>
+                                        </div>
+                                        <!-- Card Body -->
+                                        <div class="card-body">
+                                            <form action="/transfererClient" method="POST">
+                                                <div class="text-center">
+                                                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 17rem;"
+                                                        src="../Assets/img/undraw_transfer_money_rywa.svg" alt="..." />
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                        <input type="email" class="form-control form-control-user"
+                                                            name="destinataire" id="destinataire"
+                                                            placeholder="Courriel du destinataire" />
+                                                    </div>
+                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                        <input type="number" min="0"
+                                                            class="form-control form-control-user" id="montant"
+                                                            name="montant" placeholder="Montant" />
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="text-center">
+                                                    <input type="submit" class="btn btn-primary btn-icon-split"
+                                                        style="width: 60%; height: 36px;" value="Envoyer">
+                                                </div>
+
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Envoyer argent -->
-                            <div class="col-xl-4 col-lg-5">
-                                <div class="card shadow mb-4">
-                                    <!-- Card Header - Dropdown -->
-                                    <div
-                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary">
-                                            Transférer à un autre client
-                                        </h6>
-                                    </div>
-                                    <!-- Card Body -->
-                                    <div class="card-body">
-                                        <form action="/transfererClient" method="POST">
+                            <!-- Content Row -->
+                            <div class="row">
+                                <!-- Transferer entre compte -->
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                Transférer entre comptes
+                                            </h6>
+                                        </div>
+                                        <div class="card-body">
                                             <div class="text-center">
-                                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 17rem;"
-                                                    src="../Assets/img/undraw_transfer_money_rywa.svg" alt="..." />
+                                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="height: 200px;"
+                                                    src="../Assets/img/undraw_online_transactions_02ka.svg" alt="..." />
+                                            </div>
+                                            <form action="/transfererCompte" id="transferForm" method="POST">
+                                                <div class="row">
+                                                    <div class="col-sm-3 mb-3 mb-sm-0">
+                                                        <select class="form-control" id="typeCompte1" name="typeCompte1"
+                                                            form="transferForm" required>
+                                                            <option value="Débit">Débit</option>
+                                                            <option value="Épargnes">Épargnes</option>
+                                                            <option value="Crédit">Crédit</option>
+                                                            <option value="Actions">Actions</option>
+                                                        </select>
+                                                    </div>
+                                                    <a class="btn btn-warning btn-circle">
+                                                        <i class="fas fa-arrow-right"></i>
+                                                    </a>
+                                                    <div class="col-sm-3 mb-3 mb-sm-0">
+                                                        <select class="form-control" id="typeCompte2" name="typeCompte2"
+                                                            form="transferForm" required>
+                                                            <option value="Épargnes">Épargnes</option>
+                                                            <option value="Débit">Débit</option>
+                                                            <option value="Crédit">Crédit</option>
+                                                            <option value="Actions">Actions</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-5 mb-3 mb-sm-0">
+                                                        <input type="number" min="0"
+                                                            class="form-control form-control-user" id="montantTransfert"
+                                                            name="montantTransfert" placeholder="Montant" />
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="text-center">
+                                                    <input type="submit" class="btn btn-primary btn-icon-split"
+                                                        style="width: 60%; height: 36px;" value="Envoyer">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Prix actions -->
+                                <div class="col-xl-4 col-lg-6">
+                                    <div class="card shadow mb-4">
+                                        <!-- Card Header - Dropdown -->
+                                        <div
+                                            class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                Prix Actions
+                                            </h6>
+                                        </div>
+                                        <!-- Card Body -->
+                                        <div class="card-body">
+                                            <div class="tradingview-widget-container">
+                                                <div id="tradingview_d7b6a" style="width:100%; height: 280px;"></div>
+                                                <div class="tradingview-widget-copyright"><a
+                                                        href="https://www.tradingview.com/symbols/NASDAQ-AAPL/"
+                                                        rel="noopener" target="_blank"></a></div>
+                                                <script type="text/javascript"
+                                                    src="https://s3.tradingview.com/tv.js"></script>
+                                                <script type="text/javascript">
+                                                    new TradingView.widget(
+                                                        {
+                                                            "autosize": "true",
+                                                            "symbol": "NASDAQ:AAPL",
+                                                            "interval": "D",
+                                                            "timezone": "Etc/UTC",
+                                                            "theme": "light",
+                                                            "style": "1",
+                                                            "locale": "en",
+                                                            "toolbar_bg": "#f1f3f6",
+                                                            "enable_publishing": false,
+                                                            "allow_symbol_change": true,
+                                                            "container_id": "tradingview_d7b6a"
+                                                        }
+                                                    );
+                                                </script>
+                                            </div>
+                                            <br>
+                                            <div class="text-center">
+                                                <a href="/actions" class="btn btn-primary btn-icon-split"
+                                                    style="width: 60%;">
+                                                    <span class="text">Voir plus</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Conversions  -->
+                                <div class="col-lg-4 mb-4">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                Conversions
+                                            </h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="text-center">
+                                                <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="height: 200px;"
+                                                    src="../Assets/img/undraw_pay_online_b1hk.svg" alt="..." />
                                             </div>
                                             <div class="row">
-                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                    <input type="email" class="form-control form-control-user"
-                                                        name="destinataire" id="destinataire"
-                                                        placeholder="Courriel du destinataire" />
+                                                <div class="col-sm-5 mb-3 mb-sm-0">
+                                                    <input type="number" class="form-control form-control-user"
+                                                        id="montantConversion" placeholder="Montant" />
                                                 </div>
-                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                    <input type="number" min="0" class="form-control form-control-user"
-                                                        id="montant" name="montant" placeholder="Montant" />
+                                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                                    <select class="form-control" id="currency-1" required>
+                                                        <option>CAD</option>
+                                                        <option>EUR</option>
+                                                        <option>USD</option>
+                                                    </select>
+                                                </div>
+                                                <a class="btn btn-warning btn-circle">
+                                                    <i class="fas fa-arrow-right"></i>
+                                                </a>
+                                                <div class="col-sm-3 mb-3 mb-sm-0">
+                                                    <select class="form-control" id="currency-2" required>
+                                                        <option>CAD</option>
+                                                        <option>EUR</option>
+                                                        <option>USD</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <br />
                                             <div class="text-center">
-                                                <input type="submit" class="btn btn-primary btn-icon-split"
-                                                    style="width: 60%; height: 36px;" value="Envoyer">
+                                                <div class="result">
+                                                    <p>
+                                                        <span class="given-amount"></span>
+                                                        <span class="base-currency"></span>
+                                                        <span class="final-result"></span>
+                                                        <span class="second-currency"></span>
+                                                    </p>
+                                                </div>
                                             </div>
-
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Content Row -->
-                        <div class="row">
-                            <!-- Transferer entre compte -->
-                            <div class="col-lg-4 mb-4">
-                                <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">
-                                            Transférer entre comptes
-                                        </h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="height: 200px;"
-                                                src="../Assets/img/undraw_online_transactions_02ka.svg" alt="..." />
-                                        </div>
-                                        <form action="/transfererCompte" id="transferForm" method="POST">
-                                        <div class="row">
-                                            <div class="col-sm-3 mb-3 mb-sm-0">
-                                                <select class="form-control" id="typeCompte1" name="typeCompte1" form="transferForm" required>
-                                                    <option value="Débit">Débit</option>
-                                                    <option value="Épargnes">Épargnes</option>
-                                                    <option value="Crédit">Crédit</option>
-                                                    <option value="Actions">Actions</option>
-                                                </select>
+                                            <div class="text-center">
+                                                <a href="#" class="btn btn-primary btn-icon-split calculate-btn"
+                                                    style="width: 60%;">
+                                                    <span class="text">Convertir</span>
+                                                </a>
                                             </div>
-                                            <a class="btn btn-warning btn-circle">
-                                                <i class="fas fa-arrow-right"></i>
-                                            </a>
-                                            <div class="col-sm-3 mb-3 mb-sm-0">
-                                                <select class="form-control" id="typeCompte2" name="typeCompte2" form="transferForm" required>
-                                                    <option value="Épargnes">Épargnes</option>
-                                                    <option value="Débit">Débit</option>
-                                                    <option value="Crédit">Crédit</option>
-                                                    <option value="Actions">Actions</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-sm-5 mb-3 mb-sm-0">
-                                                <input type="number" min="0" class="form-control form-control-user"
-                                                    id="montantTransfert" name="montantTransfert" placeholder="Montant" />
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div class="text-center">
-                                            <input type="submit" class="btn btn-primary btn-icon-split"
-                                                style="width: 60%; height: 36px;" value="Envoyer">
-                                        </div>
-                                    </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Prix actions -->
-                            <div class="col-xl-4 col-lg-6">
-                                <div class="card shadow mb-4">
-                                    <!-- Card Header - Dropdown -->
-                                    <div
-                                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                        <h6 class="m-0 font-weight-bold text-primary">
-                                            Prix Actions
-                                        </h6>
-                                    </div>
-                                    <!-- Card Body -->
-                                    <div class="card-body">
-                                        <div class="tradingview-widget-container">
-                                            <div id="tradingview_d7b6a" style="width:100%; height: 280px;"></div>
-                                            <div class="tradingview-widget-copyright"><a
-                                                    href="https://www.tradingview.com/symbols/NASDAQ-AAPL/"
-                                                    rel="noopener" target="_blank"></a></div>
-                                            <script type="text/javascript"
-                                                src="https://s3.tradingview.com/tv.js"></script>
-                                            <script type="text/javascript">
-                                                new TradingView.widget(
-                                                    {
-                                                        "autosize": "true",
-                                                        "symbol": "NASDAQ:AAPL",
-                                                        "interval": "D",
-                                                        "timezone": "Etc/UTC",
-                                                        "theme": "light",
-                                                        "style": "1",
-                                                        "locale": "en",
-                                                        "toolbar_bg": "#f1f3f6",
-                                                        "enable_publishing": false,
-                                                        "allow_symbol_change": true,
-                                                        "container_id": "tradingview_d7b6a"
-                                                    }
-                                                );
-                                            </script>
-                                        </div>
-                                        <br>
-                                        <div class="text-center">
-                                            <a href="/actions" class="btn btn-primary btn-icon-split"
-                                                style="width: 60%;">
-                                                <span class="text">Voir plus</span>
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Conversions  -->
-                            <div class="col-lg-4 mb-4">
-                                <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">
-                                            Conversions
-                                        </h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="height: 200px;"
-                                                src="../Assets/img/undraw_pay_online_b1hk.svg" alt="..." />
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-5 mb-3 mb-sm-0">
-                                                <input type="number" class="form-control form-control-user"
-                                                    id="montantConversion" placeholder="Montant" />
-                                            </div>
-                                            <div class="col-sm-3 mb-3 mb-sm-0">
-                                                <select class="form-control" id="currency-1" required>
-                                                    <option>CAD</option>
-                                                    <option>EUR</option>
-                                                    <option>USD</option>
-                                                </select>
-                                            </div>
-                                            <a class="btn btn-warning btn-circle">
-                                                <i class="fas fa-arrow-right"></i>
-                                            </a>
-                                            <div class="col-sm-3 mb-3 mb-sm-0">
-                                                <select class="form-control" id="currency-2" required>
-                                                    <option>CAD</option>
-                                                    <option>EUR</option>
-                                                    <option>USD</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="result">
-                                                <p>
-                                                    <span class="given-amount"></span>
-                                                    <span class="base-currency"></span>
-                                                    <span class="final-result"></span>
-                                                    <span class="second-currency"></span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <a href="#" class="btn btn-primary btn-icon-split calculate-btn"
-                                                style="width: 60%;">
-                                                <span class="text">Convertir</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
@@ -351,6 +368,7 @@
             }
 
             btn.addEventListener('click', convertCurrency);
-        </script>   
+        </script>
         </body>
+
         </html>
