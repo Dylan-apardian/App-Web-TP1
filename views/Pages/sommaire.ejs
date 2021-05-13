@@ -70,34 +70,17 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>05/06/2021</td>
-                                                            <td>ACH</td>
-                                                            <td>Achat en ligne AMAZON PRIME CA</td>
-                                                            <td>$104.37</td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>05/05/2021</td>
-                                                            <td>REM</td>
-                                                            <td>Remboursement PAYPAL MSP/DIV</td>
-                                                            <td>$37.54</td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>05/04/2021</td>
-                                                            <td>PAI</td>
-                                                            <td>Paiement HYDRO-QUEBEC</td>
-                                                            <td>$74.99</td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>05/03/2021</td>
-                                                            <td>ACH</td>
-                                                            <td>Achat en ligne AMAZON PRIME CA</td>
-                                                            <td>$104.37</td>
-                                                            <td></td>
-                                                        </tr>
+                                                        <% if (items.transactions !== undefined && items.transactions.length>0) {%>
+                                                            <% for (let i = items.transactions.length - 1; i >= 0; i--) { %>
+                                                            <tr>
+                                                                <td><%= items.transactions[i].date_transaction %></td>
+                                                                <td><%= items.transactions[i].type_transaction %></td>
+                                                                <td><%= items.transactions[i].description %></td>
+                                                                <td>$<%= items.transactions[i].montant %></td>
+                                                                <td><%= items.transactions[i].solde %></td>
+                                                            </tr>
+                                                            <%}; %>
+                                                        <%}; %>
                                                 </table>
                                                 </tbody>
                                                 </table>

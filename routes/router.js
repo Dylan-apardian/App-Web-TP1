@@ -8,6 +8,8 @@ var yahooStockPrices = require("yahoo-stock-prices");
 var connected = false;
 var userGlobal = null;
 var comptesGlobal = null;
+var typeGlobal = "Débit";
+var premiereConnection = false;
 
 async function trouverPrix(symbole) {
   const data = await yahooStockPrices.getCurrentData(symbole);
@@ -247,20 +249,40 @@ router.get("/sommaire", function (req, res, next) {
                 comptesSolde[3] = comptes[i].solde;
               }
             }
-
             trouverDevises().then((devises) => {
-              data = {
-                devises,
-                comptes: comptesSolde,
-                prenom: user.prenom,
-                nom: user.nom,
-              };
-              connected = true;
-              comptesGlobal = comptesSolde;
-              res.render("./Pages/sommaire.ejs", {
-                siteTitle: "KDD Finance",
-                pageTitle: "sommaire",
-                items: data,
+              Compte.find({ id_client: req.session.userId, type:typeGlobal }).exec(function (
+                error,
+                comptes2
+              ) {
+                if (error) {
+                  return next(error);
+                } else {
+                  Transaction.find({ id_compte_envoyeur:comptes2[0]._id }).exec(function (
+                    error,
+                    transactions
+                  ) {
+                    if (error) {
+                      return next(error);
+                    } else {
+                      data = {
+                        devises,
+                        comptes: comptesSolde,
+                        prenom: user.prenom,
+                        nom: user.nom,
+                        transactions
+                      };
+                      console.log(transactions);
+                      console.log(transactions[0]);
+                      connected = true;
+                      comptesGlobal = comptesSolde;
+                      res.render("./Pages/sommaire.ejs", {
+                        siteTitle: "KDD Finance",
+                        pageTitle: "sommaire",
+                        items: data,
+                      });
+                    }
+                  });
+                }
               });
             });
           }
@@ -344,7 +366,7 @@ router.post("/transfererClient", function (req, res, next) {
                     description: "Transfert au client " + req.body.destinataire,
                     id_compte_envoyeur: compte[0]._id,
                     id_compte_receveur: compte2[0]._id,
-                    solde: compte[0].solde,
+                    solde: (compte[0].solde - req.body.montant * 1),
                   };
                   var transactionData2 = {
                     montant: req.body.montant,
@@ -353,7 +375,7 @@ router.post("/transfererClient", function (req, res, next) {
                     description: "Transfert du client " + userGlobal.email,
                     id_compte_envoyeur: compte[0]._id,
                     id_compte_receveur: compte2[0]._id,
-                    solde: compte2[0].solde,
+                    solde: (compte2[0].solde + req.body.montant * 1),
                   };
                   Transaction.create(
                     transactionData1,
@@ -429,7 +451,7 @@ router.post("/transfererCompte", function (req, res, next) {
               description: "Transfert au compte " + compte2[0].type,
               id_compte_envoyeur: compte[0]._id,
               id_compte_receveur: compte2[0]._id,
-              solde: compte[0].solde,
+              solde: (compte[0].solde - req.body.montantTransfert * 1),
             };
             var transactionData2 = {
               montant: req.body.montantTransfert,
@@ -438,7 +460,7 @@ router.post("/transfererCompte", function (req, res, next) {
               description: "Transfert du compte " + compte[0].type,
               id_compte_envoyeur: compte[0]._id,
               id_compte_receveur: compte2[0]._id,
-              solde: compte2[0].solde,
+              solde: (compte2[0].solde + req.body.montantTransfert * 1),
             };
             Transaction.create(transactionData1, function (error, compte) {
               if (error) throw error;
@@ -518,7 +540,7 @@ router.post("/acheterAction", function (req, res, next) {
                     " Actions " +
                     req.body.symboleAction,
                   id_compte_envoyeur: compte[0]._id,
-                  solde: compte[0].solde,
+                  solde: (compte[0].solde - req.body.montant * 1),
                 };
                 Transaction.create(transactionData1, function (error, compte) {
                   if (error) throw error;
@@ -599,7 +621,7 @@ router.post("/vendreAction", function (req, res, next) {
                     " Actions " +
                     req.body.symboleActionVendre,
                   id_compte_envoyeur: compte[0]._id,
-                  solde: compte[0].solde,
+                  solde: (compte[0].solde - req.body.montantVendre * 1),
                 };
                 Transaction.create(transactionData1, function (error, compte) {
                   if (error) throw error;
