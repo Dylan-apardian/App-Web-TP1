@@ -677,4 +677,12 @@ router.post("/vendreAction", function (req, res, next) {
   // req.body.montantVendre;
 });
 
+// POST for afficherTransactions
+router.post("/afficherTransactions", function (req, res, next) {
+  typeGlobal = req.body.valeurTransactions;
+  return res.redirect("/sommaire");
+  // req.session.userId;
+  // req.body.valeurTransactions;
+});
+
 module.exports = router;
