@@ -7,6 +7,7 @@ var Action = require("../models/action");
 var yahooStockPrices = require("yahoo-stock-prices");
 var connected = false;
 var userGlobal = null;
+var comptesGlobal = null;
 
 async function trouverPrix(symbole) {
   const data = await yahooStockPrices.getCurrentData(symbole);
@@ -58,6 +59,14 @@ router.get("/apropos", function (req, res, next) {
     siteTitle: "KDD Finance",
     pageTitle: "À propos",
     items: userGlobal,
+  });
+});
+
+router.get("/actions", function (req, res, next) {  
+  res.render("./Pages/actions.ejs", {
+    siteTitle: "KDD Finance",
+    pageTitle: "Actions",
+    items: {nom:userGlobal.nom, prenom:userGlobal.prenom, comptes:comptesGlobal},
   });
 });
 
@@ -209,6 +218,7 @@ router.get("/sommaire", function (req, res, next) {
             trouverDevises().then((devises) => {
               data = { devises, comptes, prenom:user.prenom, nom:user.nom};
               connected = true;
+              comptesGlobal = comptes;
               res.render("./Pages/sommaire.ejs", {
                 siteTitle: "KDD Finance",
                 pageTitle: "sommaire",

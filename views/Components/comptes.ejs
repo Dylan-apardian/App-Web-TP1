@@ -1,0 +1,106 @@
+<!-- Custom fonts for this template-->
+<link href="../Assets/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+<link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet" />
+
+<!-- Custom styles for this template-->
+<link href="styles/sb-admin-2.min.css" rel="stylesheet" />
+
+<div class="row">
+    <!-- Cheque card-->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Débit
+                        </div>
+
+                        <!-- Valeur compte cheque -->
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            $<%= items.comptes[0].solde %>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-money-check-alt fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Epargne card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Épargnes
+                        </div>
+
+                        <!-- Valeur compte epargne -->
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            $<%= items.comptes[1].solde %>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credit card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Crédit
+                        </div>
+
+                        <!-- Valeur compte credit -->
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                    $<%= items.comptes[2].solde %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="far fa-credit-card fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Actions card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Actions
+                        </div>
+
+                        <!-- Valeur compte actions -->
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            $<%= items.comptes[3].solde %>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-briefcase fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

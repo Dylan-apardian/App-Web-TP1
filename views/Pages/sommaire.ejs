@@ -24,103 +24,7 @@
                         </div>
 
                         <!-- Content Row -->
-                        <div class="row">
-                            <!-- Cheque card-->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Débit
-                                                </div>
-
-                                                <!-- Valeur compte cheque -->
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                    $<%= items.comptes[0].solde %>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-money-check-alt fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Epargne card -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-success shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    Épargnes
-                                                </div>
-
-                                                <!-- Valeur compte epargne -->
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                    $<%= items.comptes[1].solde %>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Credit card -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                    Crédit
-                                                </div>
-
-                                                <!-- Valeur compte credit -->
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                            $<%= items.comptes[3].solde %>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="far fa-credit-card fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Actions card -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-warning shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                    Actions
-                                                </div>
-
-                                                <!-- Valeur compte actions -->
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                    $<%= items.comptes[2].solde %>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-briefcase fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <%- include ('../Components/comptes') %>
 
                         <!-- Content Row -->
 
@@ -241,7 +145,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="text-center">
-                                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 22rem;"
+                                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="height: 200px;"
                                                 src="../Assets/img/undraw_online_transactions_02ka.svg" alt="..." />
                                         </div>
                                         <form action="/transfererCompte" id="transferForm" method="POST">
@@ -292,28 +196,8 @@
                                     </div>
                                     <!-- Card Body -->
                                     <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-3 mb-3 mb-sm-0">
-                                                <select class="form-control" id="stocks" required>
-                                                    <option>AAPL</option>
-                                                    <option>TSLA</option>
-                                                    <option>MFST</option>
-                                                    <option>GME</option>
-                                                    <option>AMZN</option>
-                                                    <option>FB</option>
-                                                    <option>AMD</option>
-                                                    <option>INTC</option>
-                                                    <option>NFLX</option>
-                                                </select>
-                                            </div>
-                                            <a href="#" class="btn btn-primary btn-icon-split" style="width: 20%;">
-                                                <span class="text">Voir plus</span>
-                                            </a>
-                                        </div>
-                                        <br>
-                                        <!-- TradingView Widget BEGIN -->
                                         <div class="tradingview-widget-container">
-                                            <div id="tradingview_d7b6a" style="width:100%; height: 243px;"></div>
+                                            <div id="tradingview_d7b6a" style="width:100%; height: 280px;"></div>
                                             <div class="tradingview-widget-copyright"><a
                                                     href="https://www.tradingview.com/symbols/NASDAQ-AAPL/"
                                                     rel="noopener" target="_blank"></a></div>
@@ -337,7 +221,13 @@
                                                 );
                                             </script>
                                         </div>
-                                        <!-- TradingView Widget END -->
+                                        <br>
+                                        <div class="text-center">
+                                            <a href="/actions" class="btn btn-primary btn-icon-split"
+                                                style="width: 60%;">
+                                                <span class="text">Voir plus</span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -351,7 +241,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="text-center">
-                                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 17rem;"
+                                            <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="height: 200px;"
                                                 src="../Assets/img/undraw_pay_online_b1hk.svg" alt="..." />
                                         </div>
                                         <div class="row">
@@ -393,7 +283,6 @@
                                                 <span class="text">Convertir</span>
                                             </a>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -425,23 +314,6 @@
             <i class="fas fa-angle-up"></i>
         </a>
 
-
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
-
-        <!-- Page level plugins -->
-        <script src="vendor/chart.js/Chart.min.js"></script>
-
-        <!-- Page level custom scripts -->
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
         <script>
             var crrncy = { 'EUR': { 'CAD': parseFloat("<%= items.devises.eurcad %>", 10), 'USD': parseFloat("<%= items.devises.eurusd %>", 10) }, 'USD': { 'CAD': parseFloat("<%= items.devises.usdcad %>", 10), 'EUR': parseFloat("<%= items.devises.usdeur %>", 10) } }
             var btn = document.querySelector('.calculate-btn');
@@ -479,7 +351,6 @@
             }
 
             btn.addEventListener('click', convertCurrency);
-        </script>
+        </script>   
         </body>
-
         </html>
