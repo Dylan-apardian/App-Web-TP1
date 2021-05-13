@@ -1,12 +1,6 @@
 var mongoose = require('mongoose');
 
 var TransactionSchema = new mongoose.Schema({
-   id_compte: {
-    type: String,
-    unique: false,
-    required: true,
-    trim: true
-  },
   montant: {
     type: Number,
     unique: false,
@@ -21,6 +15,31 @@ var TransactionSchema = new mongoose.Schema({
   },
   type_transaction: {
     type: String,
+    unique: false,
+    required: false,
+    trim: true
+  },
+  description: {
+    type: String,
+    unique: false,
+    required: false,
+    trim: true
+  },
+  id_compte_envoyeur: {
+    type: String,
+    unique: false,
+    required: false,
+    trim: true
+  }
+  ,
+  id_compte_receveur: {
+    type: String,
+    unique: false,
+    required: false,
+    trim: true
+  },
+  solde: {
+    type: Number,
     unique: false,
     required: false,
     trim: true
