@@ -232,7 +232,7 @@ router.get("/sommaire", function (req, res, next) {
             }
             
             trouverDevises().then((devises) => {
-              data = { devises, comptesSolde, prenom:user.prenom, nom:user.nom};
+              data = { devises, comptes:comptesSolde, prenom:user.prenom, nom:user.nom};
               connected = true;
               comptesGlobal = comptesSolde;
               res.render("./Pages/sommaire.ejs", {
@@ -431,8 +431,10 @@ router.post("/acheterAction", function (req, res, next) {
           if (error) {
             return next(error);
           } else {
-            const [prixAction] = await trouverPrix(req.body.symboleAction).then((data) => { return data; })
-            const montant;
+            const prixAction = async () => {
+              await trouverPrix(req.body.symboleAction).then((data) => { return data; })
+            }
+            const montantAction = (montant / prixAction).toFixed(2);
 
             var myquery1 = {id_client:req.session.userId, type:"Actions"}
             var newvalues1 = { $set: {solde:(compte[0].solde - req.body.montant * 1)} };
