@@ -65,14 +65,53 @@ router.get("/apropos", function (req, res, next) {
 });
 
 router.get("/actions", function (req, res, next) {
-  res.render("./Pages/actions.ejs", {
-    siteTitle: "KDD Finance",
-    pageTitle: "Actions",
-    items: {
-      nom: userGlobal.nom,
-      prenom: userGlobal.prenom,
-      comptes: comptesGlobal,
-    },
+  Action.find({
+    id_client: req.session.userId
+  }).exec(function (error, actions) {
+    if (error) {
+      return next(error);
+    } else {
+      var symbolesAction = [];
+      for (let i = 0; i < actions.length; i++) {
+        if (actions[i].symbole == "AAPL") {
+          symbolesAction[0] = actions[i].montant;
+        }
+        if (actions[i].symbole == "TSLA") {
+          symbolesAction[1] = actions[i].montant;
+        }
+        if (actions[i].symbole == "MFST") {
+          symbolesAction[2] = actions[i].montant;
+        }
+        if (actions[i].symbole == "GME") {
+          symbolesAction[3] = actions[i].montant;
+        }
+        if (actions[i].symbole == "AMZN") {
+          symbolesAction[4] = actions[i].montant;
+        }
+        if (actions[i].symbole == "FB") {
+          symbolesAction[5] = actions[i].montant;
+        }
+        if (actions[i].symbole == "AMD") {
+          symbolesAction[6] = actions[i].montant;
+        }
+        if (actions[i].symbole == "INTC") {
+          symbolesAction[7] = actions[i].montant;
+        }
+        if (actions[i].symbole == "NFLX") {
+          symbolesAction[8] = actions[i].montant;
+        }
+      }
+      res.render("./Pages/actions.ejs", {
+        siteTitle: "KDD Finance",
+        pageTitle: "Actions",
+        items: {
+          nom: userGlobal.nom,
+          prenom: userGlobal.prenom,
+          comptes: comptesGlobal,
+          actions: symbolesAction
+        },
+      });
+    }
   });
 });
 
@@ -271,8 +310,6 @@ router.get("/sommaire", function (req, res, next) {
                         nom: user.nom,
                         transactions
                       };
-                      console.log(transactions);
-                      console.log(transactions[0]);
                       connected = true;
                       comptesGlobal = comptesSolde;
                       res.render("./Pages/sommaire.ejs", {
